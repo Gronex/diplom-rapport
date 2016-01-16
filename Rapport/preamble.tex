@@ -1,0 +1,145 @@
+\documentclass[a4paper,11pt]{book}
+
+\newcommand{\vp}{\left(}
+\newcommand{\hp}{\right)}
+%%%%%%%%%%%%%%%%
+%%% PACKAGES %%%
+%%%%%%%%%%%%%%%%
+% !TeX spellcheck = en_GB
+%\usepackage{maplestd2e}					    	% Til maple input
+\usepackage{listings}
+\usepackage{float}                                  % Pakke til at placere figurer hvor de fandme skal være!
+\usepackage[english]{babel} 			    	        % Engelsk/Dansk ordbog
+\usepackage[utf8]{inputenc}							% Understøttelse af æ, ø og å Editor skal være sat op til UTF-8 encoding
+\usepackage[T1]{fontenc}                  			% Bruger en rigtig font til dansk output.
+\usepackage{amssymb, amsmath}  	    				% Nice equations
+%\usepackage{ulem}                                  % Underline pakke
+\usepackage{lscape}		    						% Pakke til at lave enkelte landscabe sider (\begin{landscape})
+%\usepackage{siunitx}								% Nice cmd til sienheder. Bl.a.: \num{.3e-4}
+\usepackage{lmodern} 								% Fontpakke for pdflatex
+\usepackage{wrapfig}								% Pakke til ordombrydning
+%\usepackage{subfig}	 								% Nice måde at samle flere figurer.
+%\usepackage[square,sort]{natbib}
+%		\bibpunct{[}{]}{;}{n}{,}{,}					% Citeringer til bøger mm. \citep
+\usepackage[pdftex]{hyperref}						% Til flotte links
+\usepackage{graphicx}								% Diverse billed sjov
+\usepackage{caption}
+\usepackage[labelformat=simple]{subcaption}
+\renewcommand\thesubfigure{(\alph{subfigure})}
+\usepackage{multirow}								% Multirow in table
+
+\usepackage{mathrsfs}
+\usepackage{amssymb}								% Math font
+\usepackage[danish=quotes]{csquotes}        		% Benytte for at kunne lave " tegnet
+\usepackage[table]{xcolor}							% Farvekoder til tabeller
+\usepackage{pdfpages}                               % pakke til at indsætte pdf
+\usepackage{titlesec}
+\usepackage{rotating}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{tabularx}
+\usepackage{alltt}
+\usepackage{appendix}
+\usepackage[table]{xcolor}
+\usepackage{setspace}
+	\titleformat{\section}{\normalsize\bfseries}{\thesection}{1em}{}
+	\captionsetup{margin=25pt,font={footnotesize,sf},format=hang}
+\usepackage{tikz}
+\usetikzlibrary{positioning,matrix,arrows}
+
+\usepackage{todonotes}
+%New colors defined below
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%Code listing style named "mystyle"
+\lstdefinestyle{mystyle}{
+  %backgroundcolor=\color{backcolour},   
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{magenta},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codepurple},
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,
+  postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2,
+  escapeinside={(*@}{@*)}
+}
+
+%"mystyle" code listing set
+\lstset{style=mystyle}
+
+\usepackage[
+    backend=biber,
+    style=numeric,
+    sorting=ynt
+]{biblatex}
+\addbibresource{bib.bib}
+
+%%%%%%%%%%%%%%%%%
+%%% PAGESETUP %%%
+%%%%%%%%%%%%%%%%%
+
+%\chapterstyle{article}											% Article layout
+\def\thesection{\thechapter.\arabic{section}}           		% 1.1. Ønskes 1.A, ændr arabic til Alph
+%\settrimmedsize{297mm}{210mm}{*}								% Tilpasser Layout til a4
+%\setlength{\trimtop}{0pt}
+%\setlength{\trimedge}{\stockwidth}
+%\addtolength{\trimedge}{-\paperwidth}
+%\settypeblocksize{634pt}{448.13pt}{*}
+%\setulmargins{*}{*}{*}											%Sætter margen i siden til "ryk for siden til side funktion"
+%\setlrmargins{*}{*}{*}											%Tilsvarende ovenstående
+%\setmarginnotes{17pt}{51pt}{\onelineskip}
+%\setheadfoot{\onelineskip}{2\onelineskip}
+%\setheaderspaces{*}{2\onelineskip}{*}
+%\checkandfixthelayout
+\setlength{\parindent}{0 pt}
+%\makepagestyle{rapport}											% Laver en ny type sidehoved
+%\aliaspagestyle{chapter}{rapport}								% Sætter 'chapter'-sidehoved = 'ah'-sidehoved
+\addtolength{\voffset}{-0.5cm}
+\setlength{\headsep}{24 pt}
+\hyphenation{spej-let mel-lem temperatur-udviklinger hash-tabel hash-tabellen søgefore-spørgsler flyt-te}
+% Hvis ord bliver delt forkert, kan de indskrives med den rigtige orddeling her.
+
+
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usepackage{tikz-qtree,tikz-qtree-compat}
+\usepackage{tipa}
+
+
+%%%%%%%%%%%%%%%%%%
+%% STYLE SETUP %%%
+%%%%%%%%%%%%%%%%%%
+
+%\pagestyle{rapport}					    						% Sætter 'rapport' til standard-sidehoved
+\renewcommand{\chaptermark}[1]{             					% Opretter kommando til kapitelnavne i header
+    \markboth{\chaptername\ \thechapter.\ #1}{}}            	%Header og footer setup
+
+%\makeevenhead{rapport}{\leftmark}{}{\theauthor}
+%\makeoddhead{rapport}{\theauthor}{}{\titel}
+%\makeevenhead{rapport}{\theauthor}{}{\titel}
+%\makeheadrule{rapport}{\textwidth}{1pt}
+%\makeoddfoot{rapport}{}{}{\thepage}
+%\makeevenfoot{rapport}{\thepage}{}{}
+
+\defbibheading{}{\bibsection} % \bibsection is from memoir
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%   PDF/EPS script   %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{epstopdf}					    					% Pakke der konverterer EPS til PDF
+\graphicspath{ {images/} }
+\DeclareGraphicsExtensions{.png,.pdf,.jpg,.bmp}
