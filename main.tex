@@ -29,21 +29,22 @@
 
 %%% INDHOLDSFORTEGNELSE OG ABSTRACT %%%
   \include{texfiles/abstract}
+  \listoftodos
+  \todo[inline]{remove this list}
 
-  \listoftodos \todo{remove this list}
-
-  \tableofcontents                    % Indholdsfortegnelse (fjern * hvis der skal stå "Indhold"
+  \tableofcontents
   \listoffigures                      % Figurliste
 %%% RAPPORTINDHOLD %%%
 	\mainmatter
 
   \include{texfiles/introduction}
 
+  \include{texfiles/technology}
   \include{texfiles/test}
   \include{texfiles/conclusion}
 
   \backmatter
   \printbibliography
 %%%	Appendix %%%
-  %%\input{texfiles/appendix}
+  \include{texfiles/appendix}
 \end{document}
