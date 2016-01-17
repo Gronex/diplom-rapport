@@ -1,13 +1,13 @@
 \chapter{Introduction}
 \label{chap:Introduction}
 \todo[inline]{Write introduction}
-Comapnies that rely on selling to other companies generaly need a way to keep track of
+Companies that rely on selling to other companies generally need a way to keep track of
 what customers they have, and which customers they can potentially have in the future.
 One way to keep track of such information is via a Customer Relation Management system,
 or CRM for short. The aim of such a system is to allow a user to keep track of what
-buissiness agreements are curently active, as well as what could be if all goes as planned.
+business agreements are currently active, as well as what could be if all goes as planned.
 It can also allow the user to keep track of who to contact under a customer, in case it is
-a company, or organisation.
+a company, or organization.
 
 Such a system could be run locally, but that reduces its usability, in that it will
 be only a single person in the company, or a single machine that will be able to keep
@@ -16,6 +16,22 @@ on the local network of the company, or on the internet, so that it can be acces
 from anywhere, which can be useful if the company has multiple departments, and if the
 user wants to access it from a phone, or some other device that may not be connected
 directly to the network.
+
+\todo{Write about php/jsp/asp, webapi, rest as options for serving}
+Even after we have figured out that we want the system to be run on a webserver we still have
+different ways to go, each with their own advantages and disadvantages. Some of them
+are writing a static website that is closely connected to the server, so the server
+generates the appropriate html allowing for communication with the database.
+Another way could be to write a web-api, serving the information on designated paths
+only serving the raw data.
+
+This project is made in collaboration with IT-minds which is a software consultant company,
+who is in need of a new CRM to keep track of their customers. The most basic need is
+the ability to have companies stored with deals, and having a person from sales assigned
+to a deal. It is also important to be able to divide a deal into multiple small parts
+so the income from the deal can be throttled up or down for a time, during the lifetime
+of the deal. This is one of the reasons IT-minds decided that they need a new CRM in the
+first place.
 
 
 Requirements:
@@ -34,11 +50,11 @@ Requirements:
   \begin{itemize}
     \item Move person to new company, but letting old relations stay in old company
   \end{itemize}
-  \item Assosiation of person/people from company to deal
+  \item Assignment of person/people from company to deal
   \item Assignment of salesperson to company
   \item Addition of resource income from deal
   \begin{itemize}
-    \item Seperation of income into periods
+    \item Separation of income into periods
     \item Overview of income per
     \begin{itemize}
       \item Per period
@@ -48,8 +64,8 @@ Requirements:
   \end{itemize}
   \item Creation of tasks
   \begin{itemize}
-    \item Can be assosiated with company
-    \item Can be assosiated with person in company
+    \item Can be associated with company
+    \item Can be associated with person in company
     \item (low priority) Integration with Google calendar
   \end{itemize}
 \end{itemize}
