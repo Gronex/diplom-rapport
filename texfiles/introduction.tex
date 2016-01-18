@@ -1,28 +1,41 @@
 \chapter{Introduction}
 \label{chap:Introduction}
-\todo[inline]{Write introduction}
 
 \section{IT-minds}
 \label{sec:IT-minds}
-IT-minds is a danish software consultant company, who primarily employ students
+IT-minds is a \todo{capitalized or no?}Danish software consultant company, who primarily employ students
 to solve the consultant tasks they get. The idea is that students of a software oriented
 study is capable of making software for companies, but may lack the experience to get hired
 after the education is done. On top of that since the developers are under education
 the customers don't have to pay as much as for someone who is done with their study,
 and therefore some money can be saved.
 
-\todo{continue...}
+\todo{Is this relevant at all?}
+It started in Århus, and later an office was opened in Copenhagen, this means that systems
+used internally cannot be based on a local network without a setup like a VPN, and as
+the company does not host anything themselves there are no servers to host a system with
+a VPN. This means that most systems are based on internet solutions, with separate user login.
+
+Many of the customers of IT-minds wants things made in C\# as that allows then to
+take over the code afterwards, and it means that they can use their existing echo
+systems. This results in a lot of the developers in IT-minds knowing C\#, or
+quickly pick it op. For this reason I have chosen to develop in the same language,
+allowing other developers to take over and maintain it later.
 
 \section{Motivation}
 \label{sec:Motivation}
-\todo{rewrite}
+\todo{mention it is prove of consept}
 Companies that rely on selling to other companies generally need a way to keep track of
 what customers they have, and which customers they can potentially have in the future.
-One way to keep track of such information is via a Customer Relation Management system,
-or CRM for short. The aim of such a system is to allow a user to keep track of what
-business agreements are currently active, as well as what could be if all goes as planned.
-It can also allow the user to keep track of who to contact under a customer, in case it is
-a company, or organization.
+
+IT-minds is one such company. They do have a system that keeps track of customer relations,
+but it does not support all the use cases that they want, and cannot give the information
+they are interested in.
+
+A Customer Relation Management system, or CRM for short aims to allow a user to
+keep track of what business agreements are currently active, as well as what
+could be if all goes as planned. It can also allow the user to keep track of who
+to contact under a customer, in case the customer is a company, or an organization.
 
 Such a system could be run locally, but that reduces its usability, in that it will
 be only a single person in the company, or a single machine that will be able to keep
@@ -32,14 +45,21 @@ from anywhere, which can be useful if the company has multiple departments, and 
 user wants to access it from a phone, or some other device that may not be connected
 directly to the network.
 
-\todo{Write about php/jsp/asp, webapi, rest as options for serving}
+It is not uncommon for a sales department to want to look up the contact information
+of a client when they are not in the office, and for a company such as IT-minds
+with more than one department the need for a distributed system is needed, this would
+generally be on a webserver.
+
 Even after we have figured out that we want the system to be run on a webserver we still have
 different ways to go, each with their own advantages and disadvantages. Some of them
 could be writing a static website that is closely connected to the server, so the server
-generates the appropriate html allowing for communication with the database.
+generates the appropriate html allowing for communication with the database, via technologies
+such as php or JSP or ASP.
 Another way could be to write a web-api, serving the information on designated paths
-only serving the raw data. This topic is discussed in further detail in chapter~\ref{chap:Technology}.
+only serving the raw data. This topic is discussed in further detail
+in chapter~\ref{chap:Technology}.
 
+\todo{subtract reasons for new CRM}
 This project is made in collaboration with IT-minds which is a software consultant company,
 who is in need of a new CRM to keep track of their customers. The most basic need is
 the ability to have companies stored with deals, and having a person from sales assigned
