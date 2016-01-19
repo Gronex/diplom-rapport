@@ -1,5 +1,8 @@
 \chapter{Introduction}
 \label{chap:Introduction}
+This chapter introduces IT-minds, which the project is made in collaboration with.
+It also explains why the project is made, and defines the problem definition.
+Lastly it explains the structure of the report.
 
 \section{IT-minds}
 \label{sec:IT-minds}
@@ -24,53 +27,67 @@ allowing other developers to take over and maintain it later.
 
 \section{Motivation}
 \label{sec:Motivation}
-\todo{mention it is prove of consept}
 Companies that rely on selling to other companies generally need a way to keep track of
 what customers they have, and which customers they can potentially have in the future.
+IT-minds is an example of such a company. They do have a system that keeps track
+of customer relations already, but it does not support all the use cases that they want,
+and cannot give the information they are interested in.
+Because of this they have asked me to make a POC\footnote{Prove of Concept} for a new
+system to handle these cases.
 
-IT-minds is one such company. They do have a system that keeps track of customer relations,
-but it does not support all the use cases that they want, and cannot give the information
-they are interested in.
-
-A Customer Relation Management system, or CRM for short aims to allow a user to
+A CRM\footnote{Customer Relation Management} system aims to allow a user to
 keep track of what business agreements are currently active, as well as what
-could be if all goes as planned. It can also allow the user to keep track of who
+could in future be if all goes as planned. It can also allow the user to keep track of who
 to contact under a customer, in case the customer is a company, or an organization.
 
 Such a system could be run locally, but that reduces its usability, in that it will
 be only a single person in the company, or a single machine that will be able to keep
 track of the given information. Because of this a CRM is often run as a webserver, either
-on the local network of the company, or on the internet, so that it can be accessed
-from anywhere, which can be useful if the company has multiple departments, and if the
+on the local network of the company, or on the internet so that it can be accessed
+from anywhere, which can be useful if the company has multiple departments, or if the
 user wants to access it from a phone, or some other device that may not be connected
-directly to the network.
+directly to the network the CRM is hosted on, or have access to a VPN.
 
 It is not uncommon for a sales department to want to look up the contact information
 of a client when they are not in the office, and for a company such as IT-minds
 with more than one department the need for a distributed system is needed, this would
-generally be on a webserver.
+generally be on a webserver accessed via the internet.
 
 Even after we have figured out that we want the system to be run on a webserver we still have
 different ways to go, each with their own advantages and disadvantages. Some of them
 could be writing a static website that is closely connected to the server, so the server
 generates the appropriate html allowing for communication with the database, via technologies
-such as php or JSP or ASP.
-Another way could be to write a web-api, serving the information on designated paths
-only serving the raw data. This topic is discussed in further detail
-in chapter~\ref{chap:Technology}.
-
-\todo{subtract reasons for new CRM}
-This project is made in collaboration with IT-minds which is a software consultant company,
-who is in need of a new CRM to keep track of their customers. The most basic need is
-the ability to have companies stored with deals, and having a person from sales assigned
-to a deal. It is also important to be able to divide a deal into multiple small parts
-so the income from the deal can be throttled up or down for a time, during the lifetime
-of the deal. This is one of the reasons IT-minds decided that they need a new CRM in the
-first place.
-
+such as php, JSP, or ASP.
+Another way could be to write a web-api, serving the information only in raw format
+on designated paths. A third option could be to make a SOAP\footnote{Simple Object Access Protocol}
+web service, and access the information via that.
+All this topic is discussed in further detail in chapter~\ref{chap:Technology}.
 
 \section{Problem definition}
 \label{sec:Problem definition}
+The goal of this thesis is to create a POC of a CRM, that solves some of the issues
+that IT-minds has with their existing CRM, these problems are, amongst others:
+
+\begin{itemize}
+  \item Distribution of deal resource usage
+  \item Moving a contact from one company to another without loosing history
+\end{itemize}
+
+On top of this the system must support the standard things required for a CRM to be useful,
+having multiple users, and customers. Because a customer can be a company, and
+there can be multiple contact people in one company it is also important that this
+is supported. Along with having deals assigned to a customer, so that one can keep track
+what deals has been made, and possible future deals to be made.
+
+To do this a full analysis of what is needed in order to create the ideal system
+will be created, and relevant technologies will be analyzed. Because IT-minds primarily
+works with C\# this will be the language the CRM will be developed in, but C\# supports
+many different technologies, and an analysis of these will be used to find the best suited.
+
+After the technologies have been decided the design of the data model will be made, and the design of the system structure will be made. While this is done the implementation will run as well, to run in an agile fashion according to SCRUM.
+
+During the development unit tests will be made, and run against the code enforcing higher quality.
+And end-to-end tests will be run as well in order for the flow to be tested, as well as caching cases that was missed while writing the unit tests, and these cases will be implemented as unit tests afterwards.
 
 \section{Thesis structure}
 \label{sec:Thesis structure}
