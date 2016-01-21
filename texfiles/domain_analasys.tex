@@ -3,6 +3,72 @@
 
 \section{Requirements}
 \label{sec:Requirements}
+In order for me to know what is expected of the system I have spoken with Kristian, and together we have come up with some requirements for the system. This includes what users should be in the system, as well as what those users can do. We also talked about some of the views that are important to have for the CRM to be usable, and what annoys him in the existing CRM's, so that this one will be more to IT-minds needs.
+
+\subsection{Users}
+\label{sub:Users}
+
+One of the basic requirements are the users that the system will support. Ideally the following three user types should be supported, each with the rights of the previous, as well as some rights of their own.
+
+\begin{enumerate}
+  \item Super
+  \begin{itemize}
+    \item Invites new users\todo{should not be here, but in text}
+    \item Defines what role users are in
+    \item Defines what groups the user is in
+  \end{itemize}
+  \item Administrator
+  \item Standard user
+\end{enumerate}
+
+\todo[inline]{Explain the base idea with each usertype}
+
+\subsection{Resources}
+\label{sub:Resources}
+
+An opportunity can be edited at any time, by the creating user.
+Opportunities:
+\begin{itemize}
+  \item Associated with user
+  \item Optionally associated with contact
+  \item Associated with company
+  \item Start and end date
+  \item Price
+  \item Stage
+  \begin{itemize}
+    \item Custom made by super user
+    \item associated with percentile
+  \end{itemize}
+  \item Percentile (overriding stage percentile)
+  \item Category
+  \begin{itemize}
+    \item Made by super user
+  \end{itemize}
+  \item Price per hour
+  \item Development department\todo{Different name to support broader amount of people?}
+  \item Group (taken from the creating user, at the time of creation)
+  \begin{itemize}
+    \item Assigned and created by super user
+  \end{itemize}
+  \item Expected close\todo{??}
+  \item Addition of files
+\end{itemize}
+
+Activities:
+\begin{itemize}
+  \item Custom types with custom weighting value
+  \item Associated with user
+\end{itemize}
+
+\subsection{Visualization}
+\label{sub:Visualization}
+
+
+\section{Chapter summary}
+\label{sec:Chapter summary}
+
+
+
 \todo{update after meeting with kristian}
 
 \begin{itemize}
@@ -39,7 +105,3 @@
     \item (low priority) Integration with Google calendar
   \end{itemize}
 \end{itemize}
-
-
-\section{Chapter summary}
-\label{sec:Chapter summary}
