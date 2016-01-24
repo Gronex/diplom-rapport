@@ -1,5 +1,6 @@
 \chapter{Domain analasys}
 \label{chap:Domain analasys}
+\todo[inline]{introduce chapter}
 
 \section{Requirements}
 \label{sec:Requirements}
@@ -14,8 +15,14 @@ One of the basic requirements are the users that the system will support. Ideall
   \item Super
   \begin{itemize}
     \item Invites new users\todo{should not be here, but in text}
-    \item Defines what role users are in
-    \item Defines what groups the user is in
+    \item Defines:
+    \begin{itemize}
+      \item User groups
+      \item Categories
+      \item Departments
+      \item States
+      \item Activity categories
+    \end{itemize}
   \end{itemize}
   \item Administrator
   \item Standard user
@@ -26,45 +33,15 @@ One of the basic requirements are the users that the system will support. Ideall
 \subsection{Resources}
 \label{sub:Resources}
 
-A theme with a lot of the requirements was the desire to be able to customize, instead of having the system enforce things on the users. The things that should de customizable is categories, departments, stages and the like. Generally things that tag something, and that may carry a value with it, such as stage, which is supposed to have a percentage of certainty of an opportunity. Letting the user make the stages them selves also allows them to set what the stage actually means, allowing a system that suites the individual company's way of working.
+A theme with a lot of the requirements was the desire to be able to customize, instead of having the system enforce things on the users. The things that should de customizable is categories, departments, stages and the like. Generally things that tag something, and that may carry a value with it, such as stage, which is supposed to have a percentage of certainty for an opportunity. Letting the super user make the stages them selves also allows them to set what the stage actually means, allowing a system that suites the individual company's way of working better.
 
-The customization should only be something that the super administrator can create, as to avoid too many things that essentially mean the same to show up. In the case of an opportunity the tag that a stage shows may be fitting while the value is not, it is also desired that the creator of the opportunity can overrule the suggested value that the stage carries to fit better with each individual opportunity.
+The customization should only be something that the super administrator can create, as to avoid too many things that essentially mean the same to show up. In the case of an opportunity the tag that a stage shows may be fitting while the value is not, therefore it is also desired that the creator of the opportunity can overrule the suggested value that the stage carries to fit better with each individual opportunity.
 
+The system should keep track of opportunities which are possible deals, and deals that are won. An opportunity needs to contain some information such as who is responsible for it, and who the deal is with, as well as how much it will earn. A full list of what an opportunity should contain can be seen in appendix~\ref{app:Oppotunity}.
 
+The primary reason for IT-minds to want a new CRM is that most other CRM's frontload the earning from an opportunity, resulting in a task that that will earn a lot of money, but also takes up a lot of resources looking like it has no impact on any of the months after the first. This is not how it works in reality, as the company who hires ex. IT-minds to work for a couple of months pay a little bit every month instead of everything all at once. The solution to this is mostly in regards to data visualization, where we need to keep track of the span of an opportunity, and what it will earn over that period, this should then be divided out over the span of the opportunity, also meaning that the earnings of a user is based on the same, since it needs to be possible to set goals for the user on a per month basis.
 
-An opportunity can be edited at any time, by the creating user.
-Opportunities:
-\begin{itemize}
-  \item Associated with user
-  \item Optionally associated with contact
-  \item Associated with company
-  \item Start and end date
-  \item Price
-  \item Stage
-  \begin{itemize}
-    \item Custom made by super user
-    \item associated with percentile
-  \end{itemize}
-  \item Percentile (overriding stage percentile)
-  \item Category
-  \begin{itemize}
-    \item Made by super user
-  \end{itemize}
-  \item Price per hour
-  \item Development department\todo{Different name to support broader amount of people?}
-  \item Group (taken from the creating user, at the time of creation)
-  \begin{itemize}
-    \item Assigned and created by super user
-  \end{itemize}
-  \item Expected close\todo{??}
-  \item Addition of files
-\end{itemize}
-
-Activities:
-\begin{itemize}
-  \item Custom types with custom weighting value
-  \item Associated with user
-\end{itemize}
+Since an opportunity is a bigger thing, and there will be a lot of work related to a single one, we also need a way to keep track of smaller tasks, such as making a call, or going to a meeting. This is where an activity comes in to the picture. An activity should be able to be several things defined by the super admin, but the primary thing that it does is define a task for a user to do. The task could be to send an email, or make a call, or go to a conference. Because these things don't take the same amount of time a category for them can have a value, so it can be visualized what the users are using their time on. This is useful as right now IT-minds ports the number of activity for all the users to a spread sheet, and graphs from there, but if the system could do that for them some inconvenience would be saved.
 
 \subsection{Visualization}
 \label{sub:Visualization}
@@ -72,42 +49,3 @@ Activities:
 
 \section{Chapter summary}
 \label{sec:Chapter summary}
-
-
-
-\todo{update after meeting with kristian}
-
-\begin{itemize}
-  \item Users
-  \begin{itemize}
-    \item Sales people
-    \item Administrators\todo{Figure out what they can that sales personnel cannot}
-  \end{itemize}
-  \item Creation of companies/customers
-  \begin{itemize}
-    \item (low priority) Nesting of companies
-  \end{itemize}
-  \item Creation of deals under company
-  \item Creation of person under company
-  \begin{itemize}
-    \item Move person to new company, but letting old relations stay in old company
-  \end{itemize}
-  \item Assignment of person/people from company to deal
-  \item Assignment of salesperson to company
-  \item Addition of resource income from deal
-  \begin{itemize}
-    \item Separation of income into periods
-    \item Overview of income per
-    \begin{itemize}
-      \item Per period
-      \item Per salesperson
-      \item Per company
-    \end{itemize}
-  \end{itemize}
-  \item Creation of tasks
-  \begin{itemize}
-    \item Can be associated with company
-    \item Can be associated with person in company
-    \item (low priority) Integration with Google calendar
-  \end{itemize}
-\end{itemize}
