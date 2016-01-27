@@ -1,115 +1,63 @@
 \chapter{Introduction}
 \label{chap:Introduction}
-This chapter introduces IT-minds, which the project is made in collaboration with.
-It also explains why the project is made, and defines the problem definition.
-Lastly it explains the structure of the report.
-\todo[inline]{For kort problem definition}
-\todo[inline]{særskilt udviklings metoder}
-\todo[inline]{før problem definitionen vision (5-6 linier)}
-\todo[inline]{udviklings metode 0,5 - 1}
+This chapter introduces IT-minds, which the project is made in collaboration with. It also explains why the project is made, and defines the problem definition. Lastly it explains the structure of the report.
 \todo[inline]{inkluder billeder af system}
-\todo[inline]{list mål som kapitler refererer til, 2-3 per kapitel}
 
 \section{IT-minds}
 \label{sec:IT-minds}
-IT-minds is a Danish software consultant company\cite{IT-minds}, who primarily employ students
-to solve the consultant tasks they get. The idea is that students of a software oriented
-study is capable of making software for companies, but may lack the experience to get hired
-after the education is done. On top of that since the developers are under education
-the customers don't have to pay as much as for someone who is done with their study,
-and therefore some money can be saved.
+IT-minds is a Danish software consultant company\cite{IT-minds}, who primarily employ students to solve the consultant tasks they get. The idea is that students of a software oriented study is capable of making software for companies, but may lack the experience to get hired after the education is done. On top of that since the developers are under education the customers don't have to pay as much as for someone who is done with their study, and therefore some money can be saved.
 
-\todo{Is this relevant at all?}
-It started in Århus, and later an office was opened in Copenhagen, this means that systems
-used internally cannot be based on a local network without a setup like a VPN, and as
-the company does not host anything themselves there are no servers to host a system with
-a VPN. This means that most systems are based on internet solutions, with separate user login.
+It started in Århus, and later an office was opened in Copenhagen, this means that systems used internally cannot be based on a local network without a setup like a VPN, and as the company does not host anything themselves there are no servers to host a system with a VPN. This means that most systems are based on internet solutions, with separate user login.
 
-Many of the customers of IT-minds wants things made in C\# as that allows then to
-take over the code afterwards, and it means that they can use their existing echo
-systems. This results in a lot of the developers in IT-minds knowing C\#, or
-quickly pick it op. For this reason I have chosen to develop in the same language,
-allowing other developers to take over and maintain it later.
+Many of the customers of IT-minds wants things made in C\# as that allows then to take over the code afterwards, and it means that they can use their existing echo systems. This results in a lot of the developers in IT-minds knowing C\#, or quickly pick it op. For this reason I have chosen to develop in the same language, allowing other developers to take over and maintain it later.
 
 \section{Motivation}
 \label{sec:Motivation}
-Companies that rely on selling to other companies generally need a way to keep track of
-what customers they have, and which customers they can potentially have in the future.
-IT-minds is an example of such a company. They do have a system that keeps track
-of customer relations already, but it does not support all the use cases that they want,
-and cannot give the information they are interested in.
-Because of this they have asked me to make a POC\footnote{Prove of Concept} for a new
-system to handle these cases.
+Companies that rely on selling to other companies generally need a way to keep track of what customers they have, and which customers they can potentially have in the future. IT-minds is an example of such a company. They do have a system that keeps track of customer relations already, but it does not support all the use cases that they want, and cannot give the information they are interested in. Because of this they have asked me to make a POC\footnote{Prove of Concept} for a new system to handle these cases.
 
-A CRM\footnote{Customer Relation Management} system aims to allow a user to
-keep track of what business agreements are currently active, as well as what
-could in future be if all goes as planned. It can also allow the user to keep track of who
-to contact under a customer, in case the customer is a company, or an organization.
+A CRM\footnote{Customer Relation Management} system aims to allow a user to keep track of what business agreements are currently active, as well as what could in future be if all goes as planned. It can also allow the user to keep track of who to contact under a customer, in case the customer is a company, or an organization.
 
-Such a system could be run locally, but that reduces its usability, in that it will
-be only a single person in the company, or a single machine that will be able to keep
-track of the given information. Because of this a CRM is often run as a webserver, either
-on the local network of the company, or on the internet so that it can be accessed
-from anywhere, which can be useful if the company has multiple departments, or if the
-user wants to access it from a phone, or some other device that may not be connected
-directly to the network the CRM is hosted on, or have access to a VPN.
+Such a system could be run locally, but that reduces its usability, in that it will be only a single person in the company, or a single machine that will be able to keep track of the given information. Because of this a CRM is often run as a webserver, either on the local network of the company, or on the internet so that it can be accessed from anywhere, which can be useful if the company has multiple departments, or if the user wants to access it from a phone, or some other device that may not be connected directly to the network the CRM is hosted on, or have access to a VPN.
 
-It is not uncommon for a sales department to want to look up the contact information
-of a client when they are not in the office, and for a company such as IT-minds
-with more than one department the need for a distributed system is needed, this would
-generally be on a webserver accessed via the internet.
+It is not uncommon for a sales department to want to look up the contact information of a client when they are not in the office, and for a company such as IT-minds with more than one department the need for a distributed system is needed, this would generally be on a webserver accessed via the internet.
 
-Even after we have figured out that we want the system to be run on a webserver we still have
-different ways to go, each with their own advantages and disadvantages. Some of them
-could be writing a static website that is closely connected to the server, so the server
-generates the appropriate html allowing for communication with the database, via technologies
-such as php, JSP, or ASP.
-Another way could be to write a web-api, serving the information only in raw format
-on designated paths. A third option could be to make a SOAP\footnote{Simple Object Access Protocol}
-web service, and access the information via that.
-All this topic is discussed in further detail in chapter~\ref{chap:Technology}.
-
-\section{Development methods}
-\label{sec:Development methods}
-
+Even after we have figured out that we want the system to be run on a webserver we still have different ways to go, each with their own advantages and disadvantages. Some of them could be writing a static website that is closely connected to the server, so the server generates the appropriate html allowing for communication with the database, via technologies such as php, JSP, or ASP. Another way could be to write a web-api, serving the information only in raw format on designated paths. A third option could be to make a SOAP\footnote{Simple Object Access Protocol} web service, and access the information via that. All this topic is discussed in further detail in chapter~\ref{chap:Technology}.
 
 \section{Vision}
 \label{sec:Vision}
-
+The vision of this project is to develop an alternate CRM for companies to use that will focus on some of the missing features of other CRMs in regards to data extraction. By making it a web service the accessibility will be improved, and usage may be increased. The system will consist of only a subset of the full feature set of other CRMs in addition to the other focuses.
 
 \section{Problem definition}
 \label{sec:Problem definition}
-The goal of this thesis is to create a POC of a CRM, that solves some of the issues
-that IT-minds has with their existing CRM, these problems are, amongst others:
+\todo[inline]{For kort problem definition - mangler begrænsning}
+A CRMs purpose is to allow the user to keep track of companies and people, and who users on the CRM interact with the companies and people. This means that there is a lot of room for specialization. The problem with this specialization is that not any of the existing CRMs, at least that IT-minds have tried cover all the features they need.
 
-\begin{itemize}
-  \item Distribution of deal resource usage
-  \item Moving a contact from one company to another without loosing history
-\end{itemize}
+What is needed is the basic CRM features, and on top of that the ability to set a production goal for each user of the CRM, giving a more clear incentive for the user to do better, and promoting competition amongst the users.
 
-On top of this the system must support the standard things required for a CRM to be useful,
-having multiple users, and customers. Because a customer can be a company, and
-there can be multiple contact people in one company it is also important that this
-is supported. Along with having deals assigned to a customer, so that one can keep track
-what deals has been made, and possible future deals to be made.
+In some systems, eg. PipelineDeals\ref{pipelinedeals} this feature is supported to some extend, but not in a way that makes sense for a company like IT-minds. What they really want, is to be able to make a per month goal, and then have the ability to change that goal in the future. This goal feature should be a per user thing, but one thing that is more important for the people who manages the system than an individual user overview is a department, or company overview, allowing them to see that the company is eg. 200.000 kr. away from their goal next month, which if that trend keeps up may warrant a reevaluation of methods.
 
-To do this a full analysis of what is needed in order to create the ideal system
-will be created, and relevant technologies will be analyzed. Because IT-minds primarily
-works with C\# this will be the language the CRM will be developed in, but C\# supports
-many different technologies, and an analysis of these will be used to find the best suited.
+First I will do an analysis of the project, making the idea of the system concrete, I will also in this phase determine the technologies that will be used to build the system. These choices will be made based on communication with IT-minds as to make sure the system that is produces lives up to their expectations, as well as allowing the common developer in IT-minds to extend the feature set, and maintain the system in the future if needed. This means the language the system will be written is is going to be C\#, as most of the software IT-minds makes is written in C\#, an therefore most will be familiar with it.
 
-After the technologies have been decided the design of the data model will be made, and the design of the system structure will be made. While this is done the implementation will run as well, to run in an agile fashion according to SCRUM.
+In the design phase the design of the database, and the system will be made, so that it is ready for the next phase, which is the implementation. It is in the implementation phase the system will be implemented, and tested. In the end the final testing phase will be entered, and the system will be tested more thoroughly than it was in the development phase, to hopefully catch any bugs there may be left.
 
-During the development unit tests will be made, and run against the code enforcing higher quality.
-And end-to-end tests will be run as well in order for the flow to be tested, as well as caching cases that was missed while writing the unit tests, and these cases will be implemented as unit tests afterwards.
+\subsection{Delimitations}
+\label{sub:Delimitations}
+
+\section{Development methods}
+\label{sec:Development methods}
+\todo[inline]{udviklings metode 0,5 - 1 side}
+SCRUM, Pivotal tracker, Test first
 
 \section{Goals}
 \label{sec:Goals}
-
+\todo[inline]{list mål som kapitler refererer til, 2-3 per kapitel}
+\begin{enumerate}
+  \item
+\end{enumerate}
 
 \section{Thesis structure}
 \label{sec:Thesis structure}
-Here I will go over the general structure of the report, and what each of the chapters will focus on.\\
+Here I will go over the general structure of the report, and what each of the chapters will focus on, as well as what goal they will complete.\\
 
 \textbf{Chapter~\ref{chap:Domain analasys} - \nameref{chap:Domain analasys}} will describe the domain the solution is under, including requirements from IT-minds to the solution, and a prioritized order of features that may be implemented into the system. The chapter will also set up some use cases that describe what a user might do in the system, and what should be supported by the final product.\\
 
