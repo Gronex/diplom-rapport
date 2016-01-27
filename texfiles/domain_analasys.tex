@@ -11,24 +11,21 @@ In order for me to know what is expected of the system I have spoken with Kristi
 
 One of the basic requirements are the users that the system will support. Ideally the following three user types should be supported, each with the rights of the previous, as well as some rights of their own.
 
-\begin{enumerate}
+\begin{itemize}
   \item Super
-  \begin{itemize}
-    \item Invites new users\todo{should not be here, but in text}
-    \item Defines:
-    \begin{itemize}
-      \item User groups
-      \item Categories
-      \item Departments
-      \item States
-      \item Activity categories
-    \end{itemize}
-  \end{itemize}
   \item Administrator
   \item Standard user
-\end{enumerate}
+\end{itemize}
 
-\todo[inline]{Explain the base idea with each usertype}
+The administrator does not have any special rights compared to the standard user initially, but they my have predesigned overviews, because their role in the system is to gain an overview of the all the users in a department or user group. They can of course also do the same as a standard user, such as create people and companies. In the future they may gain privileges that the standard user is not supposed to have, but for now that will not be the case.
+
+One could argue that it is pointless to have that user at this point since it cannot do anything special, but the primary argument is that IT-minds, and a lot of others have this structure in delegation of responsibility, and if in the future we decide that there is some information that the administrators should have access to but the normal users should not, the setup is already in place, and the super administrator will not have to reassign all the users who are supposed to be administrators.
+
+This leads to the things the super administrator can do. This include invitation of users, and assignment of groups and roles. They should also be able to define what groups are available, as well as departments and activity categories. It will also be the super admin who defines states and their percentage value.
+
+A final thing that users should have is production goals, this means that the super administrator should be able to assign a goal for the user to sell for every month. But because this value may increase it should be in a way so that the assignment is associated with a month and year, and it will run until the next assigned value, which then takes over from that month.
+
+This is a requirement because it gives the users something to aim fore, and allows for a visualization of earnings versus goals, which will be discussed in section~\ref{sub:Visualization}.
 
 \subsection{Resources}
 \label{sub:Resources}
