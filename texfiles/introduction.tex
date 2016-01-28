@@ -13,7 +13,7 @@ Many of the customers of IT-minds wants things made in C\# as that allows then t
 
 \section{Motivation}
 \label{sec:Motivation}
-Companies that rely on selling to other companies generally need a way to keep track of what customers they have, and which customers they can potentially have in the future. IT-minds is an example of such a company. They do have a system that keeps track of customer relations already, but it does not support all the use cases that they want, and cannot give the information they are interested in. Because of this they have asked me to make a POC\footnote{Prove of Concept} for a new system to handle these cases.
+Companies that rely on selling to other companies generally need a way to keep track of what customers they have, and which customers they can potentially have in the future. IT-minds is an example of such a company. They do have a system that keeps track of customer relations already, but it does not support all the use cases that they want, and cannot give the information they are interested in. Because of this they have asked me to make a new system to handle these cases, since they do know that the time available is limited, the system will not be a fully fletched one, but focus on the irritations they have with the current systems, as well as the basic requirements for the system to work.
 
 A CRM\footnote{Customer Relation Management} system aims to allow a user to keep track of what business agreements are currently active, as well as what could in future be if all goes as planned. It can also allow the user to keep track of who to contact under a customer, in case the customer is a company, or an organization.
 
@@ -29,12 +29,11 @@ The vision of this project is to develop an alternate CRM for companies to use t
 
 \section{Problem definition}
 \label{sec:Problem definition}
-\todo[inline]{For kort problem definition - mangler begrænsning}
 A CRMs purpose is to allow the user to keep track of companies and people, and who users on the CRM interact with the companies and people. This means that there is a lot of room for specialization. The problem with this specialization is that not any of the existing CRMs, at least that IT-minds have tried cover all the features they need.
 
 What is needed is the basic CRM features, and on top of that the ability to set a production goal for each user of the CRM, giving a more clear incentive for the user to do better, and promoting competition amongst the users.
 
-In some systems, eg. PipelineDeals\ref{pipelinedeals} this feature is supported to some extend, but not in a way that makes sense for a company like IT-minds. What they really want, is to be able to make a per month goal, and then have the ability to change that goal in the future. This goal feature should be a per user thing, but one thing that is more important for the people who manages the system than an individual user overview is a department, or company overview, allowing them to see that the company is eg. 200.000 kr. away from their goal next month, which if that trend keeps up may warrant a reevaluation of methods.
+In some systems, eg. PipelineDeals\cite{pipelinedeals:features} this feature is supported to some extend, but not in a way that makes sense for a company like IT-minds. What they really want, is to be able to make a per month goal, and then have the ability to change that goal in the future. This goal feature should be a per user thing, but one thing that is more important for the people who manages the system than an individual user overview is a department, or company overview, allowing them to see that the company is eg. 200.000 kr. away from their goal next month, which if that trend keeps up may warrant a reevaluation of methods.
 
 First I will do an analysis of the project, making the idea of the system concrete, I will also in this phase determine the technologies that will be used to build the system. These choices will be made based on communication with IT-minds as to make sure the system that is produces lives up to their expectations, as well as allowing the common developer in IT-minds to extend the feature set, and maintain the system in the future if needed. This means the language the system will be written is is going to be C\#, as most of the software IT-minds makes is written in C\#, an therefore most will be familiar with it.
 
@@ -42,11 +41,38 @@ In the design phase the design of the database, and the system will be made, so 
 
 \subsection{Delimitations}
 \label{sub:Delimitations}
+Because of the time available for the development of the project, and the size of a full CRM I am forced to implement only a subset of all the features a production ready CRM would consist of. As the primary focus of this project is to create the backing structure for a CRM that supports the requested features, the focus on a frontend, and the user experience will be lower. Some implementation of visualization will be made as it is what the system is meant to serve, but the primary focus will be on the collection, and manipulation of the data as well as the ability to get it out again in a useful way.
+
+The primary product of the project will be a system that has the most essential features of a CRM, but it will still be missing a lot of the features that makes a full product convenient to use. This is because of the limitation in hours that can be put into creating the system, which can be seen in that there are companies whos primary product is a CRM, such as PipelineDeals.
+
+This also means that one of the aims of the project is to make sure that the structure supports the addition of new features for further development, as that will be needed in case it is going to be used actively.
+
+The report will not focus on the reasons of a lot of the data that the system will be able to give the user, as that falls under different focus points than software design, and implementation. It will not consider any legal issues in regards to storing of personal data, or any issues regarding the possibility of earning money off of it, since these are not of technical importance.
 
 \section{Development methods}
 \label{sec:Development methods}
-\todo[inline]{udviklings metode 0,5 - 1 side}
-SCRUM, Pivotal tracker, Test first
+The development of this project will follow the method Kanban. The idea of this method is to deal with the fact that customers change their minds during development, and the development of the software therefore needs to follow a more agile process in order to adjust to the changing requirements throughout the process.
+
+The focus of Kanban is to make deliveries in a just-in-time fashion, where the developers take the tasks from a queue of defined tasks. The tasks are usually set up on a Kanban board, with has three primary columns, one for each state a task can be in:
+
+\begin{center}
+  $TODO \rightarrow Doing \rightarrow Done$
+\end{center}
+
+This is however only a sub board in a bigger environment, where we also could have an analysis part and a test part. Which would allow for isolation of bottlenecks\cite{kanban}.
+
+To keep track of this board I will be using the web application PivotalTracker\footnote{Read more about PivotalTracker at: https://www.pivotaltracker.com}, which allows me to write user stories that will describe what a user should be able to do, and by that describes the functionality of the program, when I start work on a stories I will then move the state as to indicate what I am working on. This state change represents the moving from todo to doing, and finally to done. The values used in PivotalTracker are:
+
+\begin{center}
+  $Unstarted \rightarrow Started \rightarrow Finished$
+\end{center}
+
+There are a few other states PivotalTracker supports, but I will not be using those.
+
+I will try to keep the development in iterations of one week intervals, which means that once a week I will look at what I have done the past week, and define what should be done the coming week. This process will involve Kristian Larsen who is the Product owner in this context, representing IT-minds and their interests. The reason for the iterations is to keep the agile workflow, allowing for changes put forth by Kristian when he sees the different stages of the product.
+
+For the development of the features them selves, I will be following a test-driven development procedure, meaning I will start by creating unit tests for the feature I am to implement, which will fail until I the feature is done, and supports the requirements. This will ensure quality code, as well as make sure that the requirements are met throughout the product.
+\todo{maybe a reference to pivotal tracker}
 
 \section{Goals}
 \label{sec:Goals}
