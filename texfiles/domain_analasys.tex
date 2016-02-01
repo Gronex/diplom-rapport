@@ -45,6 +45,7 @@ Since an opportunity is a bigger thing, and there will be a lot of work related 
 
 \section{Use cases}
 \label{sec:Use cases}
+From the requirements of section~\ref{sec:Requirements} I have created a use case diagram, to help identify the use cases that is in the project, as can be seen in Figure~\ref{fig:usecase}. To help create the diagram I used an Actor - Goal list, that can be seen in Appendix~\ref{app:actor-goal}.
 
 \begin{figure}[h]
   \centering
@@ -53,41 +54,35 @@ Since an opportunity is a bigger thing, and there will be a lot of work related 
   \label{fig:usecase}
 \end{figure}
 
-\begin{table}
-  \begin{tabular}{l|l}
-    Actor & Goal \\ \hline
-    \multirow{10}{*}{User}
-    & Create opportunity \\
-    & Edit opportunity \\
-    & Create Person \\
-    & Update person \\
-    & Create activity \\
-    & Assign activity \\
-    & Comment \\
-    & Manage personal view settings \\
-    & Create company \\
-    & Edit company \\
-    \hline
-    \multirow{14}{*}{Super administrator}
-    & Add user \\
-    & Edit user \\
-    & Delete user \\
-    & Set user roles \\
-    & Create user group \\
-    & Set user groups \\
-    & Create activity category \\
-    & Update activity category value \\
-    & Create opportunity stage \\
-    & Update opportunity stage value \\
-    & Create opportunity category \\
-    & Update opportunity category value \\
-    & Set production goals of user \\
-    & Create department
-  \end{tabular}
-  \caption{Actor - goal list}
-  \label{tab:actor-loal-list}
-\end{table}
-\todo{probably move to appendix}
+\subsection{Use case 1: Create Operation}
+\textbf{Scope}: CRM \\
+\textbf{Level}: User-goal \\
+\textbf{Primary actor}: User \\
+\textbf{Stakeholders \& interests}:
+\begin{itemize}
+  \item User: Wants to be able to track the likelihood of an opportunity, and assign tasks to is, as well as keep track of opportunities in companies
+\end{itemize}
+\textbf{Preconditions}: User is logged in \\
+\textbf{Postconditions}: Opportunity is saved. User is associated. Company associated. Person associated. Stage associated. User groups coppied\\
+\textbf{Main Success Scenario}:
+\begin{enumerate}
+  \item User fills out the Name, Description, Price, Start and End dates, Category, Hourly price, and expected close date
+  \item User picks a company from a list
+  \item User picks a department for the opportunity
+  \item User Chooses a stage
+  \item User adjusts the percentile for success
+  \item User saves the data
+\end{enumerate}
+\textbf{Extentions}:
+\begin{enumerate}
+  \item
+\end{enumerate}
+\textbf{Frequency of Occurrence}: Multiple times a day
+
+
+
+\chapter{Domain Model}
+\label{chap:Domain Model}
 
 
 \section{Chapter summary}
