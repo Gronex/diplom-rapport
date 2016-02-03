@@ -2,8 +2,13 @@
 \label{chap:Technology}
 \todo[inline]{Write technology}
 
-\section{Static serving}
-\label{sec:Static serving}
+\section{Serving}
+\label{sec:Serving}
+We can choose to serve the data in multiple ways, even after we have decided that the first focus will be to make a website be the place the user goes to get the data. We can go with static serving which is what sub section~\ref{sub:Static serving} will focus on, or we could go with a web service, and then go with a single page application or similar technology to present the data, which is what sub section~\ref{sub:Web service} will discuss.
+
+\subsection{Static serving}
+\label{sub:Static serving}
+
 One way to implement the website could be purely via static serving. This means that the server will receive a request from the client to which the server then finds the appropriate HTML, CSS and potentially JavaScript files to give back, and the browser then renders this for the user.
 
 Because of our requirements in regards to user verification and database dependent data we cannot go with the purest static serving model. We can however use technologies such as PHP, ASP.NET, or spring. Two of which are not C\#, which was another goal for the project, to support maintainability within IT-minds.
@@ -20,16 +25,16 @@ ASP can also use the template option, where they render some code on the server 
 
 In previous versions of .NET the user was mostly locked on to the windows platform, with a few exceptions like mono\footnote{Read more about the mono project at: http://www.mono-project.com/}. But recently Microsoft has decided to start supporting other platforms, as part of their open sourcing of parts of the .NET platform\cite{.net-core}, in a push to make ASP.NET 5 more modular and open.
 
-\section{Web service}
-\label{sec:Web service}
+\subsection{Web service}
+\label{sub:Web service}
 Another option could be to create a web service, that will then expose the data in a way for clients to call to, allowing for multiple different frontends to be implemented, with the web service as the way of getting hold of the data.
 
 The advantage of using a service for a setup such as this one, would be that if for some reason the website needs to be updated with a new look, that can be done without ever touching the backend. Another advantage is that we can make multiple different clients communicating with the same service, meaning we can decide later on that we also want to support a mobile application. This can be done entirely from an exposed interface, without the mobile developer ever having to look at the backing code, only the documentation of the interface.
 
 There are a couple of different web service types, two of which I will discuss in this section.
 
-\subsection{SOAP}
-\label{sub:SOAP}
+\subsubsection{SOAP}
+\label{subs:SOAP}
 SOAP\footnote{Simple Object Access Protocol} is a type of web service which relies on sending data in XML.
 
 The goals of SOAP is to be extensible and simple at the same time\cite{soap:messaging}. This means that a lot of features that is often used in order for the messaging to work correctly such as correlation and routing is not part of the basic SOAP messaging protocol, bit the protocol is made so that it can support them with extensions. An advantage of this is also that SOAP is not bound to a specific protocol for sending the data, and can therefore be implemented to use whatever is best suited for the situation.
@@ -40,15 +45,32 @@ The body of a SOAP message is where the data is contained, in a successful scena
 
 The primary argument against using SOAP is that the initial frontend will be a website, which means that we will have to either combine one of the static serving ways with the SOAP service, or have to have JavaScript call the service. If we go with a setup where we have JavaScript call the service the JavaScript has to use some extra energy on translating the XML into the data structures of JavaScript, which is JSON.
 
-\subsection{REST}
-\label{sub:REST}
-An alternate type of web services is a REST API. A REST API generally communicate via the http protocol. This limits a little compared to SOAP, as described in sub section~\ref{sub:SOAP}, which can work with any protocol.
+\subsubsection{RESP}
+\label{subs:RESP}
+An alternate type of web services is a REST API, which stands for Representational state transfer. A REST API generally communicate via the http protocol. This limits a little compared to SOAP, as described in sub section~\ref{subs:SOAP}, which can work with any protocol.
 
 The appeal of a web API is the simplicity, as the http protocol is so well established, with error codes for most situations, and the added ability to give reasons on top. Another reason is that since it runs on HTTP it makes sense to use the often already set up rules for firewalls and so forth, to allow calls to websites to go through.
 
 The body of the simplest call is limited to only a verb and the url to which we want to call, where in SOAP we need to set up an entire request body.
 
 As we surf the web we can get all sorts of different datatypes, all the way from a simple text file to a binary file. This is something RESP APIs allow as well, which means that instead of having the resource locked to come in XML format we can send it as ex. JSON, or some other format that we see fit\cite{rest:basic}. Because we can never really be sure that the caller is not malicious and try to format or break the communication be changing the sent data the type safety that XML gives is not as important as we have to verify everything anyways.
+
+As with SOAP in REST we can have headers carry extra data, such as what format we would like the response to be in, and the token for authentication the user has. This is a feature supported and used by standard web servers and browsers when we surf the internet, so REST just decided to keep using this as well.
+
+There are some rules for a web API to be called RESTful\cite{rest:msdn}, for this to be true the paths have to follow some fairly simple rules. If we want to get a list of eg. activities we would call a path that ends with "/activities" with the verb "GET". If the RESP API has a resource type on the path activities it will return a list of all of them with the status code 200 which stands for OK. When we then want a specific one we call "/activities/id" with the verb "GET" where id is the id of the activity we want.
+
+This is only the read part of CRUD, but the other parts are also supported. They just use different verbs, the most common are "POST" for create, "PUT" for updating, although "PATCH" could also be used for that, and "DELETE" for deleting an element. If it is an existing resource you are operating on, the address should end in the id of the resource to be worked on, and otherwise just in the resource type, such as the first get.
+
+Another rule for a service to be called REST is that it has to be state less, which means that one request cannot be dependent on another to be done first, as the system is not allowed to keep the state of a call. If we want to update a resource we are allowed to get the resource first, but it should not be required, and we cannot know if someone else have removed the resource between un getting it and trying to update it. Because of this it is important to return the right error codes when something goes wrong, as it is then clear what went wrong.
+
+The important thing is that within one connection we do not make multiple calls to the server, as that would mean that we have a connection state. The client is allowed to have a state of its own, in fact the client does not have to abide by any of the REST rules for it to communicate with a REST server, except for in the communication itself. The server will often keep a state as well in that the data is often stored somewhere which means that the data is in a state.
+
+Another rule is that the resources must be cacheable, meaning that the protocol holding the data must have some way of allowing caching. Since http is the most common protocol this is generally done with the cache-control headers\cite{rest:elkstein:architeture}.
+
+Lastly the system must be layered\cite{rest:uci}, meaning that it is only allowed to know its immediate neighbors. Say a REST service needs to pull data from another service that is pulling from some legacy service, the REST service is not allowed to skip the first service because this would mean that it is communicating with a layer deeper than its immediate neighbor. The reason for this is that it cannot end up in a situation where we have the middle layer ex. employing some extra security before the last layer that is now skipped. It also enforces some organizational bounds, and keeps the service structure clean.
+
+\subsection{Chosen type}
+\label{sub:Chosen type}
 
 
 \section{Database}
