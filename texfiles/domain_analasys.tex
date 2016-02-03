@@ -13,13 +13,13 @@ One of the basic requirements are the users that the system will support. Ideall
 
 \begin{itemize}
   \item Super
-  \item Administrator
+  \item Executive
   \item Standard user
 \end{itemize}
 
-The administrator does not have any special rights compared to the standard user initially, but they my have predesigned overviews, because their role in the system is to gain an overview of the all the users in a department or user group. They can of course also do the same as a standard user, such as create people and companies. In the future they may gain privileges that the standard user is not supposed to have, but for now that will not be the case.
+The executive does not have any special rights compared to the standard user initially, but they my have predesigned overviews, because their role in the system is to gain an overview of the all the users in a department or user group. They can of course also do the same as a standard user, such as create people and companies. In the future they may gain privileges that the standard user is not supposed to have, but for now that will not be the case.
 
-One could argue that it is pointless to have that user at this point since it cannot do anything special, but the primary argument is that IT-minds, and a lot of others have this structure in delegation of responsibility, and if in the future we decide that there is some information that the administrators should have access to but the normal users should not, the setup is already in place, and the super administrator will not have to reassign all the users who are supposed to be administrators.
+One could argue that it is pointless to have that user at this point since it cannot do anything special, but the primary argument is that IT-minds, and a lot of others have this structure in delegation of responsibility, and if in the future we decide that there is some information that the executives should have access to but the normal users should not, the setup is already in place, and the super administrator will not have to reassign all the users who are supposed to be executives.
 
 This leads to the things the super administrator can do. This include invitation of users, and assignment of groups and roles. They should also be able to define what groups are available, as well as departments and activity categories. It will also be the super admin who defines states and their percentage value.
 
@@ -42,7 +42,7 @@ Since an opportunity is a bigger thing, and there will be a lot of work related 
 
 \subsection{Visualization}
 \label{sub:Visualization}
-For the visualization the primary goal if that a user should be able to see the different types of data illustrated in graphs. This means that a thing such as the data of what a user have earned in a period, versus their goal in that given period. Ideally the graph should be made in such a way that some view based settings can be given, and an administrator would be able to get an overview over the sum of all the goals versus the sum of all the sales that the users have done. This should be separable\todo{Does not sound right??} both into departments, and on a per user basis.
+For the visualization the primary goal if that a user should be able to see the different types of data illustrated in graphs. This means that a thing such as the data of what a user have earned in a period, versus their goal in that given period. Ideally the graph should be made in such a way that some view based settings can be given, and an executive would be able to get an overview over the sum of all the goals versus the sum of all the sales that the users have done. This should be separable\todo{Does not sound right??} both into departments, and on a per user basis.
 
 The view settings that a user chooses should be saved to the database, so that they do not have to reset it every tine they visit that same page, as in the long run that would take up a lot of their time.
 
@@ -59,7 +59,7 @@ From the requirements of section~\ref{sec:Requirements} I have created a use cas
   \label{fig:usecase}
 \end{figure}
 
-\subsection{Use case 1: Create Operation}
+\subsection{Use case 1: Create opportunity}
 \textbf{Scope}: CRM \\
 \textbf{Level}: User-goal \\
 \textbf{Primary actor}: User \\
@@ -75,24 +75,24 @@ From the requirements of section~\ref{sec:Requirements} I have created a use cas
   \item User picks a company from a list
   \item User picks a department for the opportunity
   \item User Chooses a stage
-  \item User adjusts the percentile for success
+  \item User adjusts the percentage for success
   \item User clicks save
 \end{enumerate}
-\textbf{Extentions}: \todo{Look up optional flow}
+\textbf{Extentions}:
 \begin{itemize}
-  \item [0a] User wants to add contact
+  \item [1a.] User wants to add contact
   \begin{enumerate}
     \item User writes contact name
     \item List of related contacts based on company show up
     \item User selects the appropriate contact
+    \begin{itemize}
+      \item [3a.] User sees that the desired contact is not on the list
+      \begin{enumerate}
+        \item [1.] User selects create new
+      \end{enumerate}
+    \end{itemize}
   \end{enumerate}
-  \item [0b] User wants to add contact that does not exist
-  \begin{enumerate}
-    \item User writes contact name
-    \item List of related users show up
-    \item User selects create new
-  \end{enumerate}
-  \item [2a] Company does not exist
+  \item [2b.] Company does not exist
   \begin{enumerate}
     \item User enters company name
     \item User chooses create new
@@ -101,6 +101,73 @@ From the requirements of section~\ref{sec:Requirements} I have created a use cas
 \textbf{Frequency of Occurrence}: Multiple times a day
 
 
+\subsection{Use case 2: Create opportunity stage}
+\textbf{Scope}: CRM \\
+\textbf{Level}: User-goal \\
+\textbf{Primary actor}: Super Administrator \\
+\textbf{Stakeholders \& interests}:
+\begin{itemize}
+  \item User: Wants to be able to decide on which of the created stages an opportunity should be
+  \item User: Wants to get a guideline of percentage likelihood of a given stage of the sale
+  \item System: Wants to be able to filter with stages
+\end{itemize}
+\textbf{Preconditions}: Super Administrator is logged in \\
+\textbf{Postconditions}: New stage is available. When stage is chosen the appropriate percentage is applied to opportunity.\\
+\textbf{Main Success Scenario}:
+\begin{enumerate}
+  \item Super Administrator clicks create new stage
+  \item Super Administrator writes a name in the name field
+  \item Super Administrator writes a value for the percentage
+  \item Super Administrator clicks save
+\end{enumerate}
+\textbf{Extentions}:
+\begin{itemize}
+  \item [4a.] System detects the name is used by another stage
+  \begin{enumerate}
+    \item Name field is marked as incorrect
+    \item A text shows up saying the name is in use
+    \item Super Administrator chooses a different name
+    \item [] Super Administrator repeats step 4
+  \end{enumerate}
+\end{itemize}
+\textbf{Frequency of Occurrence}: Multiple times on system setup, and adjustments
+
+\subsection{Use case 3: Set production goals for user}
+\textbf{Scope}: CRM \\
+\textbf{Level}: User-goal \\
+\textbf{Primary actor}: Super Administrator \\
+\textbf{Stakeholders \& interests}:
+\begin{itemize}
+  \item User: Wants a goal to strive for
+  \item Executive and Super Administrator: Wants to be able to get an overview of how the company is doing compared to the goals
+\end{itemize}
+\textbf{Preconditions}: Super Administrator is logged in \\
+\textbf{Postconditions}: The given user goals are updated from the given months and forth going. The overview compares earnings against the new goals.\\
+\textbf{Main Success Scenario}:
+\begin{enumerate}
+  \item Super Administrator enters edit user
+  \item Super Administrator finds the input fields for new goal at the goal list
+  \item Super Administrator chooses a month and year for the goal to run from
+  \item Super Administrator enters a value for the goal
+  \item Super Administrator clicks add
+\end{enumerate}
+\textbf{Extentions}:
+\begin{itemize}
+  \item [2a.] Super Administrator chooses existing goal
+  \begin{enumerate}
+    \item Super Administrator clicks edit
+    \item [] Super Administrator continues at step 3
+  \end{enumerate}
+  \item [5a.] Super Administrator clicks update
+  \item [5b.] System detects that the goal collides with another
+  \begin{enumerate}
+    \item Month and Year fields are marked
+    \item A text shows up saying the start time for the goal is taken
+    \item Super Administrator chooses a different month or year
+    \item [] Super Administrator repeats step 5
+  \end{enumerate}
+\end{itemize}
+\textbf{Frequency of Occurrence}: A couple of times a year for every user
 
 \chapter{Domain Model}
 \label{chap:Domain Model}
