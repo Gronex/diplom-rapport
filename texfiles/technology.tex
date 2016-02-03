@@ -4,12 +4,28 @@
 
 \section{Static serving}
 \label{sec:Static serving}
+One way to implement the website could be purely via static serving. This means that the server will receive a request from the client to which the server then finds the appropriate HTML, CSS and potentially javaScript files to give back, and the browser then renders this for the user.
+
+Because of our requirements in regards to user verification and database dependent data we cannot go with the purest static serving model. We can however use technologies such as PHP, ASP.NET, or spring. Two of which are not C\#, which was another goal for the project, to support maintainability within IT-minds.
+
+Sprint is based on the JVM\cite{spring-framework}, which means that you would need to run in languages that uses this virtual machine in order for it to work. Some languages that could use Spring would be Java or Scala, where most in IT-minds would be able to develop in Java, since it is similar to C\# on a lot of points. And most of the people working in IT-minds have build things in Java before.
+
+If we were to create the service with Java we could support different operating systems to host the server out of the box, which can be convenient when trying to find cheap hosting.
+
+For the most part the universal support for hosting is also true for PHP. PHP is a server scripting language\cite{php-home}, designed to support web development well. It can be integrated into ones HTML pages, and from there insert new HTML. The user will never see the logic of PHP, like they would never see it for Spring, as when the request is made to the server the code is evaluated, and the template is pre-rendered, which means the results of the template values are inserted, and what the client gets is only the pure html. This can be an advantage since we don't show any internal logic because of this.
+
+ASP.NET work much in the same way that Spring does except it runs on the .NET virtual machine made by Microsoft, A few different languages run on the .NET virtual machine, similar to different languages runs on the JVM, one of these languages is C\# which is r very popular language in IT-minds, and amongst their customers.
+
+ASP can also use the template option, where they render some code on the server before it is sent to the user, who will have no idea which parts are hardcoded and which are dynamic.
+
+In previous versions of .NET the user was mostly locked on to the windows platform, with a few exceptions like mono\footnote{Read more about the mono project at: http://www.mono-project.com/}. But recently Microsoft has decided to start supporting other platforms, as part of their open sourcing of parts of the .NET platform\cite{.net-core}, in a push to make ASP.NET 5 more modular and open.
+
+\section{SOAP}
+\label{sec:SOAP}
 
 \section{Web API}
 \label{sec:Web API}
 
-\section{SOAP}
-\label{sec:SOAP}
 
 
 \section{Chapter summary}
