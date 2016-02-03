@@ -4,7 +4,7 @@
 
 \section{Static serving}
 \label{sec:Static serving}
-One way to implement the website could be purely via static serving. This means that the server will receive a request from the client to which the server then finds the appropriate HTML, CSS and potentially javaScript files to give back, and the browser then renders this for the user.
+One way to implement the website could be purely via static serving. This means that the server will receive a request from the client to which the server then finds the appropriate HTML, CSS and potentially JavaScript files to give back, and the browser then renders this for the user.
 
 Because of our requirements in regards to user verification and database dependent data we cannot go with the purest static serving model. We can however use technologies such as PHP, ASP.NET, or spring. Two of which are not C\#, which was another goal for the project, to support maintainability within IT-minds.
 
@@ -14,18 +14,45 @@ If we were to create the service with Java we could support different operating 
 
 For the most part the universal support for hosting is also true for PHP. PHP is a server scripting language\cite{php-home}, designed to support web development well. It can be integrated into ones HTML pages, and from there insert new HTML. The user will never see the logic of PHP, like they would never see it for Spring, as when the request is made to the server the code is evaluated, and the template is pre-rendered, which means the results of the template values are inserted, and what the client gets is only the pure html. This can be an advantage since we don't show any internal logic because of this.
 
-ASP.NET work much in the same way that Spring does except it runs on the .NET virtual machine made by Microsoft, A few different languages run on the .NET virtual machine, similar to different languages runs on the JVM, one of these languages is C\# which is r very popular language in IT-minds, and amongst their customers.
+ASP.NET work much in the same way that Spring does except it runs on the .NET virtual machine made by Microsoft, A few different languages run on the .NET virtual machine, similar to different languages runs on the JVM, one of these languages is C\# which is very popular language in IT-minds, and amongst their customers.
 
 ASP can also use the template option, where they render some code on the server before it is sent to the user, who will have no idea which parts are hardcoded and which are dynamic.
 
 In previous versions of .NET the user was mostly locked on to the windows platform, with a few exceptions like mono\footnote{Read more about the mono project at: http://www.mono-project.com/}. But recently Microsoft has decided to start supporting other platforms, as part of their open sourcing of parts of the .NET platform\cite{.net-core}, in a push to make ASP.NET 5 more modular and open.
 
-\section{SOAP}
-\label{sec:SOAP}
+\section{Web service}
+\label{sec:Web service}
+Another option could be to create a web service, that will then expose the data in a way for clients to call to, allowing for multiple different frontends to be implemented, with the web service as the way of getting hold of the data.
 
-\section{Web API}
-\label{sec:Web API}
+The advantage of using a service for a setup such as this one, would be that if for some reason the website needs to be updated with a new look, that can be done without ever touching the backend. Another advantage is that we can make multiple different clients communicating with the same service, meaning we can decide later on that we also want to support a mobile application. This can be done entirely from an exposed interface, without the mobile developer ever having to look at the backing code, only the documentation of the interface.
 
+There are a couple of different web service types, two of which I will discuss in this section.
+
+\subsection{SOAP}
+\label{sub:SOAP}
+SOAP\footnote{Simple Object Access Protocol} is a type of web service which relies on sending data in XML.
+
+The goals of SOAP is to be extensible and simple at the same time\cite{soap:messaging}. This means that a lot of features that is often used in order for the messaging to work correctly such as correlation and routing is not part of the basic SOAP messaging protocol, bit the protocol is made so that it can support them with extensions. An advantage of this is also that SOAP is not bound to a specific protocol for sending the data, and can therefore be implemented to use whatever is best suited for the situation.
+
+In soap you send all the data in an XML envelope, containing an optional header section and a body section, the header section is for data that extends the basic SOAP protocol, such as information of priority or correlation between messages\cite{soap:messaging}. This section is there to make the entire protocol modular, and extensible. Where the body is for the message itself, and there for the core of the protocol to have a use.
+
+The body of a SOAP message is where the data is contained, in a successful scenario the body contains whatever was expected for the client to get. But it can contain a fault as well, meaning something went wrong in the transaction. The fault holds information on what type of error happened, so that it can be handled. The faults are identified with fault codes, which can hold sub codes to specify deeper what the problem in this particular instance was. These fault codes are part of the application domain, so a code could be "NoCompany" and a client receiving that code would then know exactly what when wrong, which in this case would be that there is no company available.
+
+The primary argument against using SOAP is that the initial frontend will be a website, which means that we will have to either combine one of the static serving ways with the SOAP service, or have to have JavaScript call the service. If we go with a setup where we have JavaScript call the service the JavaScript has to use some extra energy on translating the XML into the data structures of JavaScript, which is JSON.
+
+\subsection{REST}
+\label{sub:REST}
+An alternate type of web services is a REST API. A REST API generally communicate via the http protocol. This limits a little compared to SOAP, as described in sub section~\ref{sub:SOAP}, which can work with any protocol.
+
+The appeal of a web API is the simplicity, as the http protocol is so well established, with error codes for most situations, and the added ability to give reasons on top. Another reason is that since it runs on HTTP it makes sense to use the often already set up rules for firewalls and so forth, to allow calls to websites to go through.
+
+The body of the simplest call is limited to only a verb and the url to which we want to call, where in SOAP we need to set up an entire request body.
+
+As we surf the web we can get all sorts of different datatypes, all the way from a simple text file to a binary file. This is something RESP APIs allow as well, which means that instead of having the resource locked to come in XML format we can send it as ex. JSON, or some other format that we see fit\cite{rest:basic}. Because we can never really be sure that the caller is not malicious and try to format or break the communication be changing the sent data the type safety that XML gives is not as important as we have to verify everything anyways.
+
+
+\section{Database}
+\label{sec:Database}
 
 
 \section{Chapter summary}
