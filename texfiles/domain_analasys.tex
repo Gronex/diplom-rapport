@@ -50,13 +50,13 @@ A feature that has been requested is that instead of having a sale of ex. 1.500.
 
 \section{Use cases}
 \label{sec:Use cases}
-From the requirements of section~\ref{sec:Requirements} I have created a use case diagram, to help identify the use cases that is in the project, as can be seen in Figure~\ref{fig:usecase}. To help create the diagram I used an Actor - Goal list, that can be seen in Appendix~\ref{app:actor-goal}.
+From the requirements of section~\ref{sec:Requirements} I have created a use case diagram, to help identify the use cases that is in the project, as can be seen in Figure~\ref{fig:usecase_diagram}. To help create the diagram I used an Actor - Goal list, that can be seen in Appendix~\ref{app:actor-goal}.
 
-\begin{figure}[h]
+\begin{figure}[h!]
   \centering
-  \missingfigure{Usecase diagram}
-  \caption{Usecase diagram of the CRM system}
-  \label{fig:usecase}
+  \includegraphics[width=\textwidth]{use_cases}
+  \caption{Usecase diagram}
+  \label{fig:usecase_diagram}
 \end{figure}
 
 \subsection{Use case 1: Create opportunity}
@@ -171,6 +171,19 @@ From the requirements of section~\ref{sec:Requirements} I have created a use cas
 
 \section{Domain Model}
 \label{sec:Domain Model}
+From the requirements, and the use cases we can now make a domain model. The goal of this domain model is to illustrate the relations between entities in the domain. This is not to say that the domain model necessarily will illustrate the actual relation between objects in the system, but rather the conceptual relation of the domain. On figure~\ref{fig:domain_model} the domain model of  the system can be seen, on the model the attributes are there because the requirements, and the use cases have shown that those are needed.
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{domain_model}
+  \caption{Domain model}
+  \label{fig:domain_model}
+\end{figure}
+
+The ranges on some of the attributes indicate if the attribute is required, so a range from 0 to 1 will indicate that it is not required.
+
+The goal with the domain model is to increase the understanding of the system, both for the reader but also under development, allowing me to come back and look at the model, if I get unsure of how the different things are meant to relate to one another.
+
+As can be seen in figure~\ref{fig:domain_model} the center of the system is for the most part an opportunity, which a lot of different things are connected to. Some of the connections are optional however, and can be added later, as described in the use cases. The user is also reasonably often connected to things in the model. The reason for that is given in that a user is the one who interacts with everything, both in the planning world, which is what the system partially models, and in the real world.
 
 \section{Chapter summary}

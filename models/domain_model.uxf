@@ -14,16 +14,16 @@
 FirstName
 LastName
 Email
-PhoneNumber</panel_attributes>
+PhoneNumber [0..1]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>910</x>
-      <y>390</y>
-      <w>130</w>
-      <h>90</h>
+      <x>820</x>
+      <y>380</y>
+      <w>100</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>UserGroup
 --
@@ -36,13 +36,13 @@ Name</panel_attributes>
       <x>840</x>
       <y>300</y>
       <w>110</w>
-      <h>140</h>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
 m2=*
 Described by</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;110.0;70.0;110.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -95,7 +95,7 @@ On</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>730</x>
+      <x>650</x>
       <y>300</y>
       <w>120</w>
       <h>230</h>
@@ -166,15 +166,15 @@ Part of</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>840</x>
-      <y>450</y>
+      <y>430</y>
       <w>110</w>
-      <h>80</h>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
 m2=*
 Described by</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;10.0;70.0;10.0</additional_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -187,10 +187,10 @@ Described by</panel_attributes>
     <panel_attributes>Company
 --
 Name
-PhoneNumber
-Address
-City
-WebSite</panel_attributes>
+PhoneNumber [0..1]
+Address  [0..1]
+City  [0..1]
+WebSite  [0..1]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -219,7 +219,7 @@ In</panel_attributes>
 --
 Done
 DueDate
-Time</panel_attributes>
+Time [0..1]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -277,10 +277,10 @@ Categorized by</panel_attributes>
 --
 FirstName
 LastName
-PhoneNumber
-Email
+PhoneNumber [0..1]
+Email  [0..1]
 StartDate
-EndDate</panel_attributes>
+EndDate  [0..1]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -307,7 +307,7 @@ Contact for</panel_attributes>
     </coordinates>
     <panel_attributes>File
 --
-</panel_attributes>
+Name</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -328,15 +328,15 @@ Contains</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>860</x>
-      <y>300</y>
+      <y>280</y>
       <w>430</w>
-      <h>150</h>
+      <h>170</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
 m2=1
 Assigned to</panel_attributes>
-    <additional_attributes>340.0;130.0;340.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>340.0;150.0;340.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -521,7 +521,7 @@ Has</panel_attributes>
     <panel_attributes>PersonContract
 --
 StartDate
-EndDate</panel_attributes>
+EndDate [0..1]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -537,5 +537,19 @@ m1=*
 m2=*
 For</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>870</x>
+      <y>250</y>
+      <w>340</w>
+      <h>300</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*
+Made on</panel_attributes>
+    <additional_attributes>10.0;270.0;170.0;270.0;320.0;10.0</additional_attributes>
   </element>
 </diagram>
