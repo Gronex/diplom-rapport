@@ -69,12 +69,20 @@ Another rule is that the resources must be cacheable, meaning that the protocol 
 
 Lastly the system must be layered\cite{rest:uci}, meaning that it is only allowed to know its immediate neighbors. Say a REST service needs to pull data from another service that is pulling from some legacy service, the REST service is not allowed to skip the first service because this would mean that it is communicating with a layer deeper than its immediate neighbor. The reason for this is that it cannot end up in a situation where we have the middle layer ex. employing some extra security before the last layer that is now skipped. It also enforces some organizational bounds, and keeps the service structure clean.
 
-\subsection{Chosen type}
+\subsection{Chosen type }
 \label{sub:Chosen type}
+Based on the arguments for and against the different technologies, and the requirement that IT-minds needs to be able to continue development after this project is done. And a little bit of my own interest, I have come to the conclusion that the best way of serving the data is via a RESTful API. There are a couple of reasons for this conclusion. First of which is the possibility for me to use the language I see best fit. Another reason is also that a CRM could be useful as a mobile app at a later time, and that would need some API to talk to in order for it to the same backend as the website.
+
+The reason of going with a RESTful architecture instead of SOAP is two parted. First off in IT-minds most of our customers are looking for RESTful more often than SOAP, since it is easier to work with, leading to the developers having more experience in developing such a system, myself included.
+
+The other reason is that JSON is easier to parse than XML in a lot of languages, and is the data structure of  JavaScript which is going to be what will be driving the logic of the web frontend, so the frontend will not need to parse it at all.
+
+\section{Frontend}
+\label{sec:Frontend}
 
 
-\section{Database}
+\section{Database }
 \label{sec:Database}
 
 
-\section{Chapter summary}
+\section{Chapter summary }
