@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>590</x>
+      <x>440</x>
       <y>180</y>
       <w>280</w>
       <h>190</h>
@@ -24,7 +24,7 @@ ViewSettings: ViewSettings</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>770</x>
+      <x>620</x>
       <y>480</y>
       <w>130</w>
       <h>50</h>
@@ -37,7 +37,7 @@ Name: string</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>840</x>
+      <x>690</x>
       <y>360</y>
       <w>30</w>
       <h>140</h>
@@ -50,7 +50,7 @@ m2=*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>640</x>
+      <x>490</x>
       <y>630</y>
       <w>240</w>
       <h>280</h>
@@ -77,7 +77,7 @@ Documents: ICollection&lt;FileIndex&gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>940</x>
+      <x>790</x>
       <y>750</y>
       <w>160</w>
       <h>80</h>
@@ -92,7 +92,7 @@ Percentage: int [0..100]
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>870</x>
+      <x>720</x>
       <y>780</y>
       <w>90</w>
       <h>40</h>
@@ -105,7 +105,7 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>730</x>
+      <x>580</x>
       <y>360</y>
       <w>30</w>
       <h>290</h>
@@ -118,12 +118,12 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>400</x>
+      <x>250</x>
       <y>770</y>
       <w>150</w>
       <h>70</h>
     </coordinates>
-    <panel_attributes>OppotunityCategory
+    <panel_attributes>OpportunityCategory
 --
 Name: string
 Value: int</panel_attributes>
@@ -132,7 +132,7 @@ Value: int</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
+      <x>390</x>
       <y>790</y>
       <w>120</w>
       <h>40</h>
@@ -145,7 +145,7 @@ m2=*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>400</x>
+      <x>250</x>
       <y>850</y>
       <w>150</w>
       <h>60</h>
@@ -159,7 +159,7 @@ Name: string
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
+      <x>390</x>
       <y>870</y>
       <w>120</w>
       <h>40</h>
@@ -172,7 +172,7 @@ m2=*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>850</x>
+      <x>700</x>
       <y>520</y>
       <w>30</w>
       <h>130</h>
@@ -185,7 +185,7 @@ m2=*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>360</x>
+      <x>210</x>
       <y>60</y>
       <w>200</w>
       <h>150</h>
@@ -193,12 +193,12 @@ m2=*</panel_attributes>
     <panel_attributes>Company
 --
 Name: string
-PhoneNumber: string
-Address : string
-City : string
-PostalCode : int
-Country: string
-WebSite: string
+PhoneNumber: string?
+Address : string?
+City : string?
+PostalCode : string?
+Country: string?
+WebSite: string?
 
 </panel_attributes>
     <additional_attributes/>
@@ -206,7 +206,7 @@ WebSite: string
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>550</x>
+      <x>400</x>
       <y>200</y>
       <w>110</w>
       <h>470</h>
@@ -219,14 +219,15 @@ m2=*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>990</x>
+      <x>840</x>
       <y>160</y>
       <w>200</w>
       <h>180</h>
     </coordinates>
     <panel_attributes>Activity
 --
-Category
+Name: string
+Category : ActivityCategory
 Responsible: User
 Comment: Comment
 Done: bool
@@ -239,7 +240,7 @@ Time: DateTime?</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1110</x>
+      <x>920</x>
       <y>410</y>
       <w>120</w>
       <h>60</h>
@@ -254,7 +255,7 @@ Value
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1120</x>
+      <x>970</x>
       <y>330</y>
       <w>30</w>
       <h>100</h>
@@ -267,7 +268,7 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>320</x>
+      <x>170</x>
       <y>600</y>
       <w>160</w>
       <h>150</h>
@@ -276,16 +277,15 @@ m2=1</panel_attributes>
 --
 FirstName: string
 LastName: string
-Company: Company
+Contracts: ICollection&lt;Contract&gt;
 PhoneNumber: string
-Email: string
-StartDate: DateTime</panel_attributes>
+Email: string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>470</x>
+      <x>320</x>
       <y>660</y>
       <w>190</w>
       <h>40</h>
@@ -298,7 +298,7 @@ m2=*</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>940</x>
+      <x>790</x>
       <y>850</y>
       <w>160</w>
       <h>70</h>
@@ -312,7 +312,7 @@ FilePath: string</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>870</x>
+      <x>720</x>
       <y>870</y>
       <w>90</w>
       <h>40</h>
@@ -325,7 +325,7 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>860</x>
+      <x>710</x>
       <y>220</y>
       <w>150</w>
       <h>40</h>
@@ -338,23 +338,21 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>940</x>
-      <y>580</y>
-      <w>140</w>
-      <h>100</h>
+      <x>800</x>
+      <y>410</y>
+      <w>110</w>
+      <h>60</h>
     </coordinates>
-    <panel_attributes>Comment
+    <panel_attributes>ActivityComment
 --
-Text: string
-User: User
-Sent: DateTime
+Activity: Activity
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>730</x>
+      <x>580</x>
       <y>50</y>
       <w>120</w>
       <h>50</h>
@@ -369,7 +367,7 @@ StartMonth: int
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>810</x>
+      <x>660</x>
       <y>90</y>
       <w>30</w>
       <h>110</h>
@@ -382,33 +380,33 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>990</x>
+      <x>840</x>
       <y>330</y>
       <w>30</w>
-      <h>270</h>
+      <h>100</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
 m2=1</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;250.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>860</x>
+      <x>710</x>
       <y>280</y>
-      <w>110</w>
-      <h>320</h>
+      <w>100</w>
+      <h>260</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
 m2=1</panel_attributes>
-    <additional_attributes>90.0;300.0;90.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>80.0;240.0;80.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>860</x>
+      <x>710</x>
       <y>60</y>
       <w>120</w>
       <h>80</h>
@@ -424,7 +422,7 @@ Goal: double
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>860</x>
+      <x>710</x>
       <y>130</y>
       <w>70</w>
       <h>110</h>
@@ -437,33 +435,33 @@ m2=*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>280</x>
+      <x>190</x>
       <y>0</y>
-      <w>850</w>
-      <h>690</h>
+      <w>790</w>
+      <h>620</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
 m2=0..*</panel_attributes>
-    <additional_attributes>830.0;160.0;830.0;10.0;20.0;10.0;20.0;660.0;40.0;660.0</additional_attributes>
+    <additional_attributes>770.0;160.0;770.0;10.0;10.0;10.0;10.0;600.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>440</x>
+      <x>290</x>
       <y>10</y>
       <w>640</w>
       <h>170</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
-m2=1</panel_attributes>
+m2=0..1</panel_attributes>
     <additional_attributes>620.0;150.0;620.0;10.0;10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>410</x>
+      <x>230</x>
       <y>350</y>
       <w>140</w>
       <h>100</h>
@@ -479,7 +477,7 @@ EndDate: DateTime?</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>460</x>
+      <x>280</x>
       <y>440</y>
       <w>30</w>
       <h>180</h>
@@ -492,7 +490,7 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
+      <x>300</x>
       <y>200</y>
       <w>30</w>
       <h>170</h>
@@ -505,8 +503,8 @@ m2=*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>870</x>
-      <y>630</y>
+      <x>720</x>
+      <y>670</y>
       <w>90</w>
       <h>40</h>
     </coordinates>
@@ -514,5 +512,57 @@ m2=*</panel_attributes>
 m1=*
 m2=1</panel_attributes>
     <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>790</x>
+      <y>660</y>
+      <w>160</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>OpportunityComment
+--
+Opportunity: Opportunity
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>770</x>
+      <y>520</y>
+      <w>110</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Comment
+--
+Text: string
+User: User
+Sent: DateTime
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>460</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>590</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
   </element>
 </diagram>
