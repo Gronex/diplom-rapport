@@ -77,10 +77,9 @@ The reason of going with a RESTful architecture instead of SOAP is two parted. F
 
 The other reason is that JSON is easier to parse than XML in a lot of languages, and is the data structure of  JavaScript which is going to be what will be driving the logic of the web frontend, so the frontend will not need to parse it at all.
 
-The implementation of the RESTful service will be made using ASP.NET since I have experience in it and it is well suited for such a task. \todo{Nope i give up}
-In order for it to be as maintainable as possible in the future I will be using ASP.NET Core 1.0, which is the newest iteration of ASP at the time of writing, in fact it is not on a full release yet, but it is ready for people to start development as the API will not be changing drastically any more since it entered the release candidate state\cite{asp_core_1:roadmap}.
+The implementation of the RESTful service will be made using ASP.NET since I have experience in it and it is well suited for such a task. It will however limit the systems it can run on, as I will not be using ASP.Net Core 1 which can run on systems with Linux on them\cite{asp5:intro}.
 
-The reason for such a bleeding edge technology is that they are in this iteration changing so much that they decided to rename it to Core instead of version 5. This in it self is not a good reason to use something, but the things they changed makes it possible to run ASP.NET on other operating systems than windows\cite{asp5:intro}, which may be a big advantage. It also makes the server itself more lightweight and modular, so that the requirements of the system running it will be lower, and therefore cheaper.
+The reason I have chosen not to go with Core 1, but webapi 2, which still runs on ASP.NET, is because it is still only in release candidate\cite{asp_core_1:roadmap}, and to my experience it is still missing some of the features related to authentication on a web api setup, which will be required in this project.
 
 \section{Frontend}
 \label{sec:Frontend}
