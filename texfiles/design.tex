@@ -5,7 +5,7 @@
 \label{sec:Database}
 The design of the database will look on many points similar to the domain model in figure~\ref{fig:domain_model}. This is because on a lot of the points in this system the domain model can be saved directly to the database. I have of course had to make some adjustments, as can be seen in figure~\ref{fig:Database model}.
 
-\begin{figure}[h]
+\begin{figure}
   \includegraphics[width=\textwidth]{db_model}
   \caption{Database model}
   \label{fig:Database model}
@@ -31,7 +31,18 @@ In the model I have a datatype that is not really related to the database as muc
 
 \section{System structure}
 \label{sec:System structure}
-The structure is made in a layered setup, this means that when we have a part of the system, it can only know about things on the same layer or lower than itself. In order for this to be implemented I have the solution as the upper node, and under this a couple of projects each in charge of its own domain.
+The structure of the system follows the onion model\todo{Reference to onion model}, which means that it is build up of layers like it can be seen on figure~\ref{fig:Onion architecture}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics{onion_model}
+  \caption{Onion architecture }
+  \label{fig:Onion architecture}
+\end{figure}
+\todo{Cite}
+% http://www.matthidinger.com/images/www_matthidinger_com/Windows-Live-Writer/ff0d136aee1f_88EA/image_2.png
+
+In figure~\ref{fig:structure} the setup that my project will follow is illustrated. As can be seen I have three core projects, one for each of the core layers of the model, and outside this I have an infrastructure layer, which is responsible for talking to the database. The way the outer most layers then work is by using the interfaces that is defined in \textit{Core.DomainServices}. These interfaces describe how the application can access the data however it is stored.
 
 \begin{figure}[h]
   \centering
@@ -40,13 +51,15 @@ The structure is made in a layered setup, this means that when we have a part of
   \label{fig:structure}
 \end{figure}
 
-On figure~\ref{fig:structure} an illustration of the structure is shown. The inner most part of the structure is the \textit{DomainModels} project, it does not rely on any of the other parts of the system, and can therefore be moved around as needed. One step further out we have the \textit{DomainServices} project, which consists of interfaces describing how to access the data. The reason I have these interfaces is so that we are not forced to use entity to access the data, and we can implement any way to do it we want. Which also means that we can make mocks of the services that will be implementing the interface, which is convenient when testing the controllers, as we then have more control over what is being tested.
+I use injection to allow for easier testing, and lower dependency between the classes. This means that in the project \textit{customer\_relations\_manager} which is where the controllers the users will be calling is implemented, take interfaces for the repositories defined in \textit{Core.DomainServices}. The injection system then is set up to inject the classes from \textit{Infrastructure.DataAccess} that implement the interfaces.
 
-The project \textit{Core} is responsible for implementing the interfaces described in DomainServices, which means that it will be implementing the the database access, and returning that back to the controller after all the appropriate things have been done.
+The \textit{Core.ApplicationServices} project is there in the case that we need a service that is not related to accessing data from the data store, but instead doing something else.
 
-The final bit of the structure is the one the user is talking to, which is called \textit{Customer Relation Manager}. This project is the actual web application part, which means it is the one the user is communicating with. In addition to having controllers here we also have DTOs which are objects that are mapped from the database objects so that we can filter some of the data away from the user. On the same level we also have the unit tests of the system. The reason for them being on this level is that each level is allowed to talk to other parts of the same level, and parts underneath. This also means that everyone is allowed to talk to the Domain models, but none but the tests are allowed to talk to Customer Relation Manager.
+Finally the inner most layer is the classes describing the data that is stored in my case in a database the name of this project is \textit{Core.DomainModels}. Their job is to describe how the data looks in the database, and they are used for making the database first migrations.
 
-Over all this separation forces me to follow or at least think about the separation of concerns pattern.
+The \textit{UnitTests} project is on the same level as \textit{customer\_relations\_manager}, which means that it is allowed to see everything in the project, allowing it to test it all.
+
+The goal with all this separation is to both make it easier to swap out parts of the project without too much hassle, and to be able to reuse parts, in case we want to do something similar in the future. It does however also force us to not have an uncontrollable mess of dependencies, since the domain models are never allowed to know anything other than them selves, and the data access layer cannot say anything about how the data will look in the end, only find and filter on it.
 
 \section{Patterns}
 \label{sec:Patterns}
