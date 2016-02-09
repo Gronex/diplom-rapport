@@ -15,7 +15,7 @@ One thing that will be noticed is that now we have datatypes on the model. This 
 
 The design is in NF1\footnote{First Normal Form} because we do not have any rows containing any duplicate information, such as a company having a column for all their workers, instead the workers are separated out into a different table\cite[p.~430]{DB_systems}, the same is true for a user and their goals and user groups, instead of having a list of them in the table itself, we have it separated out into different tables.
 
-It is also in NF2\footnote{Second Normal Form} because none of the properties of any of the tables are functionally dependent on anything other than the primary key of the table\cite[p.~434]{DB_systems}. In this case I have not added the primary key to the tables since they will all be called Id as per convention of the entity framework, and I will be giving them an integer as the datatype.\todo{mention i will not alwayse use id as primary key}
+It is also in NF2\footnote{Second Normal Form} because none of the properties of any of the tables are functionally dependent on anything other than the primary key of the table\cite[p.~434]{DB_systems}. In this case I have not added the primary key to the tables since they will all be called Id as per convention of the entity framework, and I will be giving them an integer as the datatype. In cases where properties are underlined in the model, it means that I don't have an id column, but instead is using the underlined properties as my primary key.
 
 The next normal form would be the third normal form. I have come to the conclusion that it is not worth the hassle of perusing this last part as the goal with it is to reduce redundant data to even greater extent, which would mean I would have to move the location based fields of Company out into a separate table in order for me to remove the transitive dependency\cite[p.~436]{DB_systems} there is between the city, address, and postal code, as well as the country. The reason for not pursuing this is that I have deemed the gain not worth it, since it would bind all locations in the same area together, and the users may not be interested in this, since if they then change the postal code or city name of one company, the rest that is located in the same place will follow.
 
@@ -27,8 +27,26 @@ As an example if we look at the table contracts, the end date can be null, which
 
 This forces me to still think about if I should allow a value to e null or not, without forcing me out of the possibility which is why I have chosen that solution.
 
+In the model I have a datatype that is not really related to the database as much as it is to the programming language, the \textit{ICollection<T>} is a type the entity framework uses to create an inverse navigation property, and the only reason I have it in this model is that it gives an idea that it should be possible to navigate in the inverse direction of the actual link.
+
 \section{System structure}
 \label{sec:System structure}
+The structure is made in a layered setup, this means that when we have a part of the system, it can only know about things on the same layer or lower than itself. In order for this to be implemented I have the solution as the upper node, and under this a couple of projects each in charge of its own domain.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics{structure}
+  \caption{Structure of the system}
+  \label{fig:structure}
+\end{figure}
+
+On figure~\ref{fig:structure} an illustration of the structure is shown. The inner most part of the structure is the \textit{DomainModels} project, it does not rely on any of the other parts of the system, and can therefore be moved around as needed. One step further out we have the \textit{DomainServices} project, which consists of interfaces describing how to access the data. The reason I have these interfaces is so that we are not forced to use entity to access the data, and we can implement any way to do it we want. Which also means that we can make mocks of the services that will be implementing the interface, which is convenient when testing the controllers, as we then have more control over what is being tested.
+
+The project \textit{Core} is responsible for implementing the interfaces described in DomainServices, which means that it will be implementing the the database access, and returning that back to the controller after all the appropriate things have been done.
+
+The final bit of the structure is the one the user is talking to, which is called \textit{Customer Relation Manager}. This project is the actual web application part, which means it is the one the user is communicating with. In addition to having controllers here we also have DTOs which are objects that are mapped from the database objects so that we can filter some of the data away from the user. On the same level we also have the unit tests of the system. The reason for them being on this level is that each level is allowed to talk to other parts of the same level, and parts underneath. This also means that everyone is allowed to talk to the Domain models, but none but the tests are allowed to talk to Customer Relation Manager.
+
+Over all this separation forces me to follow or at least think about the separation of concerns pattern.
 
 \section{Patterns}
 \label{sec:Patterns}
