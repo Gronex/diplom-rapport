@@ -87,6 +87,12 @@ The reason for such a bleeding edge technology is that they are in this iteratio
 
 \section{Database }
 \label{sec:Database}
+When I comes to which database to use, there are a lot to take into account. First off we need to look at what type of database we want. When we have decided this, we need to figure out which engine for the database we are going to go with.
 
+One type of database is the relational database. This type of database has all the data stored in tables, where there will be some sort of key, allowing a table to be connected to another. One such database is the MsSQL, which is a widely used database\cite{obdms:gartner}, especially within the C\# world, as it is natively supported by the object-relational mapper, Entity framework. This is a framework made by Microsoft to access data in databases, and having the data map to objects in the language allowing for usage of LINQ expressions to filter and manipulate the data.
+
+The entity framework also supports other drivers, so other databases are also possible, while using the framework, which is what I will be doing, as it is the recommended data-access framework from Microsoft, and it allows for usage of LINQ which us a feature of C\# that can greatly improve development speeds if used right.
+
+It is also possible to go with a document database, where the data is stored as JSON, but the primary problem with that is that it is not necessarily type safe. It is often valid to have some data fields entirely missing.
 
 \section{Chapter summary }
