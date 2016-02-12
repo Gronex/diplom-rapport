@@ -31,16 +31,15 @@ In the model I have a datatype that is not really related to the database as muc
 
 \section{System structure}
 \label{sec:System structure}
-The structure of the system follows the onion model\todo{Reference to onion model}, which means that it is build up of layers like it can be seen on figure~\ref{fig:Onion architecture}.
+The structure of the system follows the onion architecture\cite{onion_architecture}, which means that it is build up of layers like it can be seen on figure~\ref{fig:Onion architecture}.
 
 \begin{figure}[h]
   \centering
   \includegraphics{onion_model}
-  \caption{Onion architecture }
+  \caption[Onion architecture]{Onion architecture\protect\footnotemark}
   \label{fig:Onion architecture}
 \end{figure}
-\todo{Cite}
-% http://www.matthidinger.com/images/www_matthidinger_com/Windows-Live-Writer/ff0d136aee1f_88EA/image_2.png
+\footnotetext{Source: http://www.matthidinger.com/images/www\_matthidinger\_com/Windows-Live-Writer/ff0d136aee1f\_88EA/image\_2.png}
 
 In figure~\ref{fig:structure} the setup that my project will follow is illustrated. As can be seen I have three core projects, one for each of the core layers of the model, and outside this I have an infrastructure layer, which is responsible for talking to the database. The way the outer most layers then work is by using the interfaces that is defined in \textit{Core.DomainServices}. These interfaces describe how the application can access the data however it is stored.
 

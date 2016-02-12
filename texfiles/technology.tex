@@ -83,17 +83,40 @@ The reason I have chosen not to go with Core 1, but webapi 2, which still runs o
 
 \section{Frontend}
 \label{sec:Frontend}
-
+\todo[inline]{To be described}
 
 \section{Database }
 \label{sec:Database_engine}
 When I comes to which database to use, there are a lot to take into account. First off we need to look at what type of database we want. When we have decided this, we need to figure out which engine for the database we are going to go with.
 
-One type of database is the relational database. This type of database has all the data stored in tables, where there will be some sort of key, allowing a table to be connected to another. One such database is the MsSQL, which is a widely used database\cite{obdms:gartner}, especially within the C\# world, as it is natively supported by the object-relational mapper, Entity framework. This is a framework made by Microsoft to access data in databases, and having the data map to objects in the language allowing for usage of LINQ expressions to filter and manipulate the data.
+This analysis will not be exhaustive as there are a lot of different types, but I will look at some of the most common.
 
-The entity framework also supports other drivers, so other databases are also possible, while using the framework, which is what I will be doing, as it is the recommended data-access framework from Microsoft, and it allows for usage of LINQ which us a feature of C\# that can greatly improve development speeds if used right.
+\subsection{Relational database}
+\label{sub:Relational database}
+One type of database is the relational database. This type of database has all the data stored in tables, where there will be some sort of key, allowing a table to be connected to another. The advantage of this is that they can reduce a lot of redundant data by storing in different tables, and then having multiple entries pointing at the same column\cite{ibm:choosing_dbms}.
 
-It is also possible to go with a document database, where the data is stored as JSON, but the primary problem with that is that it is not necessarily type safe. It is often valid to have some data fields entirely missing.
-\todo{continue}
+An important aspect when working with relational databases is the idea of normalization. This is a way to reduce redundancy, and thereby the possibility of inconsistent data.
+
+\subsection{Object database}
+\label{sub:Object database}
+This form of database is designed to resemble the way a data is structured in object oriented programming languages such as Java, C++ or C\#. This means that the data is structured in classes, that can inherit from one another. The idea is that the API to the database makes sense for object oriented languages.
+
+The risk with using this form of database is that it is easy to fall into the same design patterns as one would in the application itself, which may not be as efficient when it comes to a database, as they may require more resources, or time\cite{ibm:choosing_dbms}.
+
+\subsection{Document database}
+\label{sub:Document database}
+A document database is a database that instead of saving in tables it saves the data in documents. The structure can vary, but initially most of these databases stored their data in XML\cite{ibm:choosing_dbms}. Now JSON and variants there off has started to show up for some database systems.
+
+The advantage of this form of database is the lack of structure, as it allows for a more accepting storage for the users. The primary drawback of document databases is that they are generally not as efficient as other database systems, they take up more space, and the queries can be slow to set up\cite{ibm:choosing_dbms}.
+
+It can be a good type of database for some web applications, especially if some parts of the database is kept structured.
+
+
+\subsection{Decision }
+\label{sub:database_decision}
+For this project I have decided to use a Relational database, as it has fast queries, and the structure enforces a valid model. Since the application is developed as a web API in C\# using ASP.NET it makes sense to use MsSQL for the specifik engine, as this is a natively supported database in the entity framework, which is the recommended data-access framework when using C\# acording to Microsoft\cite{entity:microsoft}.
+
+MsSQL also makes sence as it is proven to work for others in a lot of scenarios, based on its usage\cite{obdms:gartner}.
+
 
 \section{Chapter summary }
