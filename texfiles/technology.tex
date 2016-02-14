@@ -81,10 +81,6 @@ The implementation of the RESTful service will be made using ASP.NET since I hav
 
 The reason I have chosen not to go with Core 1, but webapi 2, which still runs on ASP.NET, is because it is still only in release candidate\cite{asp_core_1:roadmap}, and to my experience it is still missing some of the features related to authentication on a web api setup, which will be required in this project.
 
-\section{Frontend}
-\label{sec:Frontend}
-\todo[inline]{To be described}
-
 \section{Database }
 \label{sec:Database_engine}
 When I comes to which database to use, there are a lot to take into account. First off we need to look at what type of database we want. When we have decided this, we need to figure out which engine for the database we are going to go with.
@@ -118,5 +114,18 @@ For this project I have decided to use a Relational database, as it has fast que
 
 MsSQL also makes sence as it is proven to work for others in a lot of scenarios, based on its usage\cite{obdms:gartner}.
 
+\section{Frontend}
+\label{sec:Frontend}
+For the frontend there are a few different ways we can go. Because of our decision to go with a web API for the backend we need some dynamic way of handling the remote calls to the server.
+
+Because we are working in a browser it makes since to go with JavaScript, as this is a scripting language supported by most modern browsers. Even in this we still have a lot of options as to how to handle the calls. There are a lot of options for frameworks as well. Which allows us to develop with different structures, such as MVVM\footnote{Model View ViewModel} and MVC\footnote{Model View Control}, and some others.
+
+Some of the options that follow the MVC model is AngularJS and EmberJS. Angular is made by google\cite{angularjs}, and allows us to separate the application out into separate parts, having a controller per view. We can also separate functions into services, and create directives, a directive is a view element, that allows us to reuse elements for the website in different places on the site without having to rewrite the code over and over again.
+
+Ember allows for many of the same things as angular, but has not been around as long, and handles the things slightly differently\cite{emberjs}.
+
+They both have a templateing language implemented to allow integration, and databinding with the HTML view. This allows both for the data to live and be updated by the JavaScript, as well as having control structures in the HTML such as loops and conditionals, to allow for a more dynamic experience without having to deal directly with JQuery or the document object of the window object.
+
+Because my focus in this project is not on the frontend, but to make the backend so that different frontends will be able to use it I have decided to go with AngularJS as that is the one I have the most experience with, and it has a lot of modules build by different people that can be used to make the experience a little better.
 
 \section{Chapter summary }
