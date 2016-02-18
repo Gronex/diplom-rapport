@@ -18,7 +18,8 @@ Email : string
 Groups: ICollection&lt;UserGroups&gt;
 Activities: ICollection&lt;Activity&gt;
 ProductionGoals: ICollection&lt;ProductionGoals&gt;
-ViewSettings: ViewSettings</panel_attributes>
+ViewSettings: ViewSettings
+Active : bool</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -54,7 +55,7 @@ m2=*</panel_attributes>
       <x>560</x>
       <y>720</y>
       <w>240</w>
-      <h>280</h>
+      <h>290</h>
     </coordinates>
     <panel_attributes>Opportunity
 --
@@ -72,7 +73,8 @@ Groupes: ICollection&lt;UserGroup&gt;
 Category: OppotunityCategory
 Department: Department
 HourlyPrice: double
-Documents: ICollection&lt;FileIndex&gt;</panel_attributes>
+Documents: ICollection&lt;FileIndex&gt;
+Percentage : int [0..100]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -86,7 +88,7 @@ Documents: ICollection&lt;FileIndex&gt;</panel_attributes>
     <panel_attributes>Stage
 --
 Name: string
-Percentage: int [0..100]
+Value: int [0..100]
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -149,7 +151,7 @@ m2=*</panel_attributes>
       <x>320</x>
       <y>940</y>
       <w>150</w>
-      <h>60</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>Department
 --
