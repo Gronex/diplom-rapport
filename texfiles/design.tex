@@ -63,4 +63,24 @@ The goal with all this separation is to both make it easier to swap out parts of
 \section{Patterns}
 \label{sec:Patterns}
 
+\subsection{Dependency injection}
+\label{sub:Dependency injection}
+In order for us to reduce coupling in the code we can use dependency injection. Dependency injection is the idea of letting the caller instantiate all of our dependencies instead of creating them in the class where we need it.
+
+There are several advantages of this, one of which is that we can easily isolate a single unit of the program for testing, and then do unit testing on that single unit. We can then make mocks of all of its dependencies, and therefore know exactly how the different dependencies will react depending on our test code\cite{dependency_injection}.
+
+A way to reduce coupling even further is to instead of depending on a specific class we can depend on an interface, which will allow us to only rely on a specific set of methods of the class, and then the user can decide what implementation they finds best suited.
+
+\subsection{Repository pattern}
+\label{sub:Repository pattern}
+The objective with the repository pattern is to separate the business logic away from the data access logic, resulting in the business logic not caring about where the data comes from, as it will just call a repository, and expect some data to come back.
+
+An advantage of this pattern is that the developer implementing the business logic can have a mocked implementation of the repository, that just uses some form of local storage. It allows the developers to delay the decision of where to store the data, as the repository does not have to be implemented to access a database, but it could read from a file, request a web service, or something else\cite{repository_pattern}.
+
+\subsection{Unit of work pattern}
+\label{sub:Unit of work pattern}
+A pattern that works well with the repository pattern, that is described in section~\ref{sub:Repository pattern}, is the unit of work pattern. The goal of this pattern is to group up execution of operations that has an impact on the data store. In cases where we just read out from the database we may not need it, but in cases where we change data it makes sense to be in a state where we either do all of the intended operations or none of them.
+
+The problem that the unit of work pattern solves is that if we are updating some object, which includes the deletion of some data, we want to make sure that if something fails later on after we have done the delete, so that the creation was not done, the delete operation is abandoned, and we have not damaged our data model\cite{uow}.
+
 \section{Chapter summary}
