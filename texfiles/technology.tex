@@ -45,8 +45,8 @@ The body of a SOAP message is where the data is contained, in a successful scena
 
 The primary argument against using SOAP is that the initial frontend will be a website, which means that we will have to either combine one of the static serving ways with the SOAP service, or have to have JavaScript call the service. If we go with a setup where we have JavaScript call the service the JavaScript has to use some extra energy on translating the XML into the data structures of JavaScript, which is JSON.
 
-\subsubsection{RESP}
-\label{subs:RESP}
+\subsubsection{REST}
+\label{subs:REST}
 An alternate type of web services is a REST API, which stands for Representational state transfer. A REST API generally communicate via the http protocol. This limits a little compared to SOAP, as described in sub section~\ref{subs:SOAP}, which can work with any protocol.
 
 The appeal of a web API is the simplicity, as the http protocol is so well established, with error codes for most situations, and the added ability to give reasons on top. Another reason is that since it runs on HTTP it makes sense to use the often already set up rules for firewalls and so forth, to allow calls to websites to go through.
@@ -77,9 +77,35 @@ The reason of going with a RESTful architecture instead of SOAP is two parted. F
 
 The other reason is that JSON is easier to parse than XML in a lot of languages, and is the data structure of  JavaScript which is going to be what will be driving the logic of the web frontend, so the frontend will not need to parse it at all.
 
+A table of some of the pros and cons of the technologies I have discussed until now have been set up in table~\ref{tab:serving-pro-con}
+
 The implementation of the RESTful service will be made using ASP.NET since I have experience in it and it is well suited for such a task. It will however limit the systems it can run on, as I will not be using ASP.Net Core 1 which can run on systems with Linux on them\cite{asp5:intro}.
 
 The reason I have chosen not to go with Core 1, but webapi 2, which still runs on ASP.NET, is because it is still only in release candidate\cite{asp_core_1:roadmap}, and to my experience it is still missing some of the features related to authentication on a web api setup, which will be required in this project.
+
+\begin{table}[h]
+  \resizebox{\linewidth}{!}{%
+    \begin{tabular}{l|l l}
+      & Pros & Cons\\
+      \hline
+      \textbf{Static serving} & Dynamic content & Single frontend \\
+      & Hidden code & Mixing of front and backend code\\
+      \hline
+      \textbf{SOAP} & Possible multiple frontends & XML\\
+      & Extendable & Not many consuming libraries for web\\
+      & Custom error types & \\
+      & Dynamic content\\
+      \hline
+      \textbf{REST} & Possible multiple frontends & Easy to break standards\\
+      & Not locked to singe data format   & \\
+      & Well known protocol               & \\
+      & Support for caching               & \\
+      & Dynamic content\\
+    \end{tabular}
+  }
+  \caption{Pros and cons of different ways of serving the data}
+  \label{tab:serving-pro-con}
+\end{table}
 
 \section{Database }
 \label{sec:Database_engine}
@@ -110,9 +136,33 @@ It can be a good type of database for some web applications, especially if some 
 
 \subsection{Decision }
 \label{sub:database_decision}
+In table~\ref{tab:sedatabse-pro-con} some of the advantages and disadvantages are compared against one another, to make it easier to get an overview of the pros and cons.
+
 For this project I have decided to use a Relational database, as it has fast queries, and the structure enforces a valid model. Since the application is developed as a web API in C\# using ASP.NET it makes sense to use MsSQL for the specifik engine, as this is a natively supported database in the entity framework, which is the recommended data-access framework when using C\# acording to Microsoft\cite{entity:microsoft}.
 
 MsSQL also makes sence as it is proven to work for others in a lot of scenarios, based on its usage\cite{obdms:gartner}.
+
+\begin{table}[h]
+  \resizebox{\linewidth}{!}{%
+    \begin{tabular}{l|l l}
+      & Pros & Cons\\
+      \hline
+      \textbf{Relational database}
+      & Data normalization & Harder to update data structure when live\\
+      & Low to no redundant data & \\
+      \hline
+      \textbf{Object database}
+      & Easy relation to OOP\protect\footnotemark & Can lead to bad data designs\\
+      \hline
+      \textbf{Document database}
+      & Good for often changing data structure & Use more space\\
+      & & Often slower than other database types
+    \end{tabular}
+  }
+  \caption{Pros and cons of different types of databases}
+  \label{tab:sedatabse-pro-con}
+\end{table}
+\footnotetext{Object Oriented Programming}
 
 \section{Frontend}
 \label{sec:Frontend}
