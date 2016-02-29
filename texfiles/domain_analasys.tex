@@ -1,11 +1,11 @@
 \chapter{Domain analasys}
 \label{chap:Domain analasys}
 \todo[inline]{introduce chapter}
-\todo{limit what is build, is my requirements doing that? not fully i think}
+\todo{limit what is build, is my requirements doing that? not fully I think}
 
 \section{Requirements}
 \label{sec:Requirements}
-In order for me to know what is expected of the system I have spoken with Kristian W. Larsen, and together we have come up with some requirements for the system. This includes what users should be in the system, as well as what those users can do. We also talked about some of the views that are important to have for the CRM to be usable, and what annoys him in the existing CRM's, so that this one will be more to IT-minds needs.
+In order for me to know what is expected of the system I have spoken with Kristian W. Larsen, and together we have come up with some requirements for the system. This includes what users should be in the system, as well as what those users can do. We also talked about some of the views that are important to have for the CRM to be usable, and what annoys him in the existing CRM's, so that this one will be more to IT minds needs.
 
 \subsection{Users}
 \label{sub:Users}
@@ -20,7 +20,7 @@ One of the basic requirements are the users that the system will support. Ideall
 
 The executive does not have any special rights compared to the standard user initially, but they my have predesigned overviews, because their role in the system is to gain an overview of the all the users in a department or user group. They can of course also do the same as a standard user, such as create people and companies. In the future they may gain privileges that the standard user is not supposed to have, but for now that will not be the case.
 
-One could argue that it is pointless to have that user at this point since it cannot do anything special, but the primary argument is that IT-minds, and a lot of others have this structure in delegation of responsibility, and if in the future we decide that there is some information that the executives should have access to but the normal users should not, the setup is already in place, and the super administrator will not have to reassign all the users who are supposed to be executives.
+One could argue that it is pointless to have that user at this point since it cannot do anything special, but the primary argument is that IT minds, and a lot of others have this structure in delegation of responsibility, and if in the future we decide that there is some information that the executives should have access to but the normal users should not, the setup is already in place, and the super administrator will not have to reassign all the users who are supposed to be executives.
 
 This leads to the things the super administrator can do. This include invitation of users, and assignment of groups and roles. They should also be able to define what groups are available, as well as departments and activity categories. It will also be the super admin who defines states and their percentage value.
 
@@ -37,9 +37,9 @@ The customization should only be something that the super administrator can crea
 
 The system should keep track of opportunities which are possible deals, and deals that are won. An opportunity needs to contain some information such as who is responsible for it, and who the deal is with, as well as how much it will earn. A full list of what an opportunity should contain can be seen in appendix~\ref{app:Oppotunity}.
 
-The primary reason for IT-minds to want a new CRM is that most other CRM's frontload the earning from an opportunity, resulting in a task that that will earn a lot of money, but also takes up a lot of resources looking like it has no impact on any of the months after the first. This is not how it works in reality, as the company who hires ex. IT-minds to work for a couple of months pay a little bit every month instead of everything all at once. The solution to this is mostly in regards to data visualization, where we need to keep track of the span of an opportunity, and what it will earn over that period, this should then be divided out over the span of the opportunity, also meaning that the earnings of a user is based on the same, since it needs to be possible to set goals for the user on a per month basis.
+The primary reason for IT minds to want a new CRM is that most other CRM's frontload the earning from an opportunity, resulting in a task that that will earn a lot of money, but also takes up a lot of resources looking like it has no impact on any of the months after the first. This is not how it works in reality, as the company who hires ex. IT minds to work for a couple of months pay a little bit every month instead of everything all at once. The solution to this is mostly in regards to data visualization, where we need to keep track of the span of an opportunity, and what it will earn over that period, this should then be divided out over the span of the opportunity, also meaning that the earnings of a user is based on the same, since it needs to be possible to set goals for the user on a per month basis.
 
-Since an opportunity is a bigger thing, and there will be a lot of work related to a single one, we also need a way to keep track of smaller tasks, such as making a call, or going to a meeting. This is where an activity comes in to the picture. An activity should be able to be several things defined by the super admin, but the primary thing that it does is define a task for a user to do. The task could be to send an email, or make a call, or go to a conference. Because these things don't take the same amount of time a category for them can have a value, so it can be visualized what the users are using their time on. This is useful as right now IT-minds ports the number of activity for all the users to a spread sheet, and graphs from there, but if the system could do that for them some inconvenience would be saved.
+Since an opportunity is a bigger thing, and there will be a lot of work related to a single one, I also need a way to keep track of smaller tasks, such as making a call, or going to a meeting. This is where an activity comes in to the picture. An activity should be able to be several things defined by the super admin, but the primary thing that it does is define a task for a user to do. The task could be to send an email, or make a call, or go to a conference. Because these things don't take the same amount of time a category for them can have a value, so it can be visualized what the users are using their time on. This is useful as right now IT minds ports the number of activity for all the users to a spread sheet, and graphs from there, but if the system could do that for them some inconvenience would be saved.
 
 \subsection{Visualization}
 \label{sub:Visualization}
@@ -48,6 +48,38 @@ For the visualization the primary goal if that a user should be able to see the 
 The view settings that a user chooses should be saved to the database, so that they do not have to reset it every tine they visit that same page, as in the long run that would take up a lot of their time.
 
 A feature that has been requested is that instead of having a sale of ex. 1.500.000 kr. in one month be set as that user having sold for that amount in that month, but instead have the value spaced out over the period that the project will run, as this will illustrate in a more clear way how the sales personal is able to generate work, and allocate the resources of the company.
+
+\subsection{Functional and nonfunctional requirements}
+\label{sub:Functional and nonfunctional requirements}
+
+\subsubsection{Functional requirements}
+\label{subs:Functional requirements}
+\begin{enumerate}[label=\textbf{F\arabic*}]
+  \item Super invites new users
+  \item Super manages users
+  \item Login with email/password combination
+  \item Customizable categories, groups and departments
+  \item Creation of opportunities
+  \item Update opportunities
+  \item Creation of companies and their employees
+  \item Management of companies and employees
+  \item Creation of activities
+  \item Manage activity
+  \item Possibility of making a recap on an activity
+  \item Measurability of activities
+  \item Filters for visualization
+  \item Users should be able to get assigned goals
+\end{enumerate}
+
+\subsubsection{Non functional requirements}
+\label{subs:Non functional requirements}
+\begin{enumerate}[label=\textbf{NF\arabic*}]
+  \item Should keep user information secure
+  \item Should be accessible 98\% of the time
+  \item Communication should happen securely
+  \item Visual design should be easily updatable
+\end{enumerate}
+
 
 \section{Use cases}
 \label{sec:Use cases}
@@ -172,9 +204,45 @@ Because of the number of use cases in the system only a few of them have been wr
 \end{itemize}
 \textbf{Frequency of Occurrence}: A couple of times a year for every user
 
+\subsection{Use case matrix}
+\label{sub:Use case matrix}
+\begin{table}[h]
+\resizebox{\linewidth}{!}{%
+    \begin{tabular}{ l | *{14}{c} }
+      & F1 & F2 & F3 & F4 & F5 & F6 & F7 & F8 & F9 & F10 & F11 & F12 & F13 & F14 \\
+      \hline
+      UC1 & X \\
+      UC2 & & & X\\
+      UC3 & & & X\\
+      UC4 & & X\\
+      UC5 & & & X\\
+      UC6 & & & & & & & X\\
+      UC7 & & & & & & & & X\\
+      UC8 & & & & & & & X\\
+      UC9 & & & & & & & & X\\
+      UC10 & & & & & X\\
+      UC11 & & & & & & X\\
+      UC12 & & & & & & & & & X\\
+      UC13 & & & & & & & & & & X\\
+      UC14 & & & & X\\
+      UC15 & & & & X\\
+      UC16 & & & & X & & & & & & & & X\\
+      UC17 & & & & X\\
+      UC18 & & & & X\\
+      UC19 & & & & & & & & & & & & & & X\\
+      UC20 & & & & X\\
+      UC21 & & & & X\\
+      UC22 & & & & & & & & & & & & & X\\
+      UC23 & & & & & & & & & & & X\\
+    \end{tabular}
+}
+\caption{Use case matrix showing which use cases cover what requirements}
+\label{tab:Use case matrix}
+\end{table}
+
 \section{Domain Model}
 \label{sec:Domain Model}
-From the requirements and the use cases we can now make a domain model. The goal of this domain model is to illustrate the relations between entities in the domain\cite{larman}. This is not to say that the domain model necessarily will illustrate the actual relation between objects in the system, but rather the conceptual relation of the domain. On figure~\ref{fig:domain_model} the domain model of  the system can be seen, on the model the attributes are there because the requirements, and the use cases have shown that those are needed.
+From the requirements and the use cases I can now make a domain model. The goal of this domain model is to illustrate the relations between entities in the domain\cite{larman}. This is not to say that the domain model necessarily will illustrate the actual relation between objects in the system, but rather the conceptual relation of the domain. On figure~\ref{fig:domain_model} the domain model of  the system can be seen, on the model the attributes are there because the requirements, and the use cases have shown that those are needed.
 
 \begin{figure}[h]
   \centering

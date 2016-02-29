@@ -1,14 +1,14 @@
-overvej om jeg kan konkludere på goals
+overvej om jeg kan konkludere på goals (done)
 
-skriv funktionelle og ikke funktionelle krav
+skriv funktionelle og ikke funktionelle krav (Done)
 
 mockups
 
 Ikke bruge vi generelt
 
-sæt op mod tabel Usecases vs funktionelle mål
+sæt op mod tabel Usecases vs funktionelle mål (done)
 
-flere tabeller
+flere tabeller (pros/cons for teknologier osv)
 
 Hør hvorfor  Lise Vinter pedersen  ik har svaret
 
