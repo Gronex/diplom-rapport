@@ -2,7 +2,7 @@ overvej om jeg kan konkludere på goals (done)
 
 skriv funktionelle og ikke funktionelle krav (Done)
 
-mockups
+mockups (done)
 
 Ikke bruge vi generelt
 

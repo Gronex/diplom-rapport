@@ -206,6 +206,8 @@ Because of the number of use cases in the system only a few of them have been wr
 
 \subsection{Use case matrix}
 \label{sub:Use case matrix}
+Based on the use cases and the requirements I have created a matrix in table~\ref{tab:Use case matrix}, showing which requirement is covered by what use case.
+
 \begin{table}[h]
 \resizebox{\linewidth}{!}{%
     \begin{tabular}{ l | *{14}{c} }
@@ -256,5 +258,45 @@ The ranges on some of the attributes indicate if the attribute is required, so a
 The goal with the domain model is to increase the understanding of the system, both for the reader but also under development, allowing me to come back and look at the model, if I get unsure of how the different things are meant to relate to one another.
 
 As can be seen in figure~\ref{fig:domain_model} the center of the system is for the most part an opportunity, which a lot of different things are connected to. Some of the connections are optional however, and can be added later, as described in the use cases. The user is also reasonably often connected to things in the model. The reason for that is given in that a user is the one who interacts with everything, both in the planning world, which is what the system partially models, and in the real world.
+
+\section{Mockups}
+\label{sec:Mockups}
+Based on the use cases I have created a few mockups of some of the key parts of the system. The goal with these mockups is not necessarily to illustrate how a the final system would look, but more a help to imagine how a view could look, and what information would be available in that view for it to work.
+
+Like I have mentioned earlier my focus is not to make a good frontend presenting the data to the user, but rather make the backing server serving the data for any given frontend to hook up to. I will however be making a suggestion of a frontend, mostly to show the features of the backend in action. This does however mean that the mockups are not necessarily going to be representative of the final product, and they are not meant as anything other than a help to imagine the way the system could look.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.85\textwidth]{Mockups/visualizationFilter}
+  \caption{Visualization filter mockup}
+  \label{fig:VisualizationFilter}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.85\textwidth]{Mockups/visualizationView}
+  \caption{Visualization graph mockup}
+  \label{fig:VisualizationView}
+\end{figure}
+
+In figure~\ref{fig:VisualizationFilter} I only show parts  of the actual view, since underneath the folded out filter settings a graph and table similar to the one on figure~\ref{fig:VisualizationView}. The idea of the mockup in figure~\ref{fig:VisualizationFilter} is to show the filter options that a user can apply in order for them to gain access to exactly the information they need.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.85\textwidth]{Mockups/OpportunityView}
+  \caption{Edit opportunity mockup}
+  \label{fig:OpportunityView}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.85\textwidth]{Mockups/ActivityView}
+  \caption{Edit activity mockup}
+  \label{fig:ActivityView}
+\end{figure}
+
+The two other mockups in figure~\ref{fig:OpportunityView} and \ref{fig:ActivityView} are of some fairly essential parts of the system, namely the management of an opportunity which is what the users will use to keep track of tasks they may or may not win for the company. For both the contact field is not required, but it can be used for the users to keep track of who they need to talk to in relation to the thing they are looking at.
+
+The mockup in figure~\ref{fig:ActivityView} has a comment section in the bottom which is meant to be used as a way for the users to put recaps of the activity, or maybe just notes that they need to remember in relation with it. A less important feature is the same thing for the opportunity view, because it is not as important for the system I have not added it in the mockup, but it would probably end up looking a lot like the one in figure~\ref{fig:ActivityView}.
 
 \section{Chapter summary}
