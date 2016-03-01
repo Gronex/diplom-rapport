@@ -128,8 +128,7 @@ m2=1</panel_attributes>
     </coordinates>
     <panel_attributes>OpportunityCategory
 --
-Name: string
-Value: int</panel_attributes>
+Name: string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -282,7 +281,9 @@ FirstName: string
 LastName: string
 Contracts: ICollection&lt;Contract&gt;
 PhoneNumber: string
-Email: string</panel_attributes>
+Email: string
+StartDate: DateTime?
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -464,23 +465,23 @@ m2=0..1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>300</x>
+      <x>320</x>
       <y>350</y>
       <w>140</w>
       <h>100</h>
     </coordinates>
-    <panel_attributes>Contracts
+    <panel_attributes>EndedContracts
 --
 Company: Company
 Person: Person
 StartDate: DateTime
-EndDate: DateTime?</panel_attributes>
+EndDate: DateTime</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>350</x>
+      <x>370</x>
       <y>440</y>
       <w>30</w>
       <h>270</h>
