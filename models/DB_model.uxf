@@ -197,9 +197,9 @@ m2=*</panel_attributes>
 Name: string
 PhoneNumber: string?
 Address : string?
-City : string?
-PostalCode : string?
-Country: string?
+City : string
+PostalCode : string
+Country: string
 WebSite: string?
 
 </panel_attributes>
@@ -222,21 +222,24 @@ m2=*</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>840</x>
-      <y>160</y>
+      <y>130</y>
       <w>200</w>
-      <h>180</h>
+      <h>210</h>
     </coordinates>
     <panel_attributes>Activity
 --
 Name: string
 Category : ActivityCategory
-Responsible: User
+PrimaryResponsible: User
+SecondaryResponsible: ICollection&lt;User&gt;
 Comment: Comment
 Done: bool
-People: ICollection&lt;Person&gt;
+PrimaryContact: Person
+SecondaryContacts: ICollection&lt;Person&gt;
 Company: Company?
 DueDate: DateTime
-DueTime: DateTime?</panel_attributes>
+DueTimeStart: DateTime?
+DueTimeEnd: DateTime?</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -440,27 +443,27 @@ m2=*</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>190</x>
-      <y>0</y>
+      <y>10</y>
       <w>790</w>
-      <h>710</h>
+      <h>700</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
-m2=0..*</panel_attributes>
-    <additional_attributes>770.0;160.0;770.0;10.0;10.0;10.0;10.0;690.0</additional_attributes>
+m2=*</panel_attributes>
+    <additional_attributes>770.0;120.0;770.0;10.0;10.0;10.0;10.0;680.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>290</x>
-      <y>10</y>
+      <y>20</y>
       <w>640</w>
-      <h>170</h>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
 m2=0..1</panel_attributes>
-    <additional_attributes>620.0;150.0;620.0;10.0;10.0;10.0;10.0;50.0</additional_attributes>
+    <additional_attributes>620.0;110.0;620.0;10.0;10.0;10.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -635,5 +638,31 @@ m2=1</panel_attributes>
 m1=*
 m2=1</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;490.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>710</x>
+      <y>190</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=*</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>170</x>
+      <y>0</y>
+      <w>830</w>
+      <h>710</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=0..1</panel_attributes>
+    <additional_attributes>810.0;130.0;810.0;10.0;10.0;10.0;10.0;690.0</additional_attributes>
   </element>
 </diagram>

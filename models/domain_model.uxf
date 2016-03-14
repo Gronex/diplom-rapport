@@ -188,9 +188,9 @@ Described by</panel_attributes>
 Name
 PhoneNumber [0..1]
 Address  [0..1]
-City  [0..1]
-Country [0..1]
-PostalCode [0..1]
+City
+Country
+PostalCode
 WebSite  [0..1]</panel_attributes>
     <additional_attributes/>
   </element>
@@ -322,7 +322,7 @@ Contains</panel_attributes>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
-m2=1
+m2=1..*
 Assigned to</panel_attributes>
     <additional_attributes>300.0;20.0;10.0;20.0</additional_attributes>
   </element>
