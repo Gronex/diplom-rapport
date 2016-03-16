@@ -1,5 +1,8 @@
 \chapter{Design}
 \label{chap:Design}
+In this chapter I will look into designing the system, starting out with how the database should look in order for it to be able to store the data in a way that allows me to easily access it again, while reducing redundant data stored.
+
+After the database I will get into how the system will be structured, which includes explaining the model that I will be following. Finally I will give a short explanation of some of the patterns I will be following, and why they are useful for a system such as this one.
 
 \section{Database}
 \label{sec:Database}
@@ -84,3 +87,4 @@ A pattern that works well with the repository pattern, that is described in sect
 The problem that the unit of work pattern solves is that if I am updating some object, which includes the deletion of some data, I want to make sure that if something fails later on after I have done the delete, so that the creation was not done, the delete operation is abandoned, and I have not damaged my data model\cite{uow}.
 
 \section{Chapter summary}
+\todo{Summarize}
