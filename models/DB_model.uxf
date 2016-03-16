@@ -222,9 +222,9 @@ m2=*</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>840</x>
-      <y>130</y>
+      <y>110</y>
       <w>200</w>
-      <h>210</h>
+      <h>230</h>
     </coordinates>
     <panel_attributes>Activity
 --
@@ -450,7 +450,7 @@ m2=*</panel_attributes>
     <panel_attributes>lt=-
 m1=*
 m2=*</panel_attributes>
-    <additional_attributes>770.0;120.0;770.0;10.0;10.0;10.0;10.0;680.0</additional_attributes>
+    <additional_attributes>770.0;100.0;770.0;10.0;10.0;10.0;10.0;680.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -458,12 +458,12 @@ m2=*</panel_attributes>
       <x>290</x>
       <y>20</y>
       <w>640</w>
-      <h>130</h>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
 m2=0..1</panel_attributes>
-    <additional_attributes>620.0;110.0;620.0;10.0;10.0;10.0;10.0;40.0</additional_attributes>
+    <additional_attributes>620.0;90.0;620.0;10.0;10.0;10.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -663,6 +663,6 @@ m2=*</panel_attributes>
     <panel_attributes>lt=-
 m1=*
 m2=0..1</panel_attributes>
-    <additional_attributes>810.0;130.0;810.0;10.0;10.0;10.0;10.0;690.0</additional_attributes>
+    <additional_attributes>810.0;110.0;810.0;10.0;10.0;10.0;10.0;690.0</additional_attributes>
   </element>
 </diagram>

@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.1.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>410</x>
+      <y>200</y>
+      <w>160</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>User
+--
+FirstName
+LastName
+Email
+PhoneNumber [0..1]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>360</y>
+      <w>100</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>UserGroup
+--
+Name</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>300</y>
+      <w>110</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=*
+Described by</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>430</x>
+      <y>510</y>
+      <w>240</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>Opportunity
+--
+Name
+Description
+Amount
+StartDate
+EndDate
+ExpectedClose
+HourlyPrice</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>790</x>
+      <y>620</y>
+      <w>160</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Stage
+--
+Name
+Percentage
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>640</y>
+      <w>150</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1
+On</panel_attributes>
+    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>440</x>
+      <y>300</y>
+      <w>120</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1
+Assosiated with</panel_attributes>
+    <additional_attributes>10.0;210.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>130</x>
+      <y>650</y>
+      <w>150</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>OpportunityCategory
+--
+Name</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>670</y>
+      <w>180</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*
+Categorized by</panel_attributes>
+    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>800</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Department
+--
+Name
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>550</x>
+      <y>720</y>
+      <w>70</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*
+Part of</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>580</x>
+      <y>410</y>
+      <w>110</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=*
+Described by</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>150</x>
+      <y>100</y>
+      <w>200</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Company
+--
+Name
+PhoneNumber [0..1]
+Address  [0..1]
+City
+Country
+PostalCode
+WebSite  [0..1]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>340</x>
+      <y>230</y>
+      <w>110</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*
+In</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;280.0;90.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>860</x>
+      <y>240</y>
+      <w>130</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Activity
+--
+Name
+Done
+DueDate
+Time [0..1]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>900</x>
+      <y>520</y>
+      <w>140</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>ActivityCategory
+--
+Name
+Value
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>960</x>
+      <y>330</y>
+      <w>120</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1
+Categorized by</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>90</x>
+      <y>480</y>
+      <w>160</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Person
+--
+FirstName
+LastName
+PhoneNumber [0..1]
+Email  [0..1]
+StartDate
+EndDate  [0..1]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>530</y>
+      <w>210</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=*
+Contact for</panel_attributes>
+    <additional_attributes>10.0;20.0;190.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>760</x>
+      <y>790</y>
+      <w>210</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>File
+--
+Name</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>710</y>
+      <w>200</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1
+Contains</panel_attributes>
+    <additional_attributes>130.0;80.0;130.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>240</y>
+      <w>320</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1..*
+Assigned to</panel_attributes>
+    <additional_attributes>300.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>750</x>
+      <y>480</y>
+      <w>140</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Comment
+--
+Text
+SentTime
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>60</y>
+      <w>170</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>ProductionViewSettings
+--
+Weighted
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>80</y>
+      <w>140</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..1
+m2=*
+Describes view for</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0;50.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>880</x>
+      <y>330</y>
+      <w>100</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1
+Made on</panel_attributes>
+    <additional_attributes>30.0;10.0;30.0;160.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>270</y>
+      <w>310</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1
+Made by</panel_attributes>
+    <additional_attributes>240.0;210.0;240.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>720</x>
+      <y>120</y>
+      <w>120</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>ProductionGoal
+--
+Month
+Year
+Goal
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>190</y>
+      <w>180</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*
+Describes foal for</panel_attributes>
+    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>110</x>
+      <y>0</y>
+      <w>840</w>
+      <h>500</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=0..*
+Assosiated with</panel_attributes>
+    <additional_attributes>820.0;240.0;820.0;20.0;10.0;20.0;10.0;480.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>30</y>
+      <w>690</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1
+Assosiated with</panel_attributes>
+    <additional_attributes>670.0;210.0;670.0;20.0;10.0;20.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>190</x>
+      <y>390</y>
+      <w>60</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1
+Has a</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>70</y>
+      <w>100</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Role
+--
+Name
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>410</x>
+      <y>110</y>
+      <w>50</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=1
+Has</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>140</x>
+      <y>320</y>
+      <w>160</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>PersonContract
+--
+StartDate
+EndDate [0..1]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>190</x>
+      <y>230</y>
+      <w>50</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*
+For</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>500</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*
+Made on</panel_attributes>
+    <additional_attributes>10.0;20.0;90.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>690</x>
+      <y>110</y>
+      <w>120</w>
+      <h>550</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=*
+Limits to</panel_attributes>
+    <additional_attributes>100.0;520.0;10.0;520.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>640</x>
+      <y>110</y>
+      <w>70</w>
+      <h>740</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=*
+Limits to</panel_attributes>
+    <additional_attributes>20.0;710.0;40.0;710.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>110</y>
+      <w>80</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=*
+Limits to</panel_attributes>
+    <additional_attributes>10.0;250.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
