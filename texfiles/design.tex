@@ -6,7 +6,6 @@ After the database I will get into how the system will be structured, which incl
 
 \section{Database}
 \label{sec:Database}
-\todo{i removed linking tables, as they are implicit from the multiplicity}
 The design of the database will look on many points similar to the domain model in figure~\ref{fig:domain_model}. This is because on a lot of the points in this system the domain model can be saved directly to the database. I have of course had to make some adjustments, as can be seen in figure~\ref{fig:Database model}.
 
 \begin{figure}
@@ -14,6 +13,8 @@ The design of the database will look on many points similar to the domain model 
   \caption{Database model}
   \label{fig:Database model}
 \end{figure}
+
+For the entities with many-to-many relations I have chosen not to show the linking tables as it makes it harder to read, and the tables unless they are actually drawn as is the case with EndedContracts, they will have a primary key set of the two foreign keys of the referred tables.
 
 One thing that will be noticed is that now I have datatypes on the model. This is because this model is meant to describe what is in the database.
 
