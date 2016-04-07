@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.1.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>600</x>
+      <y>390</y>
+      <w>240</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>Opportunity
+--
+_Id_
+Name
+Description
+Amount
+StartDate
+EndDate
+ExpectedClose
+HourlyPrice
+Percentage</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>530</y>
+      <w>150</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>OpportunityCategory
+--
+_Id_
+Name</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>550</y>
+      <w>60</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+*</panel_attributes>
+    <additional_attributes>10.0;20.0;40.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>550</x>
+      <y>550</y>
+      <w>70</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+1</panel_attributes>
+    <additional_attributes>10.0;20.0;50.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>400</y>
+      <w>150</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Department
+--
+_Id_
+Name</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>CustomElementImpl</type>
+    <coordinates>
+      <x>440</x>
+      <y>530</y>
+      <w>121</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>// Modify the text below and
+// observe the element preview.
+
+Category</panel_attributes>
+    <additional_attributes/>
+    <custom_code>int y=height/2 - textHeight()*
+		textlines.size()*2/3;
+
+for(String textline : textlines) {
+	y = y + textHeight();
+	printCenter(textline,y);
+}
+
+Polygon p = new Polygon();
+p.addPoint(width/2, 0);
+p.addPoint(width,height/2);
+p.addPoint(width/2,height);
+p.addPoint(0, height/2);
+drawPolygon(p);</custom_code>
+  </element>
+  <element>
+    <type>CustomElementImpl</type>
+    <coordinates>
+      <x>440</x>
+      <y>390</y>
+      <w>121</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>// Modify the text below and
+// observe the element preview.
+
+Department</panel_attributes>
+    <additional_attributes/>
+    <custom_code>int y=height/2 - textHeight()*
+		textlines.size()*2/3;
+
+for(String textline : textlines) {
+	y = y + textHeight();
+	printCenter(textline,y);
+}
+
+Polygon p = new Polygon();
+p.addPoint(width/2, 0);
+p.addPoint(width,height/2);
+p.addPoint(width/2,height);
+p.addPoint(0, height/2);
+drawPolygon(p);</custom_code>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>410</y>
+      <w>60</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+*</panel_attributes>
+    <additional_attributes>10.0;20.0;40.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>550</x>
+      <y>410</y>
+      <w>70</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+1</panel_attributes>
+    <additional_attributes>10.0;20.0;50.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1010</x>
+      <y>520</y>
+      <w>160</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Stage
+--
+Name
+Value
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1010</x>
+      <y>390</y>
+      <w>160</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>OpportunityComment
+--
+Text
+Sent</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>CustomElementImpl</type>
+    <coordinates>
+      <x>870</x>
+      <y>390</y>
+      <w>121</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>// Modify the text below and
+// observe the element preview.
+
+Comment</panel_attributes>
+    <additional_attributes/>
+    <custom_code>int y=height/2 - textHeight()*
+		textlines.size()*2/3;
+
+for(String textline : textlines) {
+	y = y + textHeight();
+	printCenter(textline,y);
+}
+
+Polygon p = new Polygon();
+p.addPoint(width/2, 0);
+p.addPoint(width,height/2);
+p.addPoint(width/2,height);
+p.addPoint(0, height/2);
+drawPolygon(p);</custom_code>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>980</x>
+      <y>410</y>
+      <w>50</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+1</panel_attributes>
+    <additional_attributes>10.0;20.0;30.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>830</x>
+      <y>410</y>
+      <w>60</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+*</panel_attributes>
+    <additional_attributes>10.0;20.0;40.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <type>CustomElementImpl</type>
+    <coordinates>
+      <x>870</x>
+      <y>520</y>
+      <w>121</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>// Modify the text below and
+// observe the element preview.
+
+Stage</panel_attributes>
+    <additional_attributes/>
+    <custom_code>int y=height/2 - textHeight()*
+		textlines.size()*2/3;
+
+for(String textline : textlines) {
+	y = y + textHeight();
+	printCenter(textline,y);
+}
+
+Polygon p = new Polygon();
+p.addPoint(width/2, 0);
+p.addPoint(width,height/2);
+p.addPoint(width/2,height);
+p.addPoint(0, height/2);
+drawPolygon(p);</custom_code>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>830</x>
+      <y>540</y>
+      <w>60</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+1</panel_attributes>
+    <additional_attributes>10.0;20.0;40.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>980</x>
+      <y>540</y>
+      <w>50</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+*</panel_attributes>
+    <additional_attributes>10.0;20.0;30.0;20.0</additional_attributes>
+  </element>
+</diagram>
