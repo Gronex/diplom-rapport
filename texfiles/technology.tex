@@ -6,20 +6,20 @@ The technologies I will be looking into revolves around how the data will be ser
 
 \section{Serving}
 \label{sec:Serving}
-We can choose to serve the data in multiple ways, even after we have decided that the first focus will be to make a website be the place the user goes to get the data. We can go with static serving which is what sub section~\ref{sub:Static serving} will focus on, or we could go with a web service, and then go with a single page application or similar technology to present the data, which is what sub section~\ref{sub:Web service} will discuss.
+I can choose to serve the data in multiple ways, even after I have decided that the first focus will be to make a website be the place the user goes to get the data. I can go with static serving which is what sub section~\ref{sub:Static serving} will focus on, or I could go with a web service, and then go with a single page application or similar technology to present the data, which is what sub section~\ref{sub:Web service} will discuss.
 
 \subsection{Static serving}
 \label{sub:Static serving}
 
 One way to implement the website could be purely via static serving. This means that the server will receive a request from the client to which the server then finds the appropriate HTML, CSS and potentially JavaScript files to give back, and the browser then renders this for the user.
 
-Because of our requirements in regards to user verification and database dependent data we cannot go with the purest static serving model. We can however use technologies such as PHP, ASP.NET, or spring. Two of which are not C\#, which was another goal for the project, to support maintainability within IT minds.
+Because of our requirements in regards to user verification and database dependent data I cannot go with the purest static serving model. I can however use technologies such as PHP, ASP.NET, or spring. Two of which are not C\#, which was another goal for the project, to support maintainability within IT minds.
 
 Sprint is based on the JVM\cite{spring-framework}, which means that you would need to run in languages that uses this virtual machine in order for it to work. Some languages that could use Spring would be Java or Scala, where most in IT minds would be able to develop in Java, since it is similar to C\# on a lot of points. And most of the people working in IT minds have build things in Java before.
 
-If we were to create the service with Java we could support different operating systems to host the server out of the box, which can be convenient when trying to find cheap hosting.
+If I were to create the service with Java I could support different operating systems to host the server out of the box, which can be convenient when trying to find cheap hosting.
 
-For the most part the universal support for hosting is also true for PHP. PHP is a server scripting language\cite{php-home}, designed to support web development well. It can be integrated into ones HTML pages, and from there insert new HTML. The user will never see the logic of PHP, like they would never see it for Spring, as when the request is made to the server the code is evaluated, and the template is pre-rendered, which means the results of the template values are inserted, and what the client gets is only the pure html. This can be an advantage since we don't show any internal logic because of this.
+For the most part the universal support for hosting is also true for PHP. PHP is a server scripting language\cite{php-home}, designed to support web development well. It can be integrated into ones HTML pages, and from there insert new HTML. The user will never see the logic of PHP, like they would never see it for Spring, as when the request is made to the server the code is evaluated, and the template is pre-rendered, which means the results of the template values are inserted, and what the client gets is only the pure html. This can be an advantage since I don't show any internal logic because of this.
 
 ASP.NET work much in the same way that Spring does except it runs on the .NET virtual machine made by Microsoft, A few different languages run on the .NET virtual machine, similar to different languages runs on the JVM, one of these languages is C\# which is very popular language in IT minds, and amongst their customers.
 
@@ -31,7 +31,7 @@ In previous versions of .NET the user was mostly locked on to the windows platfo
 \label{sub:Web service}
 Another option could be to create a web service, that will then expose the data in a way for clients to call to, allowing for multiple different frontends to be implemented, with the web service as the way of getting hold of the data.
 
-The advantage of using a service for a setup such as this one, would be that if for some reason the website needs to be updated with a new look, that can be done without ever touching the backend. Another advantage is that we can make multiple different clients communicating with the same service, meaning we can decide later on that we also want to support a mobile application. This can be done entirely from an exposed interface, without the mobile developer ever having to look at the backing code, only the documentation of the interface.
+The advantage of using a service for a setup such as this one, would be that if for some reason the website needs to be updated with a new look, that can be done without ever touching the backend. Another advantage is that I can make multiple different clients communicating with the same service, meaning I can decide later on that I also want to support a mobile application. This can be done entirely from an exposed interface, without the mobile developer ever having to look at the backing code, only the documentation of the interface.
 
 There are a couple of different web service types, two of which I will discuss in this section.
 
@@ -45,7 +45,7 @@ In soap you send all the data in an XML envelope, containing an optional header 
 
 The body of a SOAP message is where the data is contained, in a successful scenario the body contains whatever was expected for the client to get. But it can contain a fault as well, meaning something went wrong in the transaction. The fault holds information on what type of error happened, so that it can be handled. The faults are identified with fault codes, which can hold sub codes to specify deeper what the problem in this particular instance was. These fault codes are part of the application domain, so a code could be "NoCompany" and a client receiving that code would then know exactly what when wrong, which in this case would be that there is no company available.
 
-The primary argument against using SOAP is that the initial frontend will be a website, which means that we will have to either combine one of the static serving ways with the SOAP service, or have to have JavaScript call the service. If we go with a setup where we have JavaScript call the service the JavaScript has to use some extra energy on translating the XML into the data structures of JavaScript, which is JSON.
+The primary argument against using SOAP is that the initial frontend will be a website, which means that I will have to either combine one of the static serving ways with the SOAP service, or have to have JavaScript call the service. If I go with a setup where I have JavaScript call the service the JavaScript has to use some extra energy on translating the XML into the data structures of JavaScript, which is JSON.
 
 \subsubsection{REST}
 \label{subs:REST}
@@ -53,19 +53,19 @@ An alternate type of web services is a REST API, which stands for Representation
 
 The appeal of a web API is the simplicity, as the http protocol is so well established, with error codes for most situations, and the added ability to give reasons on top. Another reason is that since it runs on HTTP it makes sense to use the often already set up rules for firewalls and so forth, to allow calls to websites to go through.
 
-The body of the simplest call is limited to only a verb and the url to which we want to call, where in SOAP we need to set up an entire request body.
+The body of the simplest call is limited to only a verb and the url to which I want to call, where in SOAP I need to set up an entire request body.
 
-As we surf the web we can get all sorts of different datatypes, all the way from a simple text file to a binary file. This is something RESP APIs allow as well, which means that instead of having the resource locked to come in XML format we can send it as ex. JSON, or some other format that we see fit\cite{rest:basic}. Because we can never really be sure that the caller is not malicious and try to format or break the communication be changing the sent data the type safety that XML gives is not as important as we have to verify everything anyways.
+As we surf the web we can get all sorts of different datatypes, all the way from a simple text file to a binary file. This is something RESP APIs allow as well, which means that instead of having the resource locked to come in XML format I can send it as eg. JSON, or some other format that I see fit\cite{rest:basic}. Because I can never really be sure that the caller is not malicious and try to format or break the communication by changing the sent data the type safety that XML gives is not as important as I have to verify everything anyways.
 
-As with SOAP in REST we can have headers carry extra data, such as what format we would like the response to be in, and the token for authentication the user has. This is a feature supported and used by standard web servers and browsers when we surf the internet, so REST just decided to keep using this as well.
+As with SOAP in REST I can have headers carry extra data, such as what format I would like the response to be in, and the token for authentication the user has. This is a feature supported and used by standard web servers and browsers when we surf the internet, so REST just decided to keep using this as well.
 
-There are some rules for a web API to be called RESTful\cite{rest:msdn}, for this to be true the paths have to follow some fairly simple rules. If we want to get a list of eg. activities we would call a path that ends with "/activities" with the verb "GET". If the RESP API has a resource type on the path activities it will return a list of all of them with the status code 200 which stands for OK. When we then want a specific one we call "/activities/id" with the verb "GET" where id is the id of the activity we want.
+There are some rules for a web API to be called RESTful\cite{rest:msdn}, for this to be true the paths have to follow some fairly simple rules. If I want to get a list of eg. activities I would call a path that ends with "/activities" with the verb "GET". If the RESP API has a resource type on the path activities it will return a list of all of them with the status code 200 which stands for OK. When I then want a specific one I call "/activities/id" with the verb "GET" where id is the id of the activity I want.
 
 This is only the read part of CRUD, but the other parts are also supported. They just use different verbs, the most common are "POST" for create, "PUT" for updating, although "PATCH" could also be used for that, and "DELETE" for deleting an element. If it is an existing resource you are operating on, the address should end in the id of the resource to be worked on, and otherwise just in the resource type, such as the first get.
 
-Another rule for a service to be called REST is that it has to be state less, which means that one request cannot be dependent on another to be done first, as the system is not allowed to keep the state of a call. If we want to update a resource we are allowed to get the resource first, but it should not be required, and we cannot know if someone else have removed the resource between un getting it and trying to update it. Because of this it is important to return the right error codes when something goes wrong, as it is then clear what went wrong.
+Another rule for a service to be called REST is that it has to be state less, which means that one request cannot be dependent on another to be done first, as the system is not allowed to keep the state of a call. If I want to update a resource I am allowed to get the resource first, but it should not be required, and we cannot know if someone else have removed the resource between un getting it and trying to update it. Because of this it is important to return the right error codes when something goes wrong, as it is then clear what went wrong.
 
-The important thing is that within one connection we do not make multiple calls to the server, as that would mean that we have a connection state. The client is allowed to have a state of its own, in fact the client does not have to abide by any of the REST rules for it to communicate with a REST server, except for in the communication itself. The server will often keep a state as well in that the data is often stored somewhere which means that the data is in a state.
+The important thing is that within one connection I do not make multiple calls to the server, as that would mean that I have a connection state. The client is allowed to have a state of its own, in fact the client does not have to abide by any of the REST rules for it to communicate with a REST server, except for in the communication itself. The server will often keep a state as well in that the data is often stored somewhere which means that the data is in a state.
 
 Another rule is that the resources must be cacheable, meaning that the protocol holding the data must have some way of allowing caching. Since http is the most common protocol this is generally done with the cache-control headers\cite{rest:elkstein:architeture}.
 
@@ -111,7 +111,9 @@ The reason I have chosen not to go with Core 1, but webapi 2, which still runs o
 
 \section{Database }
 \label{sec:Database_engine}
-When I comes to which database to use, there are a lot to take into account. First off we need to look at what type of database we want. When we have decided this, we need to figure out which engine for the database we are going to go with.
+When I comes to which database to use, there are a lot to take into account.
+First off I need to look at what type of database I want. When I have decided
+this, I need to figure out which engine for the database I am going to go with.
 
 This analysis will not be exhaustive as there are a lot of different types, but I will look at some of the most common.
 
@@ -168,11 +170,14 @@ MsSQL also makes sense as it is proven to work for others in a lot of scenarios,
 
 \section{Frontend}
 \label{sec:Frontend}
-For the frontend there are a few different ways we can go. Because of our decision to go with a web API for the backend we need some dynamic way of handling the remote calls to the server.
+For the frontend there are a few different ways I can go. Because of our decision to go with a web API for the backend I need some dynamic way of handling the remote calls to the server.
 
-Because we are working in a browser it makes since to go with JavaScript, as this is a scripting language supported by most modern browsers. Even in this we still have a lot of options as to how to handle the calls. There are a lot of options for frameworks as well. Which allows us to develop with different structures, such as MVVM\footnote{Model View ViewModel} and MVC\footnote{Model View Control}, and some others.
+Because I am working in a browser it makes since to go with JavaScript, as this is a scripting language supported by most modern browsers. Even in this I still have a lot of options as to how to handle the calls. There are a lot of options for frameworks as well. Which allows us to develop with different structures, such as MVVM\footnote{Model View ViewModel} and MVC\footnote{Model View Control}, and some others.
 
-Some of the options that follow the MVC model is AngularJS and EmberJS. Angular is made by google\cite{angularjs}, and allows us to separate the application out into separate parts, having a controller per view. We can also separate functions into services, and create directives, a directive is a view element, that allows us to reuse elements for the website in different places on the site without having to rewrite the code over and over again.
+Some of the options that follow the MVC model is AngularJS and EmberJS. Angular
+is made by google\cite{angularjs}, and allows us to separate the application out
+into separate parts, having a controller per view. I can also separate functions
+into services, and create directives and components, which are view elements, that allows me to reuse elements for the website in different places on the site without having to rewrite the code over and over again.
 
 Ember allows for many of the same things as angular, but has not been around as long, and handles the things slightly differently\cite{emberjs}.
 
