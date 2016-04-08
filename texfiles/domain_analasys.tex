@@ -78,7 +78,9 @@ A feature that has been requested is that instead of having a sale of ex. 1.500.
   \item Possibility of making a recap on an activity
   \item Measurability of activities
   \item Filters for visualization
-  \item Users should be able to get assigned goals
+  \item Overview of goals, per user and globally
+  \item Overview of production
+  \item Search for items
 \end{enumerate}
 
 \subsubsection{Non functional requirements}
@@ -93,10 +95,9 @@ A feature that has been requested is that instead of having a sale of ex. 1.500.
 
 \section{Use cases}
 \label{sec:Use cases}
-\todo{More usecases, remember to link to functional requirements}
 From the requirements of section~\ref{sec:Requirements} I have created a use case diagram, to help identify the use cases that is in the project, as can be seen in Figure~\ref{fig:usecase_diagram}. To help create the diagram I used an Actor - Goal list, that can be seen in Appendix~\ref{app:actor-goal}.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{use_cases}
   \caption{Usecase diagram}
@@ -221,32 +222,36 @@ Based on the use cases and the requirements I have created a matrix in table~\re
 
 \begin{table}[h]
 \resizebox{\linewidth}{!}{%
-    \begin{tabular}{ l | *{14}{c} }
-      & F1 & F2 & F3 & F4 & F5 & F6 & F7 & F8 & F9 & F10 & F11 & F12 & F13 & F14 \\
+    \begin{tabular}{ l | *{16}{c} }
+      & F1 & F2 & F3 & F4 & F5 & F6 & F7 & F8 & F9 & F10 & F11 & F12 & F13 & F14 & F15 & F16 \\
       \hline
       UC1 & X \\
       UC2 & & & X\\
       UC3 & & & X\\
       UC4 & & X\\
       UC5 & & & X\\
-      UC6 & & & & & & & X\\
-      UC7 & & & & & & & & X\\
-      UC8 & & & & & & & X\\
-      UC9 & & & & & & & & X\\
-      UC10 & & & & & X\\
-      UC11 & & & & & & X\\
-      UC12 & & & & & & & & & X\\
+      UC6 & & & & & & & X & & & & & & & & & X\\
+      UC7 & & & & & & & & X & & & & & & & & X\\
+      UC8 & & & & & & & X & & & & & & & & & X\\
+      UC9 & & & & & & & & X & & & & & & & & X\\
+      UC10 & & & & & X & & & & & & & & & & X & X\\
+      UC11 & & & & & & X & & & & & & & & & X & X\\
+      UC12 & & & & & & & & & X & & & X & & &\\
       UC13 & & & & & & & & & & X\\
-      UC14 & & & & X\\
-      UC15 & & & & X\\
+      UC14 & & & & X & & & & & & & & & X & X & X\\
+      UC15 & & & & X & & & & & & & & X & X & &\\
       UC16 & & & & X & & & & & & & & X\\
-      UC17 & & & & X\\
-      UC18 & & & & X\\
+      UC17 & & & & X & & & & & & & & & X & & X\\
+      UC18 & & & & X & & & & & & & & & X & & X\\
       UC19 & & & & & & & & & & & & & & X\\
-      UC20 & & & & X\\
-      UC21 & & & & X\\
-      UC22 & & & & & & & & & & & & & X\\
+      UC20 & & & & X & & & & & & & & X & X & X & X\\ 
+      UC21 & & & & X & & & & & & & & X & X & X & X\\
+      UC22 & & & & & & & & & & & & & X & X\\
       UC23 & & & & & & & & & & & X\\
+      UC24 & & X & & & & & & & & & & X & X & X & X\\
+      UC25 & & & & & & & & & & & & X & X & & X\\
+      UC26 & & & & & & & & & & & & & & & & X\\
+      UC27 & & & & & & & & & & & & X & X & X & X\\
     \end{tabular}
 }
 \caption{Use case matrix showing which use cases cover what requirements}
@@ -257,7 +262,7 @@ Based on the use cases and the requirements I have created a matrix in table~\re
 \label{sec:Domain Model}
 From the requirements and the use cases I can now make a domain model. The goal of this domain model is to illustrate the relations between entities in the domain\cite{larman}. This is not to say that the domain model necessarily will illustrate the actual relation between objects in the system, but rather the conceptual relation of the domain. On figure~\ref{fig:domain_model} the domain model of  the system can be seen, on the model the attributes are there because the requirements, and the use cases have shown that those are needed.
 
-\begin{figure}[h]
+\begin{figure}[!htbp]
   \centering
   \includegraphics[width=\textwidth]{domain_model}
   \caption{Domain model}
@@ -272,46 +277,87 @@ As can be seen in figure~\ref{fig:domain_model} the center of the system is for 
 
 \section{Mockups}
 \label{sec:Mockups}
-\todo{Explain the mockups based on usecases}
-\todo{Replace with screenshots}
 \todo{create a navigation diagram}
-Based on the use cases I have created a few mockups of some of the key parts of the system. The goal with these mockups is not necessarily to illustrate how a the final system would look, but more a help to imagine how a view could look, and what information would be available in that view for it to work.
+Based on the use cases I have created a few mockups of some of the key parts of
+the system. The goal with these mockups is not necessarily to illustrate how a
+the final system would look, but more a help to imagine how a view could look,
+and what information would be available in that view for it to work.
 
-Like I have mentioned earlier my focus is not to make a good frontend presenting the data to the user, but rather make the backing server serving the data for any given frontend to hook up to. I will however be making a suggestion of a frontend, mostly to show the features of the backend in action. This does however mean that the mockups are not necessarily going to be representative of the final product, and they are not meant as anything other than a help to imagine the way the system could look.
+As this is a prove of concept the mockups are made from screenshots of the
+system in the development phase. They started out as mockups on paper, but as it
+is a prove of consept, and as such the look of the system changes a lot they
+have been replaced with thiese.
 
-\begin{figure}
+Like I have mentioned earlier my focus is not to make a good frontend presenting
+the data to the user, but rather make the backing server serving the data for
+any given frontend to hook up to. I will however be making a suggestion of a
+frontend, mostly to show the features of the backend in action. This does
+ mean that the mockups are not necessarily going to be representative of
+a final product, and they are not meant as anything other than a help to
+imagine the way the system could look. 
+
+\begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.85\textwidth]{Mockups/visualizationFilter_50pct}
+  \includegraphics[width=\textwidth]{Mockups/screen_shots/filter}
   \caption{Visualization filter mockup}
   \label{fig:VisualizationFilter}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.85\textwidth]{Mockups/visualizationView_50pct}
+  \includegraphics[width=\textwidth]{Mockups/screen_shots/graph}
   \caption{Visualization graph mockup}
   \label{fig:VisualizationView}
 \end{figure}
 
-In figure~\ref{fig:VisualizationFilter} I only show parts  of the actual view, since underneath the folded out filter settings a graph and table similar to the one on figure~\ref{fig:VisualizationView}. The idea of the mockup in figure~\ref{fig:VisualizationFilter} is to show the filter options that a user can apply in order for them to gain access to exactly the information they need.
+In figure~\ref{fig:VisualizationFilter} I only show parts  of the actual view,
+since underneath the folded out filter settings a graph and table similar to the
+one on figure~\ref{fig:VisualizationView} would be. The idea of the mockup in
+figure~\ref{fig:VisualizationFilter} is to show the filter options that a user
+can apply in order for them to gain access to exactly the information they need
+from this graph. This mockup is an illustration of
+\nameref{app:usecase:viewsettings} as can be seen in
+appendix~\ref{app:usecase:viewsettings}, and
+\nameref{app:usecase:visualizegoalsproduction} from
+appendix~\ref{app:usecase:visualizegoalsproduction} is represented in figure~\ref{fig:VisualizationView}
 
-\begin{figure}
+It can be seen that there are save buttons and a dropdown with names, this is to
+allow the user to save a filter that they use a lot, as well as allow the admins
+to set up some defaults for the users to use if they want.
+
+\begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.85\textwidth]{Mockups/OpportunityView_50pct}
+  \includegraphics[width=\textwidth]{Mockups/screen_shots/edit_opportunity}
   \caption{Edit opportunity mockup}
   \label{fig:OpportunityView}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[!htbp]
   \centering
-  \includegraphics[width=0.85\textwidth]{Mockups/ActivityView_50pct}
+  \includegraphics[width=\textwidth]{Mockups/screen_shots/edit_activity}
   \caption{Edit activity mockup}
   \label{fig:ActivityView}
 \end{figure}
 
-The two other mockups in figure~\ref{fig:OpportunityView} and \ref{fig:ActivityView} are of some fairly essential parts of the system, namely the management of an opportunity which is what the users will use to keep track of tasks they may or may not win for the company. For both the contact field is not required, but it can be used for the users to keep track of who they need to talk to in relation to the thing they are looking at.
+The two other mockups in figure~\ref{fig:OpportunityView} and
+\ref{fig:ActivityView} are of some fairly essential parts of the system, namely
+the management of an opportunity which is what the users will use to keep track
+of tasks they may or may not win for the company. The usecase where the view is
+used is explained in \nameref{app:usecase:editopportunity} in
+appendix~\ref{app:usecase:editopportunity} and
+\nameref{app:usecase:editactivity} in appendix~\ref{app:usecase:editactivity}.
 
-The mockup in figure~\ref{fig:ActivityView} has a comment section in the bottom which is meant to be used as a way for the users to put recaps of the activity, or maybe just notes that they need to remember in relation with it. A less important feature is the same thing for the opportunity view, because it is not as important for the system I have not added it in the mockup, but it would probably end up looking a lot like the one in figure~\ref{fig:ActivityView}.
+
+For both the contact field is
+not required, but it can be used for the users to keep track of who they need to
+talk to in relation to the thing they are looking at.
+
+The mockup in figure~\ref{fig:ActivityView} has a comment section in the bottom
+which is meant to be used as a way for the users to put recaps of the activity,
+or maybe just notes that they need to remember in relation with it. A less
+important feature is the same thing for the opportunity view, because it is not
+as important for the system I have not added it in the mockup, but it would
+probably end up looking a lot like the one in figure~\ref{fig:ActivityView}. 
 
 \section{Chapter summary}
 \todo{summery}

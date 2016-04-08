@@ -1,125 +1,220 @@
 \chapter{Use cases}
 \label{app:Use cases}
-This is the rest of the use cases that was not explained in section~\ref{sec:Use cases}. The use cases have been described in a shorter format here, and the alternate scenarios will be included as an itemization.
+This is the rest of the use cases that was not explained in section~\ref{sec:Use
+  cases}. The use cases have been described in a shorter format here, and the
+alternate scenarios will be included as an itemization. 
 
 \section{Use case 1:Add user }
-The Super administrator navigates to the user management view, and clicks add, which opens up a view with input fields for an email, first- and last- name, as well as a phone number. The Super administrator fills out the first- and last- name, as well as the email. He can leave out the phone number. He also decides what role the user should have, as well as what groups of the predefined user groups the user should be associated with.
+The Super administrator navigates to the user management view, and clicks add,
+which opens up a view with input fields for an email, first- and last- name, as
+well as a phone number. The Super administrator fills out the first- and last-
+name, as well as the email. He can leave out the phone number. He also decides
+what role the user should have, as well as what groups of the predefined user
+groups the user should be associated with. 
 
-The goals for the user can also be set here, but the process of setting them is described in another use case.
+The goals for the user can also be set here, but the process of setting them is
+described in another use case. 
 
-Now he clicks add, and the user is added to the list, with a marking of not having accepted yet.
+Now he clicks add, and the user is added to the list, with a marking of not
+having accepted yet. 
 
 \begin{itemize}
-  \item \textbf{The email is in use}: The system will keep the view open, and inform the Super administrator that a user with that email is in the system already.
-  \item \textbf{One of the required fields are empty}: The system keeps the view open, and marks the missing fields, it also adds a text informing that the fields are required.
+  \item \textbf{The email is in use}: The system will keep the view open, and
+    inform the Super administrator that a user with that email is in the system
+    already. 
+  \item \textbf{One of the required fields are empty}: The system keeps the view
+    open, and marks the missing fields, it also adds a text informing that the
+    fields are required. 
 \end{itemize}
 
 \section{Use case 2:Edit user }
-The Super administrator navigates to the user management view, and chooses the user he wants to edit. This opens up a view with the possibility of editing phone number, first- and last- name. The Super administrator can also add or remove user groups from the user.
+The Super administrator navigates to the user management view, and chooses the
+user he wants to edit. This opens up a view with the possibility of editing
+phone number, first- and last- name. The Super administrator can also add or
+remove user groups from the user. 
 
-Like when a new user is added the goals can be updated as described in another use case.
+Like when a new user is added the goals can be updated as described in another
+use case. 
 
-When he is done he clicks save, and the view closes.
+When he is done he clicks save, and the view closes. 
 
 \section{Use case 3:Delete user }
-The super administrator navigates to the user management view, and chooses the user he wants to delete. He clicks on the delete button, and the system asks him to verify that he indeed wants to delete the user. Only after agreeing is the user switched to a state where he cannot log in.
+The super administrator navigates to the user management view, and chooses the
+user he wants to delete. He clicks on the delete button, and the system asks him
+to verify that he indeed wants to delete the user. Only after agreeing is the
+user switched to a state where he cannot log in. 
 
 \section{Use case 4:Log in }
-A user wants to log in, goes to the log in page, where he fills in his credentials. The system then verifies against the stored credentials, and he is logged in.
+A user wants to log in, goes to the log in page, where he fills in his
+credentials. The system then verifies against the stored credentials, and he is
+logged in. 
 \begin{itemize}
-  \item \textbf{The credentials does not match any in the database}: Instead of logging the user in, he is informed that something was wrong, and he can try again.
+  \item \textbf{The credentials does not match any in the database}: Instead of
+    logging the user in, he is informed that something was wrong, and he can try
+    again. 
 \end{itemize}
 
 \section{Use case 5:Set user roles }
-The Super administrator is in the edit user view. He has a list of user roles the user is part of, he can both remove from the list, and add new.
+The Super administrator is in the edit user view. He has a list of user roles
+the user is part of, he can both remove from the list, and add new. 
 
 \begin{itemize}
-  \item \textbf{The group does not exist}: The system will inform the super user that the group does not exist yet, and that the needs to add it first.
+  \item \textbf{The group does not exist}: The system will inform the super user
+    that the group does not exist yet, and that the needs to add it first. 
 \end{itemize}
 
 \section{Use case 6:Create company }
-The User clicks create new company, which leads him to a view where he can input the information of the company. He then fills out the information and clicks save.
+The User clicks create new company, which leads him to a view where he can input
+the information of the company. He then fills out the information and clicks
+save. 
 \begin{itemize}
-  \item \textbf{Name is not filled out}: The system will mark the name as missing, and a text explaining that it must be filled out will appear.
+  \item \textbf{Name is not filled out}: The system will mark the name as
+    missing, and a text explaining that it must be filled out will appear. 
 \end{itemize}
 
 \section{Use case 7:Edit company }
-The User clicks on an existing company, and chooses edit. Now filled out editable fields show up, that the user changes as he sees fit. When he is done he clicks save.
+The User clicks on an existing company, and chooses edit. Now filled out
+editable fields show up, that the user changes as he sees fit. When he is done
+he clicks save. 
 \begin{itemize}
-  \item \textbf{One of the required fields has been cleared}: The system marks the field, and adds a text explaining that the field is required.
+  \item \textbf{One of the required fields has been cleared}: The system marks
+    the field, and adds a text explaining that the field is required. 
 \end{itemize}
 
 \section{Use case 8:Create person }
-The User clicks create new user, and a view with the appropriate fields show up. The user fills out the fields, and chooses a company from a list of available companies the user can be part of, and then clicks save.
+The User clicks create new user, and a view with the appropriate fields show up.
+The user fills out the fields, and chooses a company from a list of available
+companies the user can be part of, and then clicks save. 
 
 \begin{itemize}
-  \item \textbf{One of the required fields has been cleared}: The system marks the field, and adds a text explaining that the field is required. When the User has filled out the fields he moves on.
+  \item \textbf{One of the required fields has been cleared}: The system marks
+    the field, and adds a text explaining that the field is required. When the
+    User has filled out the fields he moves on. 
 \end{itemize}
 
 \section{Use case 9:Edit person }
-The User clicks in to an existing person, and gets a view similar to the create view, where the fields are filled out. On the company field he can choose to end the persons relationship with the company, and after that add a new one.
+The User clicks in to an existing person, and gets a view similar to the create
+view, where the fields are filled out. On the company field he can choose to end
+the persons relationship with the company, and after that add a new one. 
 
-\begin{itemize}
-  \item \textbf{One of the required fields has been cleared}: The system marks the field, and adds a text explaining that the field is required. When the User has filled out the fields he moves on.
+\begin{itemize} 
+  \item \textbf{One of the required fields has been cleared}: The system marks
+    the field, and adds a text explaining that the field is required. When the
+    User has filled out the fields he moves on. 
 \end{itemize}
 
 \section{Use case 10:Create opportunity }
 See the full use case in section~\ref{sec:Use cases}
 
 \section{Use case 11:Edit opportunity }
-The User enters an existing opportunity, and adjusts the fields that he wants changed. He can add more contacts, or remove some. He can also change the associated user, and what stage the opportunity is on.
+\label{app:usecase:editopportunity}
+The User enters an existing opportunity, and adjusts the fields that he wants
+changed. He can add more contacts, or remove some. He can also change the
+associated user, and what stage the opportunity is on. 
 
 \begin{itemize}
-  \item The alternate cases are the same as for Create opportunity
+  \item The alternate cases are the same as for Create opportunity 
 \end{itemize}
 
 \section{Use case 12:Create activity }
-The User clicks create new activity, chooses type, and fills in the required fields. He also optionally decides what company the activity is associated to, as well as a person.
+The User clicks create new activity, chooses type, and fills in the required
+fields. He also optionally decides what company the activity is associated to,
+as well as a person. 
 
 \begin{itemize}
-  \item \textbf{The due date is not set}: The system tells the user the field is required.
-  \item \textbf{The time is set}: The activity is added to the assigned users google calendar. (This is a nice to have feature, which means it is not prioritized)
+  \item \textbf{The due date is not set}: The system tells the user the field is
+    required. 
+  \item \textbf{The time is set}: The activity is added to the assigned users
+    google calendar. (This is a nice to have feature, which means it is not
+    prioritized) 
 \end{itemize}
 
 \section{Use case 13:Edit activity }
-The User enters an existing activity. He changes the fields that he wants to change. If he changes the time the calendar will be updated.
+\label{app:usecase:editactivity}
+The User enters an existing activity. He changes the fields that he wants to
+change. If he changes the time the calendar will be updated. 
 
 \begin{itemize}
-  \item \textbf{The due date is not set}: The system tells the user the field is required.
-  \item \textbf{The time is set}: The activity is added to the assigned users google calendar. (This is a nice to have feature, which means it is not prioritized)
+  \item \textbf{The due date is not set}: The system tells the user the field is
+    required. 
+  \item \textbf{The time is set}: The activity is added to the assigned users
+    google calendar. (This is a nice to have feature, which means it is not
+    prioritized) 
 \end{itemize}
 
 \section{Use case 14:Create user group }
-Super administrator enter list of user groups, and clicks add new. He is then asked to add a name, and then clicks save.
+Super administrator enter list of user groups, and clicks add new. He is then
+asked to add a name, and then clicks save. 
 
 \begin{itemize}
-  \item \textbf{Name is taken}: If the name is used by another group the Super administrator is informed, and asked to choose a different one.
+  \item \textbf{Name is taken}: If the name is used by another group the Super
+    administrator is informed, and asked to choose a different one. 
 \end{itemize}
 
 \section{Use case 15:Create activity category }
-The Super administrator enters the list of activity categories, and clicks add new. He then chooses a name, and sets a numeric value for the category.
+The Super administrator enters the list of activity categories, and clicks add
+new. He then chooses a name, and sets a numeric value for the category. 
 
 \section{Use case 16:Update activity category value }
-The Super administrator clicks on an activity category, and is presented with the name and value he choose under creation. He now sets this value to something different, and maybe updates the name. He then clicks save.
+The Super administrator clicks on an activity category, and is presented with
+the name and value he choose under creation. He now sets this value to something
+different, and maybe updates the name. He then clicks save. 
 
 \section{Use case 17:Create opportunity category }
-The Super administrator enters the list of opportunity categories, and clicks add new. He then chooses a name, and sets a numeric value for the category.
+The Super administrator enters the list of opportunity categories, and clicks
+add new. He then chooses a name, and sets a numeric value for the category. 
 
 
 \section{Use case 18:Update opportunity category }
-The Super administrator clicks on an opportunity category, and is presented with the name and value he choose under creation. He now sets this value to something different, and maybe updates the name. He then clicks save.
+The Super administrator clicks on an opportunity category, and is presented with
+the name and value he choose under creation. He now sets this value to something
+different, and maybe updates the name. He then clicks save. 
 
 \section{Use case 19:Set production goal of user }
 See the full use case in section~\ref{sec:Use cases}
 
 \section{Use case 20:Create department }
-The Super user enters a list of departments, where he clicks add new. He is then asked for a name, and if the name is not taken when he clicks save the category is added.
+The Super user enters a list of departments, where he clicks add new. He is then
+asked for a name, and if the name is not taken when he clicks save the category
+is added. 
 
 \section{Use case 21:Create opportunity stage }
 See the full use case in section~\ref{sec:Use cases}
 
-\section{Use case 22: Visualize user goals }
-The User enters goes to the visualization area, and is presented with a table of all the goals of the users and their production in a period. The user now changes the period, and limits the users to show for, as well as only sets to get done opportunities, and clicks a filter button. Now the data is filtered down to only be of the requested type.
+\section{Use case 22: Visualize user goals and production}
+\label{app:usecase:visualizegoalsproduction}
+The User goes to the visualization area, and is presented with a table of all
+the goals of the users and their production in a period. The user now changes
+the period, and limits the users to show for, as well as only sets to get done
+opportunities, and clicks a filter button. Now the data is filtered down to only
+be of the requested type. 
 
-\section{Use case 23: Commenting on activity }
-The User is done with an activity and wants to write down some notes, so they enters the activity, and goes to the commenting section, where they write notes, and press send. Now when they come back, or someone else enters that activity they can see the cotes from the activity.
+\section{Use case 23: Comment}
+The User is done with an activity and wants to write down some notes, so they
+enters the activity, and goes to the commenting section, where they write notes,
+and press send. Now when they come back, or someone else enters that activity
+they can see the cotes from the activity. 
+
+\section{Use case 24: Set user groups }
+The Super user enters editing of a user, where they go to the user group area.
+Here they enter the name of a usergroup, which will be autocompleted. When Add
+is pressed the group is added, and the input field clears, and the list of
+groups is updated.
+
+\section{Use case 25:  Visualizing activity numbers}
+The user goes to the visualization area, where they choose a period for the
+dataextraction. The user also chooses which user groups, and users to show for.
+
+The user now gets a filtered set of data, with a graph and table.
+
+\section{Use case 26: Global search}
+The user puts the cursor in the search box, and starts typing the name of a
+company. A dropdown shows up sugesting companies, people and opportunities with
+similar names to the one entered by the user.
+
+\section{Use case 27: Manage personal view settings}
+\label{app:usecase:viewsettings}
+The user creates a filter for a type of graph, and selects which parameters are
+important for the filter. The user also desides if other users should be able to
+see the filter, or only the one user. In the end The user saves the filter, and
+if it is a new one gives it a name.
