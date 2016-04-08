@@ -42,8 +42,6 @@ This forces me to still think about if I should allow a value to be null or not,
 
 \section{System structure}
 \label{sec:System structure}
-\todo{class diagram}
-\todo{Sequence diagram}
 The structure of the system follows the onion architecture\cite{onion_architecture}, which means that it is build up of layers like it can be seen on figure~\ref{fig:Onion architecture}.
 
 \begin{figure}[h]
@@ -72,6 +70,83 @@ Finally the inner most layer is the classes describing the data that is stored i
 The \textit{UnitTests} project is on the same level as \textit{customer\_relations\_manager}, which means that it is allowed to see everything in the project, allowing it to test it all.
 
 The goal with all this separation is to both make it easier to swap out parts of the project without too much hassle, and to be able to reuse parts, in case I want to do something similar in the future. It does however also force us to not have an uncontrollable mess of dependencies, since the domain models are never allowed to know anything other than them selves, and the data access layer cannot say anything about how the data will look in the end, only find and filter on it.
+
+\subsection{Sequences}
+\label{subsec:sequences}
+To illustrate some of the flows in the system I have made two sequence diagrams,
+that go over some standart things the system will do. Namely viewing the goals
+of users, in the system, and creation of an opportunity.
+
+The sequences are also tested as integration tests, which will be explained
+firther in section~\ref{sec:integration_tests}.
+
+For the first sequence diagram i have described how the system works when a user
+wants to get the graph data of goals. This can be seen in
+figure~\ref{fig:goal_sequence}.
+
+The initial call is a get, which means that the client expects to get some data
+back from the server, as that is the primary objective of the call. In the get
+the client sends a filter, in this case that could be the time span it is
+interested in, and maybe also which users or groups of users they want data for.
+
+The first thing that happens on the servieside is that we correct the dates,
+since I have desided that if no date is given it means that we return a span of
+one year, starting in january of the current year. This also makes sure that if
+the user swapped to and from I can still figure out what they meant, as I just
+swap them in that case. 
+
+The next step revolves around getting the data from the database, here we apply
+the filters, and ask our repository to give all the goals it can find with that
+filter. It has a sub call to do the filtering for it, as multiple functions use
+the same fintering mechanisms in that class.
+
+When the goals are returned we hand them to the applicationServices, who will
+manipulate the data, so that it is in the correct format, and remove unnessesery
+information before returning with the data. When the data is returned it is
+wrapped, to inform the caller of any changes we may have made to the dates, and
+we return an Ok with the wrapped data. The Ok return is to indicate that it is a
+return via the http connection, with a statuscode of 200.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{goal_sequence}
+\caption{Sequence diagram for getting data for goals}
+\label{fig:goal_sequence}
+\end{figure}
+
+For the sequence diagram describing the creation of an opportunity, as can be
+seen in figure~\ref{fig:opportunity_sequence} we have start with a Post call the
+the server, this post call contains the data that the client wants to create an
+opportunity of. Because we cannot asume that the client sends valid data we have
+to verify, and if the data is not valid we return BadRequest, which is an http
+returntype with the code 400, we also tell the client why the request was not
+acceptable, as that can help the user fill out missing fields.
+
+If the data is okey we ask the repository to create the opportunity. In order
+for the repository to verify that all the fields exist, and to link them up it
+checks with the database. Some of the fields are optional, as can be seen with
+the company and contact, and if they are not set we don't contact the database
+about them.
+
+In the end we create the new opportunity in our database layer, and return the
+created entity to the interface, that persists the data with save using the Unit
+of Work pattern as described in section~\ref{sub:Unit of work pattern}.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\textwidth]{create_opportunity_sequence}
+\caption{Sequence diagram for creating a new opportunity}
+\label{fig:opportunity_sequence}
+\end{figure}
+
+I have not described the error possibilities in the creation of the opportunity,
+as that would make the diagram harder to read. but for the required fields if we
+turn out not to be able to find the element in the database we return a NotFound
+to the client, which has the error code of 404.
+
+\section{Class diagram}
+\label{sec:class_diagram}
+\todo{Write about and generate class diagram}
 
 \section{Patterns}
 \label{sec:Patterns}
