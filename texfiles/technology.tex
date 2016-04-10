@@ -186,4 +186,28 @@ They both have a templateing language implemented to allow integration, and data
 Because my focus in this project is not on the frontend, but to make the backend so that different frontends will be able to use it I have decided to go with AngularJS as that is the one I have the most experience with, and it has a lot of modules build by different people that can be used to make the experience a little better.
 
 \section{Chapter summary }
-\todo{Summarize}
+There are a couple different ways to go in regard to technology with a project
+like this one. One of the first limiting desitions could be the language, where
+I have chosen to go with C\# because it is one of the most used languages in IT
+minds, and since the project is for IT minds it will be them who will continue
+work on it at a later date. 
+
+C\# does have some frameworks that are good at web serving, which is what I will
+be going with, and the one I have desided to go with is ASP.NET, with Webapi 2,
+serving JSON. This allows me to not worry about the frontend when developing the
+backend, as a JSON api running over the http protocol can be used both by a web
+application, as well as an application for a phone, and a native desktop
+application as well.
+
+For datastorage i have gone with MSSQL as it is a relational database, which is
+the type I have concluded fits best for my project. It also have good support in
+the .net environment, as both are developed by Microsoft. For accessing the
+database i will be using an ORM by the name of Entity framework, also developed
+by microsoft. This will allow me to not worry about sql injection, and treat the
+database entities more or less like C\# objects.
+
+I will also be developing a frontend as an example of how that part of the
+system could look, as well as to make sure that my desitions on the backend
+actually makes sence in an actual user interactive way. For this i have desided
+to go with angular in a JavaScript singlepage application, mostly because it is
+a mature framework, that i know how to use.

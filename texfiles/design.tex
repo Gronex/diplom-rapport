@@ -172,4 +172,33 @@ A pattern that works well with the repository pattern, that is described in sect
 The problem that the unit of work pattern solves is that if I am updating some object, which includes the deletion of some data, I want to make sure that if something fails later on after I have done the delete, so that the creation was not done, the delete operation is abandoned, and I have not damaged my data model\cite{uow}.
 
 \section{Chapter summary}
-\todo{Summarize}
+The structure of the system is following the onion model, working around the
+idea of layers, with the domain model as the innter core, which is the database
+containing the data. The next layer is the domain services, describing how to
+get the data from the database, followed by the application services, which is
+in charge of doing datamanipulation, and tasks that is essential to the system,
+without dealing with a user yet. After this we have the implementation of the
+data access, and the user interface, which will be the controllers, and the
+served webpage.
+
+From the usecases I have made a couple of sequence diagrams, describing the flow
+from requesting client to the database and back, resulting in the uclient
+getting the data that they request. 
+
+In general I have designed the system to follow a principle of allowing the
+repositories to throw exceptions if something goes wrong. These exceptions are
+then courght and transformed into propper responses based on the exception thrown.
+
+I follow a couple of patterns in the development. Some of them are dependency
+injection, which allows me to lower the coupeling in the system, and allows me
+to make unit tests easier, since i can control all the dependencies of a class
+at the time of instantiation.
+
+I use the repository pattern to seperate the access ing of data away from the
+controllers, as they are not meant to deal with the actual implementation of
+that, but rather make sure that the communication is correct, and the right
+tasks are done.
+
+Another pattern I use is the Unit of Work pattern which makes sure that my data
+never ends up in an unknown state because something failed half way through an
+operation. 
