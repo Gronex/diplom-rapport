@@ -1,6 +1,5 @@
 \chapter{Implementation/Tests}
 \label{chap:Implementation}
-\todo{integration tests explaining sequence diagrams}
 
 In this chapter I will discuss some of the decisions I have made while
 developing the system, and why I made that decision instead of going with
@@ -141,10 +140,82 @@ The reason I can do that is that the email is uniqueue, and I have grouped them
 together ahead of time, to allow me to only have one dictionary entry per user,
 containing a list of earnings per month.
 
-\section{Unit tests}
-\label{sec:unit_tests}
+\section{Testing}
+To seperate the testing from the rest of the code I have created a seperate
+project containing all the automated tests. The advantage of this is that the
+tests are not nesseserily part of the code that is put on the server that runs
+the actual application, but I still have it in the same project, and can
+therefore run the tests as required.
 
-\section{Integration tests}
+\begin{figure}[h]
+  \centering
+  \includegraphics{testResults}
+  \caption{Rest results}
+  \label{fig:testResults}
+\end{figure}
+
+The results for all the automated tests can be seen in
+figure~\ref{fig:testResults}, where the results are seperated into folders, one
+for each project, and one folder for the integration tests, as I don't have as
+many of those.
+
+To make testing work I have had to create a fake database layer, that implements
+the same interface as the real one, allowing me to run the tests against a
+nonexistent database, or rather data kept in memory.
+
+The framework I have used for testing is xUnit, which is created by the same
+person who created nUnit~\cite{xunit}. The setup for a test is run in the
+constructor, and each test is marked either with Fact or Theory, where in theory
+the test functions tage arguments, and you give it multiple different
+combinations of arguments, to run the same test with each.
+
+\subsection{Unit tests}
+\label{sec:unit_tests}
+Under the development I have created a lot of unit tests, to test that my
+functions actualy do what i want them to do, and return the correct data.
+
+In figure~\ref{fig:testResults} every test exccept the ones in the
+IntegrationTests folder are unit tests, meaning the test only test a single unit
+at a time.
+
+In practis this means that I replace all the dependencies with mocked versions.
+For this i have used a mocking framework by the name
+NSubstitute\footnote{http://nsubstitute.github.io/}. This is one of the places
+where the injection pattern comes in handy, as I can substitute the injected
+dependencies with versions that are not real. NSubstitute allows me to control
+what specific functions should return or do if they get called, which means i
+can know exactly what is going on outside my test when it is run.
+
+An example of substitution of a method could be PersonsControllerTest where I
+substitute the IPersonRepository argument to the controller, and later when I
+know the controller is going to call a function in that one, such as when I want
+to get a single object from the database I can tell the function that it should
+return a specifik object in that case, as I am not interested in testing the
+controllers ability to fetch data, but rather test that it does not mess up the
+data, and it actualy tries to get it. 
+
+For the case where it fails, the test is more a case of does the controller
+catch the exception and act like nothing happened, which is the wrong behaviour
+or does it let it go through, and let the filters handle it. In the failing
+cases the most interesting tests are the ones where we save to the database, as
+we want to make sure that we never make it ca call Save() if something went
+wrong, as that puts the database in an unknown state, as mentioned in
+section~\ref{sub:Unit of work pattern}.
+
+I have tried to keep follow the ideas of test driven development, by writing my
+tests first, and making the implementation afterwards, so that the tests work as
+a description of what i expect the function to return given spesifik arguments.
+
+\subsection{Integration tests}
 \label{sec:integration_tests}
+An integration test is a test that tests a full flow, instead of just testing an
+isolated part of the program. The idea of this is to test the communication
+between components.
+
+There will automaticaly be less integration tests than unit tests, as there are
+more units in the code than flows. In my case I have not written as many
+integration tests as I could have since a lot of the integration testing have
+been done manually when writing the frontend, where I have to make the calls for
+data to show up in the system, as well as the creation, and manipulation calls.
 
 \section{Chapter summary}

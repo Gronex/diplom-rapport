@@ -133,10 +133,10 @@ created entity to the interface, that persists the data with save using the Unit
 of Work pattern as described in section~\ref{sub:Unit of work pattern}.
 
 \begin{figure}[!htb]
-\centering
-\includegraphics[width=\textwidth]{create_opportunity_sequence}
-\caption{Sequence diagram for creating a new opportunity}
-\label{fig:opportunity_sequence}
+  \centering
+  \includegraphics[width=\textwidth]{create_opportunity_sequence}
+  \caption{Sequence diagram for creating a new opportunity}
+  \label{fig:opportunity_sequence}
 \end{figure}
 
 I have not described the error possibilities in the creation of the opportunity,
@@ -146,6 +146,25 @@ to the client, which has the error code of 404.
 
 \section{Class diagram}
 \label{sec:class_diagram}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.75]{Maps/OverViewMap}
+  \caption{Overview of structure}
+  \label{fig:overviewMap}
+\end{figure}
+
+I have generated a few code maps, to illustrate how the connections between
+classes work in the project. The most general one can be seen in
+figure~\ref{fig:overviewMap}, where it can be seen that we follow the structure
+of the onion model, where all knowledge is towards the center, and never
+outwards. In the case of the figure the center is the in the bottom, and the
+outermost layer is in the top.
+
+For versions where the layers are foldet out look in
+appendix~\ref{app:codemaps}, where there is one figure for each of the layers.
+
+
 \todo{Write about and generate class diagram}
 
 \section{Patterns}
