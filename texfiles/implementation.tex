@@ -76,10 +76,70 @@ the database.
 
 \section{Exception filters}
 \label{sec:Exception filters}
+To be able to return the appropriate response when something fails, I have
+decided to throw appropriate exceptions, with messages of what went wrong in
+case that is not obvious from the exception itself.
 
+To help with this I have implemented an extention method for getting things out
+of the database. If I want to get a single thing out, I would call
+SingleOrDefault, but if I need the result to be something, and the defult value
+therefore is not useful. For this I have implemented the extention function
+SingleOrExcept, which just uses SingleOrDefault where if it returns null it
+throws a NotFoundException.
+
+To make the response appropriate in the controller I could go with different
+approaches. The most basic way of dealing with this would be to catch the
+exceptions, and return the right message to the client.
+
+Another way to deal with this is to use filters, this is the way I have decided
+to go with. For filters there are still multiple ways to do this, I could have
+set the filter on a per method, per controller, or for the entire server.
+
+The implementation of the filter would look like the one of
+figure~\ref{fig:notfoundfilter} for all of the types, and since I need the
+filters to apply to all the controllers I have gone with the cross project
+solution. 
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{code/NotFoundExceptionFilterAttribute}
+  \caption{NotFoundException filter}
+  \label{fig:notfoundfilter}
+\end{figure}
 
 \section{Graph data calls}
 \label{sec:Graph data calls}
+For the data extraction I start by pulling the data out of the database, and
+then send it to the method that will format it properly. The reason I do it like
+this is that it allows me to use the method no matter where the data comes from. 
+
+I make use of LINQ\footnote{Language-Integrated query} to manipulate the data
+since it allows me to group by different keys, and filter away some of the data.
+
+For the production graph, i have two calls, one for the production data, and one
+for the goal data. The call for production data is the most interesting, in that
+it needs to deal with spacing the earned money out over the period it spans in.
+
+This also means that i had to make a filter that includes the opportunity as
+long as it is within the range on the period.
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{code/SpreadOutEarnings}
+  \caption{SpreadOutEarnings implementation}
+  \label{fig:spreadoutearnings}
+\end{figure}
+
+In figure~\ref{fig:spreadoutearnings} the implementation of the evening out of
+the earnings is illustrated, as can be seen the implementation the result os a
+list of tuples. The reason i use tuples here is that it allows me to assosiate
+the earned value with the month it was earned.
+
+When the list is returned I filter away the months that i don't need, based on
+the filter, and match it up with a user.
+
+In the end I map the result to a dictionary, with the users email as the key.
+The reason I can do that is that the email is uniqueue, and I have grouped them
+together ahead of time, to allow me to only have one dictionary entry per user,
+containing a list of earnings per month.
 
 \section{Unit tests}
 \label{sec:unit_tests}

@@ -56,8 +56,8 @@
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
 %Code listing style named "mystyle"
-\lstdefinestyle{mystyle}{
-  %backgroundcolor=\color{backcolour},
+\lstset{
+ language=[Sharp]C, %backgroundcolor=\color{backcolour},
   commentstyle=\color{codegreen},
   keywordstyle=\color{magenta},
   numberstyle=\tiny\color{codegray},
@@ -76,9 +76,6 @@
   tabsize=2,
   escapeinside={(*@}{@*)}
 }
-
-%"mystyle" code listing set
-\lstset{style=mystyle}
 
 \usepackage[
     backend=biber,
