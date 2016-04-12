@@ -73,6 +73,31 @@ bring. The problem with this user manager is that it does not follow the unit of
 work pattern, which means it saves every time I make a call that would update
 the database. 
 
+\subsection{Cascade delete}
+Some of my connections between entities are many-to-many relations, which for
+actual implementation purposes is handeled by having a table in between the two
+tables, that link them together with a one-to-many relation to both of the
+tables. 
+
+Useually you would use the foreign keys as a composit key so there cannot be any
+duplicate connection.
+
+Because this can easily create multiple cascade paths on delete, I have desided
+to set the entity framework up in such a way that it will not create cascade
+deletes on many-to-many relations. 
+
+Because of this I need to manually clear up the relations when I want to delete
+an entity that has one, but the manual delete gives more control, and will
+therefore not risk creating deletion race conditions, which the problem of
+multiple cascade paths result in.
+
+Another thing to notice when looking at the domain models is that I don't
+alwayse manually create the many-to-many relation. This is because entity
+framework can figure that out itself, asuming i give it the information it
+needs. But in some cases namely UserGroups I do make it manually, this is
+because it does give me more control over what relations are where, and the
+creation of them, even though it makes the code a bit more complex.
+
 \section{Exception filters}
 \label{sec:Exception filters}
 To be able to return the appropriate response when something fails, I have
@@ -147,6 +172,7 @@ tests are not nesseserily part of the code that is put on the server that runs
 the actual application, but I still have it in the same project, and can
 therefore run the tests as required.
 
+\todo{Need a few more integration tests}
 \begin{figure}[h]
   \centering
   \includegraphics{testResults}
@@ -218,4 +244,52 @@ integration tests as I could have since a lot of the integration testing have
 been done manually when writing the frontend, where I have to make the calls for
 data to show up in the system, as well as the creation, and manipulation calls.
 
+The unit tests are generally more usefull for the development, in that they help
+identify where the issue may be in the code, instead of saying that starting
+from some point given some arguments something went wrong.
+
 \section{Chapter summary}
+For communication with the database I use Entity framework, which is an ORM
+allowing me to interact with the entities as if they were C\# objects. This
+gives me the advantage of type safety, as well as it allows me to use LINQ which
+is a powerful list comprehention library in C\#.
+
+Even though entity framework implements the repository pattern, I have wrapped
+it in my own implementation, in order to gain more control, and reduce repeated
+code for tasks such as deleting, and and updating. It also allows med to make
+better use of injection, in that I can inject a repository interface into a
+class, and replace it for testing, so that i can know exactly what information I
+am working with.
+
+I make sure to never call save in the repositories, as they are not able to know
+if anything else will be happening with the database later in the call, but only
+save when the controller desides that it should be done. To make sure that it is
+obvious that is the way to do it, I have created a unit of work class, where the
+only thing it can do is call save. This way I can also ignore what kind ov ORM I
+am using for communicating with the datastorage entirely in the controllers, as
+it is not important here.
+
+In the case a user asks for something that does not exist, eg. an opportunity
+with an id that is not in the database, the repository will throw a
+NotFoundException, which will propergate all the way outside the controller. The
+reason the caller will not get an InternalServerError, is because I use filters,
+that catch the exception, and translates it into a not found response. This
+filter is applied globally for all the controllers, together with a few others.
+
+The system also works with extracting data so that is can be graphed. This means
+that the system pulls out the data based on a filter, and then formats it so
+that it is easy to illustrate in a graph or table, and compare each point.
+
+For testing I use xUnit, which allows me to create test methods, that each test
+a spesific thing. Under the development I created unit tests, so that I could
+see if a single bit of the program dod what i expected it it. For the unit
+tests I made use of the injection, by mocking the dependencies of the class, and
+managing the results of the calls the tested method made.
+
+Because there are more smaller units in the application than there are usecases
+there are a lot more unit tests than integrations tests. This is also because
+most of the integration testing has been done via the javascript application I
+have developed next to the server, which results in the tests not being
+automatic, but in order for the javascript application to work I the server
+still had to work, and the unit tests are there to help identify where the
+issues may have shown up.
