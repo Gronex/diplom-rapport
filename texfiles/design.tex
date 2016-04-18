@@ -145,8 +145,8 @@ turn out not to be able to find the element in the database we return a NotFound
 to the client, which has the error code of 404.
 
 \section{Class diagram}
-\label{sec:class_diagram}
-/todo{update maps}
+\label{sec:class_diagram, remove namespace limitation}
+\todo{update maps}
 \begin{figure}[h]
   \centering
   \includegraphics[scale=0.75]{Maps/OverViewMap}
@@ -163,6 +163,11 @@ outermost layer is in the top.
 
 For versions where the layers are foldet out look in
 appendix~\ref{app:codemaps}, where there is one figure for each of the layers.
+
+The maps are not true class diagrams, as some of the syntax does not follow the
+actual UML syntax for a class diagram. The reason I have them still is that they
+give an idea of how the system is set up, but I have folded the classes, as to
+make it easier to get an overview of the relations.
 
 \section{Patterns}
 \label{sec:Patterns}

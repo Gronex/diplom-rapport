@@ -1,6 +1,123 @@
 \chapter{Conclusion}
 \label{chap:Conclusion}
+In this chapter I will sum up what have been made. I will compare the resulting
+product with the requirements of chapter~\ref{chap:Domain analasys}. After this
+I will conclude on the product, loocking at advantages and disadvantages in the
+way I have decided to make it.
+In the end I will have a discussion of what futute work should and could be made
+for the system to be ready to be set into production. Ending with a statement
+from IT minds about the project.
 \todo[inline]{Write conclusion}
+
+\section{Summery}
+IT minds is a consultant company consisting of mostly student developers who has
+been taught Java and maybe C\#. For the developers to have anything to do the
+company has sales teams who is responsible of getting tasks for the developers.
+In order for them to be able to keep track of the people they talk to, and the
+opportunities they get they use a custumer relations management system, or CRM
+for short. 
+
+The current CRMs are not capable of doing what IT minds require entirely, and
+therefore I have gotten the job of making a prototype of an alterative. An
+introduction to the system in presented in chapter~\ref{chap:Introduction}.
+
+The Idea is that it should be possible to get an overview of how it is going in
+the system, both in regard to how much is bieng sold, and how much is supposed
+to be sold. This should be filterable, so that one can decide only to see for
+one office instead on the entirety of IT minds, even though that should also be
+possible. Another important feature is the ability to define categories, and
+values in the system as an admin, since this allows the for setting the system
+up exactly as is desired, instead of having to force some predetermined setup by
+the developer on the salesteam.
+
+In chapter~\ref{chap:Domain analasys} I discuss what exactly the system is
+supposed to be capable of, such as the number of user levels, and the
+visualization.
+
+In this chapter I also set up the functional and nonfunctional requirements of
+the system, and combine them with use cases which are also described here. This
+Is also where I describe the domain model of the system, which later on is used
+to find the resources the system should present, as well as helt with designing
+the ER diagram for the database. At the end of the chapter I present a sugestion
+to how some of the views that is described by usecases could look.
+
+Based on the requirements I discussed the possible technologies in
+chapter~\ref{chap:Technology}. Since IT minds had limited requirements to the
+technologies I was fairly free to go with what I felt was fitting, which is why
+I have compared a couple different ones in that chapter. A thing that I did keep
+in mind is the use of C\# in IT minds projects, which leads to most IT minds
+developers knowing, this is a consern since it would probably be them who would
+end up extending my solution in the future.
+
+I looked at both web services and static serving as possible technologies,
+concluding a webservice would be better, as it does not limit the frontend,
+allowing for an app for phones or desktop in the future if that is deemed suited.
+
+After I setteled for a web service, I had to decide which type. The two I
+compared was REST, and SOAP. Where I ended up with REST, as it is potentially
+easier to interpret the result in Javascript, which is what I have made the
+frontend part in. For the data I send  I went with JSON, for that exact reason,
+and because it is easy to read, and therefore validate when building it.
+
+For the database I compared a few types, and setteled for a relational one, with
+the entity framework for access, mostly because it has good support in the .NET
+environment.
+
+The frontend was not discussed as indepth, as it is more a sugested
+implementation of how one might look, and as I don't have any propper knowledge
+of building a userfriendly interface I cannot claim that what I have build
+follows the rules that is required for that. 
+
+The reason I still build a frontend was two fold however, as it allowed me to
+thing in a more user near way when developing the resource paths, and it allowed
+me to integration test a bit easier. It is also easier to show others what I
+have made if it has a userinterface, instead of just being data dumped out by a server.
+
+In chapter~\ref{chap:Design} I discuss the design of the system. First I create
+the design of the database, described with an ER diagram. The database is only
+in 2NF. The reason I have not made it 3NF is that this would make it hard to
+work with the entities, where it has any influence. The actual issue is that a
+company has an address, which could be seperated out into a seperate table, but
+this is also true for the country, and an address should have a country
+assosiated with it then, which would mean that every time a new company is added
+I would have to check if a country of the same name exists, and I cannot know if
+the user just spelled the name wrong.
+
+For the structure of the system I have followed the onion modelm seperating the
+system out in layers, alwayse only referencing deeper, and never up.
+
+In this chapter I also created some sequence diagrams describing two usecases
+all the way from client to database and back. I also have a sort description of
+some codemaps, which can be seen in more detail in appendix~\ref{app:codemaps}.
+
+At the end of the chapter I descripe some of the patterns I use in the
+development, such as dependency injection, and the repository pattern.
+
+In the end the implementation has been described in
+chapter~\ref{chap:Implementation}. Here I discuss my use of the entity
+framework, and how I even though it is already using the repository pattern, and
+unit of work pattern, I wrap it in order for me not to be as dependent on the
+ORM itself in the controllers.
+
+In the implementation I also discuss how I handle cascade delete, as there are
+som issues with circular paths if it is automated in some cases.
+
+For fails caursed by something that the repositories need, such as not finding a
+resource, or duplicate uniqueue I throw exceptions which is caurght by a filter
+and converted into the propper HTTP response.
+
+I also discuss how I get the data from the database and format it in a way so
+that it can be plotted in a graph, with a few code examples.
+
+The last part of the chapter~\ref{chap:Implementation} is about how I have
+tested the system. Here I describe the idea behind the testing, including how
+the unit testing has been done, and what frameworks I used. I also explain how
+it is easier to test isolated parts of the code in the unit tests because of the
+dependency injection. Another thing I go over in this part is the integration
+testing, even though I have not made too many automated integration tests, but
+rather taken advantage of the web application to test the flow of the data.
+
+\section{Conclusion}
 
 
 \section{Future work}
