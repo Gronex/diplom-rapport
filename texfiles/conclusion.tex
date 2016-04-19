@@ -148,8 +148,67 @@ can easily support another frontend when that is deemed nessesery.
 
 \section{Future work}
 \label{sec:future_work}
-\todo[inline]{explain how in a full version some energy should be put into improving the
-searching}
-  
+Since the product I have created only is a prototype, it is not currently in a
+state where IT minds would be able to take it into use, but requires some
+ajustments and a few features before that would be possible.
+
+One thing that should be looked at would be the \textbf{user experience}, as for a system
+like this to succeede a user and a designer would have to sit down and spend
+some time looking at workflows and from that develop a propper interface that
+suites the work flows of such a system.
+
+In IT minds we use google as our email host, and as such have our google
+accounts assosiated with a lot of web applications, so it would make sence to
+allow us to use google for the CRM as well. The way I have developed the user
+authentication it would be possible to include google accounts and single
+\textbf{sign-on}. It would also be possible to use facebook, twitter, or microsoft accounts if that
+is something that makes sence. The extention would not require too much work,
+and it would not nesseserily break the current login flow, but rather extend it
+with the possibility of alternatives.
+
+Another feature that could be usefull in the future would be the integration of
+calenders, so that a user can go in and see in a \textbf{calender view} the assignments
+they have. This would allow the users to get a better overview of what they have
+to do when, and is mostly supported in the backend currently. The only real
+change in the backend would be the ability to filter an activity based on the
+date and possibly time it is happening.
+
+An extention to the calendar view could be the full integration of \textbf{external
+calenders}. An example of such an integration could be google calendar, which is
+used a lot in IT minds, as it is part of our mailing system as described
+earlier. For propper usability it would probably have to support several
+different calendar types and be configurable so that a user would be able to
+choose not to get every type in to their calendar. The customization could be
+based on activity categories, so the user could choose if they want all, some,
+or none of the categories added to their calendar.
+
+In relation to that it could be usefull to be able to \textbf{automaticaly create
+activities} by inviting the system into an event. This could as an example work
+so that if Kristian wanted to create an activity with me he would create a
+google calendar event and invite me. In IT minds he would useually also add the
+meeting room, to book it so others can see that it is not available at the given
+time. In a similar fasion he could then add the system as a participant, and
+when it recieves an invitation it would create an activity for Kristian and me.
+In the case no person in the system has my email it would have to add a new
+person and probably inform kristian that he should update the information on
+that person. For the company it could be left blank, or the system could try to
+interpret it based on the host name of the email address.
+
+Another thing that would possibly be good for the system would  be to \textbf{improve
+the filter} that a user could apply when looking at the overviews, allowing them
+to filter only on people from eg. a specifik company. This would require some
+ajustments in what is recieved from the frontend, but since the database is
+build up in a relational way the search itself is not hard, but figuring out how
+to allow a user to search for any given number of parameters at once may be a
+challange, although not impossible.
+
+A thing that would require some improvements for it to work satisfiably is the
+\textbf{searching feature}. Right now this feature only matches for almost exact words,
+meaning misspellings are not accepted, and the only acceptable differences in
+the words are spaces and dashes, as i remove those from the search term and the
+target term. I also make sure that there are any issues with upper or lower case
+letters, but it still means that the term would have to be consisting of only
+letters in the desired word, in the correct order.
+
 \section{IT minds statement}
 \todo[inline]{a statement from IT-minds}
