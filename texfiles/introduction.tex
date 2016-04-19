@@ -35,7 +35,7 @@ that keeps track of customer relations already, but it does not support all the
 use cases that they want, and cannot give the information they are interested
 in. Because of this they have asked me to make a new system to handle these
 cases, since they do know that the time available is limited, the system will
-not be a fully fletched one, but focus on the irritations they have with the
+not be a fully fetched one, but focus on the irritations they have with the
 current systems, as well as the basic requirements for the system to work. 
 
 A CRM\footnote{Customer Relation Management} system aims to allow a user to keep
@@ -47,7 +47,7 @@ organization.
 Such a system could be run locally, but that reduces its usability, in that it
 will be only a single person in the company, or a single machine that will be
 able to keep track of the given information. Because of this a CRM is often run
-as a webserver, either on the local network of the company, or on the internet
+as a web server, either on the local network of the company, or on the internet
 so that it can be accessed from anywhere, which can be useful if the company has
 multiple departments, or if the user wants to access it from a phone, or some
 other device that may not be connected directly to the network the CRM is hosted
@@ -56,12 +56,12 @@ on, or have access to a VPN.
 It is not uncommon for a sales department to want to look up the contact
 information of a client when they are not in the office, and for a company such
 as IT minds with more than one department the need for a distributed system is
-needed, this would generally be on a webserver accessed via the internet. 
+needed, this would generally be on a web server accessed via the internet. 
 
-Even after we have figured out that we want the system to be run on a webserver
+Even after we have figured out that we want the system to be run on a web server
 we still have different ways to go, each with their own advantages and
 disadvantages. Some of them could be writing a static website that is closely
-connected to the server, so the server generates the appropriate html allowing
+connected to the server, so the server generates the appropriate HTML allowing
 for communication with the database, via technologies such as php, JSP, or ASP.
 Another way could be to write a web-api, serving the information only in raw
 format on designated paths. A third option could be to make a
@@ -71,7 +71,7 @@ chapter~\ref{chap:Technology}.
 
 In figure~\ref{fig:sys_example} an example of how a system capable of showing
 graphs could look. This is a screenshot taken at the end of the development
-process, of the count of activities in a sertain category, within a sertain time interval.
+process, of the count of activities in a certain category, within a certain time interval.
 
 \begin{figure}[h]
 \centering
@@ -98,7 +98,7 @@ all the features they need.
 
 What is needed is the basic CRM features, and on top of that the ability to set
 a production goal for each user of the CRM, giving a more clear incentive for
-the user to do better, and promoting competition amongst the users. 
+the user to do better, and promoting competition among the users. 
 
 In some systems, eg. PipelineDeals\cite{pipelinedeals:features} this feature is
 supported to some extend, but not in a way that makes sense for a company like
@@ -127,13 +127,13 @@ final testing phase will be entered, and the system will be tested more
 thoroughly than it was in the development phase, to hopefully catch any bugs
 there may be left. 
 
-\subsection{Delimitations}
+\subsection{Delimitation's}
 \label{sub:Delimitations}
 Because of the time available for the development of the project, and the size
 of a full CRM I am forced to implement only a subset of all the features a
 production ready CRM would consist of. As the primary focus of this project is
 to create the backing structure for a CRM that supports the requested features,
-the focus on a frontend, and the user experience will be lower. Some
+the focus on a front-end, and the user experience will be lower. Some
 implementation of visualization will be made as it is what the system is meant
 to serve, but the primary focus will be on the collection, and manipulation of
 the data as well as the ability to get it out again in a useful way. 
@@ -142,7 +142,7 @@ The primary product of the project will be a system that has the most essential
 features of a CRM, but it will still be missing a lot of the features that makes
 a full product convenient to use. This is because of the limitation in hours
 that can be put into creating the system, which can be seen in that there are
-companies whos primary product is a CRM, such as PipelineDeals. 
+companies who's primary product is a CRM, such as PipelineDeals. 
 
 This also means that one of the aims of the project is to make sure that the
 structure supports the addition of new features for further development, as that
@@ -224,11 +224,11 @@ regards to the report and the implementation of the product.
   \item Decide on what design patterns to use for the project
   \item Implement the database from the designed structure
   \item Implement the application with the decided upon technologies
-  \item Make a frontend implementation to communicate with the server
+  \item Make a front-end implementation to communicate with the server
   \item Test the system using unit tests and integration tests
   \item Discuss the advantages and disadvantages of the testing
   \item Reflect on the resulting product, and what is missing compared to a full CRM
-  \item Figure out futute work for the product
+  \item Figure out future work for the product
 \end{enumerate}
 
 \section{Thesis structure}
@@ -236,7 +236,7 @@ regards to the report and the implementation of the product.
 Here I will go over the general structure of the report, and what each of the
 chapters will focus on, as well as what goal they will complete.\\ 
 
-\textbf{Chapter~\ref{chap:Domain analasys} - \nameref{chap:Domain analasys}}
+\textbf{Chapter~\ref{chap:Domain analasys} - \nameref{chap:Domain analysis}}
 will describe the domain the solution is under, including requirements from IT
 minds to the solution, and a prioritized order of features that may be
 implemented into the system. The chapter will also set up some use cases that

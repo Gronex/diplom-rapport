@@ -1,12 +1,12 @@
-\chapter{Domain analasys}
-\label{chap:Domain analasys}
+\chapter{Domain analysis}
+\label{chap:Domain analysis}
 In this chapter I will describe the requirements for the system as they have been decided to be in collaboration with Kristian. I will describe what users will be in the system, and why they are there.
 
 I will also set up both functional and non functional requirements, and use some of the functional requirements to create use cases, describing how the system should work in the described cases.
 
 After this I create a domain model, describing the domain of the system, and use some time explaining how it should be read, as not all the notations are standards, but I feel they need to be there in order to give the desired information.
 
-I will in the end create a few mockups to give an idea of how the frontend could look based on the data given from backend.
+I will in the end create a few mockups to give an idea of how the front-end could look based on the data given from back-end.
 
 \section{Requirements}
 \label{sec:Requirements}
@@ -23,7 +23,12 @@ One of the basic requirements are the users that the system will support. Ideall
   \item Standard
 \end{itemize}
 
-The executive does not have any special rights compared to the standard user initially, but they my have predesigned overviews, because their role in the system is to gain an overview of the all the users in a department or user group. They can of course also do the same as a standard user, such as create people and companies. In the future they may gain privileges that the standard user is not supposed to have, but for now that will not be the case.
+The executive does not have any special rights compared to the standard user
+initially, but they my have pre-designed overviews, because their role in the
+system is to gain an overview of the all the users in a department or user
+group. They can of course also do the same as a standard user, such as create
+people and companies. In the future they may gain privileges that the standard
+user is not supposed to have, but for now that will not be the case.
 
 One could argue that it is pointless to have that user at this point since it cannot do anything special, but the primary argument is that IT minds, and a lot of others have this structure in delegation of responsibility, and if in the future we decide that there is some information that the executives should have access to but the normal users should not, the setup is already in place, and the super user will not have to reassign all the users who are supposed to be executives.
 
@@ -36,7 +41,14 @@ This is a requirement because it gives the users something to aim fore, and allo
 \subsection{Resources}
 \label{sub:Resources}
 
-A theme with a lot of the requirements was the desire to be able to customize, instead of having the system enforce things on the users. The things that should de customizable is categories, departments, stages and the like. Generally things that tag something, and that may carry a value with it, such as stage, which is supposed to have a percentage of certainty for an opportunity. Letting the super user make the stages them selves also allows them to set what the stage actually means, allowing a system that suites the individual company's way of working better.
+A theme with a lot of the requirements was the desire to be able to customize,
+instead of having the system enforce things on the users. The things that should
+be customizable is categories, departments, stages and the like. Generally
+things that tag something, and that may carry a value with it, such as stage,
+which is supposed to have a percentage of certainty for an opportunity. Letting
+the super user make the stages them selves also allows them to set what the
+stage actually means, allowing a system that suites the individual company's way
+of working better. 
 
 The customization should only be something that the super user can create, as to avoid too many things that essentially mean the same to show up. In the case of an opportunity the tag that a stage shows may be fitting while the value is not, therefore it is also desired that the creator of the opportunity can overrule the suggested value that the stage carries to fit better with each individual opportunity.
 
@@ -46,7 +58,17 @@ is responsible for it, and who the deal is with, as well as how much it will
 earn. A full list of what an opportunity should contain can be seen in
 figure~\ref{fig:domain_model}.
 
-The primary reason for IT minds to want a new CRM is that most other CRM's frontload the earning from an opportunity, resulting in a task that that will earn a lot of money, but also takes up a lot of resources looking like it has no impact on any of the months after the first. This is not how it works in reality, as the company who hires eg. IT minds to work for a couple of months pay a little bit every month instead of everything all at once. The solution to this is mostly in regards to data visualization, where we need to keep track of the span of an opportunity, and what it will earn over that period, this should then be divided out over the span of the opportunity, also meaning that the earnings of a user is based on the same, since it needs to be possible to set goals for the user on a per month basis.
+The primary reason for IT minds to want a new CRM is that most other CRM's
+frontload the earning from an opportunity, resulting in a task that that will
+earn a lot of money, but also takes up a lot of resources looking like it has no
+impact on any of the months after the first. This is not how it works in
+reality, as the company who hires eg. IT minds to work for a couple of months
+pay a little bit every month instead of everything all at once. The solution to
+this is mostly in regards to data visualization, where we need to keep track of
+the span of an opportunity, and what it will earn over that period, this should
+then be divided out over the span of the opportunity, also meaning that the
+earnings of a user is based on the same, since it needs to be possible to set
+goals for the user on a per month basis. 
 
 Since an opportunity is a bigger thing, and there will be a lot of work related to a single one, I also need a way to keep track of smaller tasks, such as making a call, or going to a meeting. This is where an activity comes in to the picture. An activity should be able to be several things defined by the super admin, but the primary thing that it does is define a task for a user to do. The task could be to send an email, or make a call, or go to a conference. Because these things don't take the same amount of time a category for them can have a value, so it can be visualized what the users are using their time on. This is useful as right now IT minds ports the number of activity for all the users to a spread sheet, and graphs from there, but if the system could do that for them some inconvenience would be saved.
 
@@ -99,7 +121,7 @@ From the requirements of section~\ref{sec:Requirements} I have created a use cas
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=\textwidth]{use_cases}
-  \caption{Usecase diagram}
+  \caption{Use case diagram}
   \label{fig:usecase_diagram}
 \end{figure}
 
@@ -114,7 +136,7 @@ Because of the number of use cases in the system only a few of them have been wr
   \item User: Wants to be able to track the likelihood of an opportunity, and assign tasks to is, as well as keep track of opportunities in companies
 \end{itemize}
 \textbf{Preconditions}: User is logged in \\
-\textbf{Postconditions}: Opportunity is saved. User is associated. Company associated. Person associated. Stage associated. User groups coppied\\
+\textbf{Postconditions}: Opportunity is saved. User is associated. Company associated. Person associated. Stage associated. User groups copied\\
 \textbf{Main Success Scenario}:
 \begin{enumerate}
   \item User fills out the Name, Description, Price, Start and End dates, Category, Hourly price, and expected close date
@@ -124,7 +146,7 @@ Because of the number of use cases in the system only a few of them have been wr
   \item User adjusts the percentage for success
   \item User clicks save
 \end{enumerate}
-\textbf{Extentions}:
+\textbf{Extensions}:
 \begin{itemize}
   \item [1a.] User wants to add contact
   \begin{enumerate}
@@ -166,7 +188,7 @@ Because of the number of use cases in the system only a few of them have been wr
   \item Super User writes a value for the percentage
   \item Super User clicks save
 \end{enumerate}
-\textbf{Extentions}:
+\textbf{Extensions}:
 \begin{itemize}
   \item [4a.] System detects the name is used by another stage
   \begin{enumerate}
@@ -197,7 +219,7 @@ Because of the number of use cases in the system only a few of them have been wr
   \item Super User enters a value for the goal
   \item Super User clicks add
 \end{enumerate}
-\textbf{Extentions}:
+\textbf{Extensions}:
 \begin{itemize}
   \item [2a.] Super User chooses existing goal
   \begin{enumerate}
@@ -283,13 +305,13 @@ and what information would be available in that view for it to work.
 
 As this is a prove of concept the mockups are made from screenshots of the
 system in the development phase. They started out as mockups on paper, but as it
-is a prove of consept, and as such the look of the system changes a lot they
-have been replaced with thiese.
+is a prove of concept, and as such the look of the system changes a lot they
+have been replaced with these.
 
-Like I have mentioned earlier my focus is not to make a good frontend presenting
+Like I have mentioned earlier my focus is not to make a good front-end presenting
 the data to the user, but rather make the backing server serving the data for
-any given frontend to hook up to. I will however be making a suggestion of a
-frontend, mostly to show the features of the backend in action. This does
+any given front-end to hook up to. I will however be making a suggestion of a
+front-end, mostly to show the features of the back-end in action. This does
  mean that the mockups are not necessarily going to be representative of
 a final product, and they are not meant as anything other than a help to
 imagine the way the system could look. 
@@ -319,7 +341,7 @@ appendix~\ref{app:usecase:viewsettings}, and
 \nameref{app:usecase:visualizegoalsproduction} from
 appendix~\ref{app:usecase:visualizegoalsproduction} is represented in figure~\ref{fig:VisualizationView}
 
-It can be seen that there are save buttons and a dropdown with names, this is to
+It can be seen that there are save buttons and a drop-down with names, this is to
 allow the user to save a filter that they use a lot, as well as allow the admins
 to set up some defaults for the users to use if they want.
 
@@ -340,7 +362,7 @@ to set up some defaults for the users to use if they want.
 The two other mockups in figure~\ref{fig:OpportunityView} and
 \ref{fig:ActivityView} are of some fairly essential parts of the system, namely
 the management of an opportunity which is what the users will use to keep track
-of tasks they may or may not win for the company. The usecase where the view is
+of tasks they may or may not win for the company. The use case where the view is
 used is explained in \nameref{app:usecase:editopportunity} in
 appendix~\ref{app:usecase:editopportunity} and
 \nameref{app:usecase:editactivity} in appendix~\ref{app:usecase:editactivity}.
@@ -359,13 +381,13 @@ probably end up looking a lot like the one in figure~\ref{fig:ActivityView}.
 
 To navigate around on the page one would follow the routes described in the
 navigation diagram in figure~\ref{fig:navigation_diagram}. A thing to note about
-the figure is that the main page is something that is alwayse available, so
-anything comming rirectly from that can be accessed from anythere. With the
+the figure is that the main page is something that is always available, so
+anything coming directly from that can be accessed from anywhere. With the
 exception of activate account, as that is only linked to by an email sent to the
 user on creation of a new user.
 
 The notes are to indicate the authorization level a user needs to be able to
-access that particular branch and all the nodes and subnodes underneath.
+access that particular branch and all the nodes and sub nodes underneath.
 
 \begin{figure}[!htb]
   \centering
@@ -376,13 +398,13 @@ access that particular branch and all the nodes and subnodes underneath.
 
 \section{Chapter summary}
 In the system we will have 3 types of users, the standard user, an executive,
-which will have no spesific abilities over the standart user to begin with, but
-in the future it may be needed. And finaly a super user, who will be
-administrating the system, vreating options for dropdowns, inviting new users
+which will have no specific abilities over the standard user to begin with, but
+in the future it may be needed. And finally a super user, who will be
+administrating the system, creating options for drop-downs, inviting new users
 and the like.
 
 One of the things the super user is meant to do is to customize the system by
 setting categories, goals, and groups. Another thing that is important for the system,
 is the ability to get an overview so that a user can know how they are doing, or
-how the company is doing. This should be made in a way so that it can easyly be
+how the company is doing. This should be made in a way so that it can easily be
 graphed.
