@@ -75,14 +75,14 @@ the database.
 
 \subsection{Cascade delete}
 Some of my connections between entities are many-to-many relations, which for
-actual implementation purposes is handeled by having a table in between the two
+actual implementation purposes is handled by having a table in between the two
 tables, that link them together with a one-to-many relation to both of the
 tables. 
 
-Useually you would use the foreign keys as a composit key so there cannot be any
+Usually you would use the foreign keys as a composite key so there cannot be any
 duplicate connection.
 
-Because this can easily create multiple cascade paths on delete, I have desided
+Because this can easily create multiple cascade paths on delete, I have decided
 to set the entity framework up in such a way that it will not create cascade
 deletes on many-to-many relations. 
 
@@ -92,8 +92,8 @@ therefore not risk creating deletion race conditions, which the problem of
 multiple cascade paths result in.
 
 Another thing to notice when looking at the domain models is that I don't
-alwayse manually create the many-to-many relation. This is because entity
-framework can figure that out itself, asuming i give it the information it
+always manually create the many-to-many relation. This is because entity
+framework can figure that out itself, assuming i give it the information it
 needs. But in some cases namely UserGroups I do make it manually, this is
 because it does give me more control over what relations are where, and the
 creation of them, even though it makes the code a bit more complex.
@@ -104,10 +104,10 @@ To be able to return the appropriate response when something fails, I have
 decided to throw appropriate exceptions, with messages of what went wrong in
 case that is not obvious from the exception itself.
 
-To help with this I have implemented an extention method for getting things out
+To help with this I have implemented an extension method for getting things out
 of the database. If I want to get a single thing out, I would call
-SingleOrDefault, but if I need the result to be something, and the defult value
-therefore is not useful. For this I have implemented the extention function
+SingleOrDefault, but if I need the result to be something, and the default value
+therefore is not useful. For this I have implemented the extension function
 SingleOrExcept, which just uses SingleOrDefault where if it returns null it
 throws a NotFoundException.
 
@@ -153,22 +153,22 @@ long as it is within the range on the period.
 \end{figure}
 
 In figure~\ref{fig:spreadoutearnings} the implementation of the evening out of
-the earnings is illustrated, as can be seen the implementation the result os a
-list of tuples. The reason i use tuples here is that it allows me to assosiate
+the earnings is illustrated, as can be seen the implementation the result us a
+list of tuples. The reason i use tuples here is that it allows me to associate
 the earned value with the month it was earned.
 
 When the list is returned I filter away the months that i don't need, based on
 the filter, and match it up with a user.
 
 In the end I map the result to a dictionary, with the users email as the key.
-The reason I can do that is that the email is uniqueue, and I have grouped them
+The reason I can do that is that the email is unique, and I have grouped them
 together ahead of time, to allow me to only have one dictionary entry per user,
 containing a list of earnings per month.
 
 \section{Testing}
-To seperate the testing from the rest of the code I have created a seperate
+To separate the testing from the rest of the code I have created a separate
 project containing all the automated tests. The advantage of this is that the
-tests are not nesseserily part of the code that is put on the server that runs
+tests are not necessarily part of the code that is put on the server that runs
 the actual application, but I still have it in the same project, and can
 therefore run the tests as required.
 
@@ -180,7 +180,7 @@ therefore run the tests as required.
 \end{figure}
 
 The results for all the automated tests can be seen in
-figure~\ref{fig:testResults}, where the results are seperated into folders, one
+figure~\ref{fig:testResults}, where the results are separated into folders, one
 for each project, and one folder for the integration tests, as I don't have as
 many of those.
 
@@ -191,19 +191,19 @@ nonexistent database, or rather data kept in memory.
 The framework I have used for testing is xUnit, which is created by the same
 person who created nUnit~\cite{xunit}. The setup for a test is run in the
 constructor, and each test is marked either with Fact or Theory, where in theory
-the test functions tage arguments, and you give it multiple different
+the test functions take arguments, and you give it multiple different
 combinations of arguments, to run the same test with each.
 
 \subsection{Unit tests}
 \label{sec:unit_tests}
 Under the development I have created a lot of unit tests, to test that my
-functions actualy do what i want them to do, and return the correct data.
+functions actually do what i want them to do, and return the correct data.
 
-In figure~\ref{fig:testResults} every test exccept the ones in the
+In figure~\ref{fig:testResults} every test except the ones in the
 IntegrationTests folder are unit tests, meaning the test only test a single unit
 at a time.
 
-In practis this means that I replace all the dependencies with mocked versions.
+In practise this means that I replace all the dependencies with mocked versions.
 For this i have used a mocking framework by the name
 NSubstitute\footnote{http://nsubstitute.github.io/}. This is one of the places
 where the injection pattern comes in handy, as I can substitute the injected
@@ -215,9 +215,9 @@ An example of substitution of a method could be PersonsControllerTest where I
 substitute the IPersonRepository argument to the controller, and later when I
 know the controller is going to call a function in that one, such as when I want
 to get a single object from the database I can tell the function that it should
-return a specifik object in that case, as I am not interested in testing the
+return a specific object in that case, as I am not interested in testing the
 controllers ability to fetch data, but rather test that it does not mess up the
-data, and it actualy tries to get it. 
+data, and it actually tries to get it. 
 
 For the case where it fails, the test is more a case of does the controller
 catch the exception and act like nothing happened, which is the wrong behaviour
@@ -229,7 +229,7 @@ section~\ref{sub:Unit of work pattern}.
 
 I have tried to keep follow the ideas of test driven development, by writing my
 tests first, and making the implementation afterwards, so that the tests work as
-a description of what i expect the function to return given spesifik arguments.
+a description of what i expect the function to return given specific arguments.
 
 \subsection{Integration tests}
 \label{sec:integration_tests}
@@ -237,13 +237,13 @@ An integration test is a test that tests a full flow, instead of just testing an
 isolated part of the program. The idea of this is to test the communication
 between components.
 
-There will automaticaly be less integration tests than unit tests, as there are
+There will automatically be less integration tests than unit tests, as there are
 more units in the code than flows. In my case I have not written as many
 integration tests as I could have since a lot of the integration testing have
-been done manually when writing the frontend, where I have to make the calls for
+been done manually when writing the front-end, where I have to make the calls for
 data to show up in the system, as well as the creation, and manipulation calls.
 
-The unit tests are generally more usefull for the development, in that they help
+The unit tests are generally more useful for the development, in that they help
 identify where the issue may be in the code, instead of saying that starting
 from some point given some arguments something went wrong.
 
@@ -251,7 +251,7 @@ from some point given some arguments something went wrong.
 For communication with the database I use Entity framework, which is an ORM
 allowing me to interact with the entities as if they were C\# objects. This
 gives me the advantage of type safety, as well as it allows me to use LINQ which
-is a powerful list comprehention library in C\#.
+is a powerful list comprehension library in C\#.
 
 Even though entity framework implements the repository pattern, I have wrapped
 it in my own implementation, in order to gain more control, and reduce repeated
@@ -262,15 +262,15 @@ am working with.
 
 I make sure to never call save in the repositories, as they are not able to know
 if anything else will be happening with the database later in the call, but only
-save when the controller desides that it should be done. To make sure that it is
+save when the controller decides that it should be done. To make sure that it is
 obvious that is the way to do it, I have created a unit of work class, where the
-only thing it can do is call save. This way I can also ignore what kind ov ORM I
-am using for communicating with the datastorage entirely in the controllers, as
+only thing it can do is call save. This way I can also ignore what kind of ORM I
+am using for communicating with the data storage entirely in the controllers, as
 it is not important here.
 
 In the case a user asks for something that does not exist, eg. an opportunity
 with an id that is not in the database, the repository will throw a
-NotFoundException, which will propergate all the way outside the controller. The
+NotFoundException, which will propagate all the way outside the controller. The
 reason the caller will not get an InternalServerError, is because I use filters,
 that catch the exception, and translates it into a not found response. This
 filter is applied globally for all the controllers, together with a few others.
@@ -280,15 +280,15 @@ that the system pulls out the data based on a filter, and then formats it so
 that it is easy to illustrate in a graph or table, and compare each point.
 
 For testing I use xUnit, which allows me to create test methods, that each test
-a spesific thing. Under the development I created unit tests, so that I could
-see if a single bit of the program dod what i expected it it. For the unit
+a specific thing. Under the development I created unit tests, so that I could
+see if a single bit of the program does what I expected of it. For the unit
 tests I made use of the injection, by mocking the dependencies of the class, and
 managing the results of the calls the tested method made.
 
-Because there are more smaller units in the application than there are usecases
-there are a lot more unit tests than integrations tests. This is also because
-most of the integration testing has been done via the javascript application I
+Because there are more smaller units in the application than there are use cases
+there are a lot more unit tests than integration tests. This is also because
+most of the integration testing has been done via the JavaScript application I
 have developed next to the server, which results in the tests not being
-automatic, but in order for the javascript application to work I the server
+automatic, but in order for the JavaScript application to work I the server
 still had to work, and the unit tests are there to help identify where the
 issues may have shown up.

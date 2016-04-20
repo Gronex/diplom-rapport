@@ -1,12 +1,20 @@
 \chapter{Design}
 \label{chap:Design}
-In this chapter I will look into designing the system, starting out with how the database should look in order for it to be able to store the data in a way that allows me to easily access it again, while reducing redundant data stored.
+In this chapter I will look into designing the system, starting out with how the
+database should look in order for it to be able to store the data in a way that
+allows me to easily access it again, while reducing redundant data stored. 
 
-After the database I will get into how the system will be structured, which includes explaining the model that I will be following. Finally I will give a short explanation of some of the patterns I will be following, and why they are useful for a system such as this one.
+After the database I will get into how the system will be structured, which
+includes explaining the model that I will be following. Finally I will give a
+short explanation of some of the patterns I will be following, and why they are
+useful for a system such as this one. 
 
 \section{Database}
 \label{sec:Database}
-The design of the database will look on many points similar to the domain model in figure~\ref{fig:domain_model}. This is because on a lot of the points in this system the domain model can be saved directly to the database. I have of course had to make some adjustments, as can be seen in figure~\ref{fig:er_diagram}.
+The design of the database will look on many points similar to the domain model
+in figure~\ref{fig:domain_model}. This is because on a lot of the points in this
+system the domain model can be saved directly to the database. I have of course
+had to make some adjustments, as can be seen in figure~\ref{fig:er_diagram}. 
 
 \begin{figure}
   \includegraphics[width=\textwidth]{ER_diagram}
@@ -14,14 +22,33 @@ The design of the database will look on many points similar to the domain model 
   \label{fig:er_diagram}
 \end{figure}
 
-The design is in NF1\footnote{First Normal Form} because I do not have any rows containing any duplicate information, such as a company having a column for all their workers, instead the workers are separated out into a different table\cite[p.~430]{DB_systems}, the same is true for a user and their goals and user groups, instead of having a list of them in the table itself, I have it separated out into different tables.
+The design is in NF1\footnote{First Normal Form} because I do not have any rows
+containing any duplicate information, such as a company having a column for all
+their workers, instead the workers are separated out into a different
+table\cite[p.~430]{DB_systems}, the same is true for a user and their goals and
+user groups, instead of having a list of them in the table itself, I have it
+separated out into different tables. 
 
-It is also in NF2\footnote{Second Normal Form} because none of the properties of any of the tables are functionally dependent on anything other than the primary key of the table\cite[p.~434]{DB_systems}.
+It is also in NF2\footnote{Second Normal Form} because none of the properties of
+any of the tables are functionally dependent on anything other than the primary
+key of the table\cite[p.~434]{DB_systems}. 
 
 The next normal form would be the third normal form. I have come to the
-conclusion that it is not worth the extra complexity and work of perusing this last part as the goal with it is to reduce redundant data to even greater extent, which would mean I would have to move the location based fields of Company out into a separate table in order for me to remove the transitive dependency\cite[p.~436]{DB_systems} there is between the city, address, and postal code, as well as the country. The reason for not pursuing this is that I have deemed the gain not worth it, since it would bind all locations in the same area together, and the users may not be interested in this, since if they then change the postal code or city name of one company, the rest that is located in the same place will follow.
+conclusion that it is not worth the extra complexity and work of perusing this
+last part as the goal with it is to reduce redundant data to even greater
+extent, which would mean I would have to move the location based fields of
+Company out into a separate table in order for me to remove the transitive
+dependency\cite[p.~436]{DB_systems} there is between the city, address, and
+postal code, as well as the country. The reason for not pursuing this is that I
+have deemed the gain not worth it, since it would bind all locations in the same
+area together, and the users may not be interested in this, since if they then
+change the postal code or city name of one company, the rest that is located in
+the same place will follow. 
 
-Some people argue that nulls should be allowed and others that there should be no nulls in a database\cite{stackexchange:db:nullfields}, I do see the reasoning of both arguments, generally that you cannot know what null represents, it could mean the absence of data, purposefully or something else.
+Some people argue that nulls should be allowed and others that there should be
+no nulls in a database\cite{stackexchange:db:nullfields}, I do see the reasoning
+of both arguments, generally that you cannot know what null represents, it could
+mean the absence of data, purposefully or something else. 
 
 One argument is if there is a null value in eg. an integer could mean both zero
 and unknown. A solution to avoiding null values in a database could be to split
@@ -36,13 +63,17 @@ As an example if we look at the table Company, the website field is nullable, as
 can be seen in the full database diagram in appendix~\ref{app:database diagram}.
 Here if I have a value of an empty string, it would mean that the website of
 the company is known to be non existent. If the field is not set, I know that
-the company may have a website, it is just nok known in the system.
+the company may have a website, it is just not known in the system.
 
-This forces me to still think about if I should allow a value to be null or not, without forcing me out of the possibility which is why I have chosen that solution.
+This forces me to still think about if I should allow a value to be null or not,
+without forcing me out of the possibility which is why I have chosen that
+solution. 
 
 \section{System structure}
 \label{sec:System structure}
-The structure of the system follows the onion architecture\cite{onion_architecture}, which means that it is build up of layers like it can be seen on figure~\ref{fig:Onion architecture}.
+The structure of the system follows the onion
+architecture\cite{onion_architecture}, which means that it is build up of layers
+like it can be seen on figure~\ref{fig:Onion architecture}. 
 
 \begin{figure}[h]
   \centering
@@ -52,7 +83,13 @@ The structure of the system follows the onion architecture\cite{onion_architectu
 \end{figure}
 \footnotetext{Source: http://www.matthidinger.com/images/www\_matthidinger\_com/Windows-Live-Writer/ff0d136aee1f\_88EA/image\_2.png}
 
-In figure~\ref{fig:structure} the setup that my project will follow is illustrated. As can be seen I have three core projects, one for each of the core layers of the model, and outside this I have an infrastructure layer, which is responsible for talking to the database. The way the outer most layers then work is by using the interfaces that is defined in \textit{Core.DomainServices}. These interfaces describe how the application can access the data however it is stored.
+In figure~\ref{fig:structure} the setup that my project will follow is
+illustrated. As can be seen I have three core projects, one for each of the core
+layers of the model, and outside this I have an infrastructure layer, which is
+responsible for talking to the database. The way the outer most layers then work
+is by using the interfaces that is defined in \textit{Core.DomainServices}.
+These interfaces describe how the application can access the data however it is
+stored. 
 
 \begin{figure}[h]
   \centering
@@ -61,24 +98,42 @@ In figure~\ref{fig:structure} the setup that my project will follow is illustrat
   \label{fig:structure}
 \end{figure}
 
-I use injection to allow for easier testing, and lower dependency between the classes. This means that in the project \textit{customer\_relations\_manager} which is where the controllers the users will be calling is implemented, take interfaces for the repositories defined in \textit{Core.DomainServices}. The injection system then is set up to inject the classes from \textit{Infrastructure.DataAccess} that implement the interfaces.
+I use injection to allow for easier testing, and lower dependency between the
+classes. This means that in the project \textit{customer\_relations\_manager}
+which is where the controllers the users will be calling is implemented, take
+interfaces for the repositories defined in \textit{Core.DomainServices}. The
+injection system then is set up to inject the classes from
+\textit{Infrastructure.DataAccess} that implement the interfaces. 
 
-The \textit{Core.ApplicationServices} project is there in the case that I need a service that is not related to accessing data from the data store, but instead doing something else.
+The \textit{Core.ApplicationServices} project is there in the case that I need a
+service that is not related to accessing data from the data store, but instead
+doing something else. 
 
-Finally the inner most layer is the classes describing the data that is stored in my case in a database the name of this project is \textit{Core.DomainModels}. Their job is to describe how the data looks in the database, and they are used for making the database first migrations.
+Finally the inner most layer is the classes describing the data that is stored
+in my case in a database the name of this project is \textit{Core.DomainModels}.
+Their job is to describe how the data looks in the database, and they are used
+for making the database first migrations. 
 
-The \textit{UnitTests} project is on the same level as \textit{customer\_relations\_manager}, which means that it is allowed to see everything in the project, allowing it to test it all.
+The \textit{UnitTests} project is on the same level as
+\textit{customer\_relations\_manager}, which means that it is allowed to see
+everything in the project, allowing it to test it all. 
 
-The goal with all this separation is to both make it easier to swap out parts of the project without too much hassle, and to be able to reuse parts, in case I want to do something similar in the future. It does however also force us to not have an uncontrollable mess of dependencies, since the domain models are never allowed to know anything other than them selves, and the data access layer cannot say anything about how the data will look in the end, only find and filter on it.
+The goal with all this separation is to both make it easier to swap out parts of
+the project without too much hassle, and to be able to reuse parts, in case I
+want to do something similar in the future. It does however also force us to not
+have an uncontrollable mess of dependencies, since the domain models are never
+allowed to know anything other than them selves, and the data access layer
+cannot say anything about how the data will look in the end, only find and
+filter on it. 
 
 \subsection{Sequences}
 \label{subsec:sequences}
 To illustrate some of the flows in the system I have made two sequence diagrams,
-that go over some standart things the system will do. Namely viewing the goals
+that go over some standard things the system will do. Namely viewing the goals
 of users, in the system, and creation of an opportunity.
 
 The sequences are also tested as integration tests, which will be explained
-firther in section~\ref{sec:integration_tests}.
+further in section~\ref{sec:integration_tests}.
 
 For the first sequence diagram i have described how the system works when a user
 wants to get the graph data of goals. This can be seen in
@@ -89,23 +144,23 @@ back from the server, as that is the primary objective of the call. In the get
 the client sends a filter, in this case that could be the time span it is
 interested in, and maybe also which users or groups of users they want data for.
 
-The first thing that happens on the servieside is that we correct the dates,
-since I have desided that if no date is given it means that we return a span of
-one year, starting in january of the current year. This also makes sure that if
+The first thing that happens on the server side is that we correct the dates,
+since I have decided that if no date is given it means that we return a span of
+one year, starting in January of the current year. This also makes sure that if
 the user swapped to and from I can still figure out what they meant, as I just
 swap them in that case. 
 
 The next step revolves around getting the data from the database, here we apply
 the filters, and ask our repository to give all the goals it can find with that
 filter. It has a sub call to do the filtering for it, as multiple functions use
-the same fintering mechanisms in that class.
+the same filtering mechanisms in that class.
 
 When the goals are returned we hand them to the applicationServices, who will
-manipulate the data, so that it is in the correct format, and remove unnessesery
+manipulate the data, so that it is in the correct format, and remove unnecessary
 information before returning with the data. When the data is returned it is
 wrapped, to inform the caller of any changes we may have made to the dates, and
-we return an Ok with the wrapped data. The Ok return is to indicate that it is a
-return via the http connection, with a statuscode of 200.
+we return an OK with the wrapped data. The OK return is to indicate that it is a
+return via the HTTP connection, with a status code of 200.
 
 \begin{figure}[!htbp]
 \centering
@@ -117,12 +172,12 @@ return via the http connection, with a statuscode of 200.
 For the sequence diagram describing the creation of an opportunity, as can be
 seen in figure~\ref{fig:opportunity_sequence} we have start with a Post call the
 the server, this post call contains the data that the client wants to create an
-opportunity of. Because we cannot asume that the client sends valid data we have
-to verify, and if the data is not valid we return BadRequest, which is an http
-returntype with the code 400, we also tell the client why the request was not
+opportunity of. Because we cannot assume that the client sends valid data we have
+to verify, and if the data is not valid we return BadRequest, which is an HTTP
+return type with the code 400, we also tell the client why the request was not
 acceptable, as that can help the user fill out missing fields.
 
-If the data is okey we ask the repository to create the opportunity. In order
+If the data is okay we ask the repository to create the opportunity. In order
 for the repository to verify that all the fields exist, and to link them up it
 checks with the database. Some of the fields are optional, as can be seen with
 the company and contact, and if they are not set we don't contact the database
@@ -160,7 +215,7 @@ of the onion model, where all knowledge is towards the center, and never
 outwards. In the case of the figure the center is the in the bottom, and the
 outermost layer is in the top.
 
-For versions where the layers are foldet out look in
+For versions where the layers are folded out look in
 appendix~\ref{app:codemaps}, where there is one figure for each of the layers.
 
 The maps are not true class diagrams, as some of the syntax does not follow the
@@ -173,48 +228,74 @@ make it easier to get an overview of the relations.
 
 \subsection{Dependency injection}
 \label{sub:Dependency injection}
-In order for us to reduce coupling in the code I can use dependency injection. Dependency injection is the idea of letting the caller instantiate all of our dependencies instead of creating them in the class where I need it.
+In order for us to reduce coupling in the code I can use dependency injection.
+Dependency injection is the idea of letting the caller instantiate all of our
+dependencies instead of creating them in the class where I need it. 
 
-There are several advantages of this, one of which is that I can easily isolate a single unit of the program for testing, and then do unit testing on that single unit. I can then make mocks of all of its dependencies, and therefore know exactly how the different dependencies will react depending on my test code\cite{dependency_injection}.
+There are several advantages of this, one of which is that I can easily isolate
+a single unit of the program for testing, and then do unit testing on that
+single unit. I can then make mocks of all of its dependencies, and therefore
+know exactly how the different dependencies will react depending on my test
+code\cite{dependency_injection}. 
 
-A way to reduce coupling even further is to instead of depending on a specific class. I can depend on an interface, which will allow me to only rely on a specific set of methods of the class, and then the user can decide what implementation they finds best suited.
+A way to reduce coupling even further is to instead of depending on a specific
+class. I can depend on an interface, which will allow me to only rely on a
+specific set of methods of the class, and then the user can decide what
+implementation they finds best suited. 
 
 \subsection{Repository pattern}
 \label{sub:Repository pattern}
-The objective with the repository pattern is to separate the business logic away from the data access logic, resulting in the business logic not caring about where the data comes from, as it will just call a repository, and expect some data to come back.
+The objective with the repository pattern is to separate the business logic away
+from the data access logic, resulting in the business logic not caring about
+where the data comes from, as it will just call a repository, and expect some
+data to come back. 
 
-An advantage of this pattern is that the developer implementing the business logic can have a mocked implementation of the repository, that just uses some form of local storage. It allows the developers to delay the decision of where to store the data, as the repository does not have to be implemented to access a database, but it could read from a file, request a web service, or something else\cite{repository_pattern}.
+An advantage of this pattern is that the developer implementing the business
+logic can have a mocked implementation of the repository, that just uses some
+form of local storage. It allows the developers to delay the decision of where
+to store the data, as the repository does not have to be implemented to access a
+database, but it could read from a file, request a web service, or something
+else\cite{repository_pattern}. 
 
 \subsection{Unit of work pattern}
 \label{sub:Unit of work pattern}
-A pattern that works well with the repository pattern, that is described in section~\ref{sub:Repository pattern}, is the unit of work pattern. The goal of this pattern is to group up execution of operations that has an impact on the data store. In cases where I just read out from the database I may not need it, but in cases where I change data it makes sense to be in a state where I either do all of the intended operations or none of them.
+A pattern that works well with the repository pattern, that is described in
+section~\ref{sub:Repository pattern}, is the unit of work pattern. The goal of
+this pattern is to group up execution of operations that has an impact on the
+data store. In cases where I just read out from the database I may not need it,
+but in cases where I change data it makes sense to be in a state where I either
+do all of the intended operations or none of them. 
 
-The problem that the unit of work pattern solves is that if I am updating some object, which includes the deletion of some data, I want to make sure that if something fails later on after I have done the delete, so that the creation was not done, the delete operation is abandoned, and I have not damaged my data model\cite{uow}.
+The problem that the unit of work pattern solves is that if I am updating some
+object, which includes the deletion of some data, I want to make sure that if
+something fails later on after I have done the delete, so that the creation was
+not done, the delete operation is abandoned, and I have not damaged my data
+model\cite{uow}. 
 
 \section{Chapter summary}
 The structure of the system is following the onion model, working around the
-idea of layers, with the domain model as the innter core, which is the database
+idea of layers, with the domain model as the inner core, which is the database
 containing the data. The next layer is the domain services, describing how to
 get the data from the database, followed by the application services, which is
-in charge of doing datamanipulation, and tasks that is essential to the system,
+in charge of doing data manipulation, and tasks that is essential to the system,
 without dealing with a user yet. After this we have the implementation of the
 data access, and the user interface, which will be the controllers, and the
 served webpage.
 
-From the usecases I have made a couple of sequence diagrams, describing the flow
-from requesting client to the database and back, resulting in the uclient
+From the use cases I have made a couple of sequence diagrams, describing the flow
+from requesting client to the database and back, resulting in the client
 getting the data that they request. 
 
 In general I have designed the system to follow a principle of allowing the
 repositories to throw exceptions if something goes wrong. These exceptions are
-then courght and transformed into propper responses based on the exception thrown.
+then caught and transformed into proper responses based on the exception thrown.
 
 I follow a couple of patterns in the development. Some of them are dependency
-injection, which allows me to lower the coupeling in the system, and allows me
+injection, which allows me to lower the coupling in the system, and allows me
 to make unit tests easier, since i can control all the dependencies of a class
 at the time of instantiation.
 
-I use the repository pattern to seperate the access ing of data away from the
+I use the repository pattern to separate the accessing of data away from the
 controllers, as they are not meant to deal with the actual implementation of
 that, but rather make sure that the communication is correct, and the right
 tasks are done.
