@@ -341,7 +341,13 @@ Based on the use cases and the requirements I have created a matrix in table~\re
 \label{sec:Domain Model}
 \todo{Update domain model}
 
-From the requirements and the use cases I can now make a domain model. The goal of this domain model is to illustrate the relations between entities in the domain\cite{larman}. This is not to say that the domain model necessarily will illustrate the actual relation between objects in the system, but rather the conceptual relation of the domain. On figure~\ref{fig:domain_model} the domain model of  the system can be seen, on the model the attributes are there because the requirements, and the use cases have shown that those are needed.
+From the requirements and the use cases I can now make a domain model. The goal
+of this domain model is to illustrate the relations between entities in the
+domain\cite{larman}. This is not to say that the domain model necessarily will
+illustrate the actual relation between objects in the system, but rather the
+conceptual relation of the domain. On figure~\ref{fig:domain_model} the domain
+model of  the system can be seen, on the model the attributes are there because
+the requirements, and the use cases have shown that those are needed. 
 
 \begin{figure}[!htb]
   \centering
@@ -350,11 +356,21 @@ From the requirements and the use cases I can now make a domain model. The goal 
   \label{fig:domain_model}
 \end{figure}
 
-The ranges on some of the attributes indicate if the attribute is required, so a range from 0 to 1 will indicate that it is not required.
+The ranges on some of the attributes indicate if the attribute is required, so a
+range from 0 to 1 will indicate that it is not required. 
 
-The goal with the domain model is to increase the understanding of the system, both for the reader but also under development, allowing me to come back and look at the model, if I get unsure of how the different things are meant to relate to one another.
+The goal with the domain model is to increase the understanding of the system,
+both for the reader but also under development, allowing me to come back and
+look at the model, if I get unsure of how the different things are meant to
+relate to one another. 
 
-As can be seen in figure~\ref{fig:domain_model} the center of the system is for the most part an opportunity, which a lot of different things are connected to. Some of the connections are optional however, and can be added later, as described in the use cases. The user is also reasonably often connected to things in the model. The reason for that is given in that a user is the one who interacts with everything, both in the planning world, which is what the system partially models, and in the real world.
+As can be seen in figure~\ref{fig:domain_model} the center of the system is for
+the most part an opportunity, with a lot of different things connected to it.
+Some of the connections are optional however, and can be added later, as
+described in the use cases. The user is also reasonably often connected to
+things in the model. The reason for that is given in that a user is the one who
+interacts with everything, both in the planning world, which is what the system
+partially models, and in the real world. 
 
 \section{Mockups}
 \label{sec:Mockups}
@@ -364,15 +380,16 @@ the final system would look, but more a help to imagine how a view could look,
 and what information would be available in that view for it to work.
 
 As this is a prove of concept the mockups are made from screenshots of the
-system in the development phase. They started out as mockups on paper, but as it
-is a prove of concept, and as such the look of the system changes a lot they
-have been replaced with these.
+system in the development phase. They started out as mockups on paper, but the
+screenshot versions are better, as they still only shows suggestions of how the
+system could look, and are easier to keep up to date on the new features
+discussed with Kristian during the development.
 
 Like I have mentioned earlier my focus is not to make a good front-end presenting
 the data to the user, but rather make the backing server serving the data for
 any given front-end to hook up to. I will however be making a suggestion of a
 front-end, mostly to show the features of the back-end in action. This does
- mean that the mockups are not necessarily going to be representative of
+mean that the mockups are not necessarily going to be representative of
 a final product, and they are not meant as anything other than a help to
 imagine the way the system could look. 
 
@@ -434,7 +451,7 @@ talk to in relation to the thing they are looking at.
 
 The mockup in figure~\ref{fig:ActivityView} has a comment section in the bottom
 which is meant to be used as a way for the users to put recaps of the activity,
-or maybe just notes that they need to remember in relation with it. A less
+or maybe just notes that they need to remember in relation to it. A less
 important feature is the same thing for the opportunity view, because it is not
 as important for the system I have not added it in the mockup, but it would
 probably end up looking a lot like the one in figure~\ref{fig:ActivityView}. 
@@ -447,7 +464,9 @@ exception of activate account, as that is only linked to by an email sent to the
 user on creation of a new user.
 
 The notes are to indicate the authorization level a user needs to be able to
-access that particular branch and all the nodes and sub nodes underneath.
+access that particular branch and all the nodes and sub nodes underneath. Here
+it should be remembered that anything a user with a lower lever of access can do
+is available for someone with higher access rights.
 
 \begin{figure}[!htb]
   \centering
@@ -468,3 +487,7 @@ setting categories, goals, and groups. Another thing that is important for the s
 is the ability to get an overview so that a user can know how they are doing, or
 how the company is doing. This should be made in a way so that it can easily be
 graphed.
+
+I have created some use cases, and mockups to describe the way the system should
+work, as well as a domain model, to help me understand the domain of the system,
+and keep track of how the different concepts are related to each other.
