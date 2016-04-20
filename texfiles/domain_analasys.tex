@@ -1,21 +1,36 @@
 \chapter{Domain analysis}
 \label{chap:Domain analysis}
-In this chapter I will describe the requirements for the system as they have been decided to be in collaboration with Kristian. I will describe what users will be in the system, and why they are there.
+In this chapter I will describe the requirements for the system as they have
+been decided to be in collaboration with Kristian. I will describe what users
+will be in the system, and why they are there. 
 
-I will also set up both functional and non functional requirements, and use some of the functional requirements to create use cases, describing how the system should work in the described cases.
+I will also set up both functional and non functional requirements, and use some
+of the functional requirements to create use cases, describing how the system
+should work in the described cases. 
 
-After this I create a domain model, describing the domain of the system, and use some time explaining how it should be read, as not all the notations are standards, but I feel they need to be there in order to give the desired information.
+After this I create a domain model, describing the domain of the system, and use
+some time explaining how it should be read, as not all the notations are
+standards, but I feel they need to be there in order to give the desired
+information. 
 
-I will in the end create a few mockups to give an idea of how the front-end could look based on the data given from back-end.
+I will in the end create a few mockups to give an idea of how the front-end
+could look based on the data given from back-end. 
 
 \section{Requirements}
 \label{sec:Requirements}
-In order for me to know what is expected of the system I have spoken with Kristian W. Larsen, and together we have come up with some requirements for the system. This includes what users should be in the system, as well as what those users can do. We also talked about some of the views that are important to have for the CRM to be usable, and what annoys him in the existing CRM's, so that this one will be more to IT minds needs.
+In order for me to know what is expected of the system I have spoken with
+Kristian Larsen, and together we have come up with some requirements for the
+system. This includes what users should be in the system, as well as what those
+users can do. We also talked about some of the views that are important to have
+for the CRM to be usable, and what annoys him in the existing CRM's, so that
+this one will be more to IT minds needs. 
 
 \subsection{Users}
 \label{sub:Users}
 
-One of the basic requirements are the users that the system will support. Ideally the following three user types should be supported, each with the rights of the previous, as well as some rights of their own.
+One of the basic requirements are the users that the system will support.
+Ideally the following three user types should be supported, each with the rights
+of the previous, as well as some rights of their own. 
 
 \begin{itemize}
   \item Super
@@ -28,13 +43,27 @@ initially, but they my have pre-designed overviews, because their role in the
 system is to gain an overview of the all the users in a department or user
 group. They can of course also do the same as a standard user, such as create
 people and companies. In the future they may gain privileges that the standard
-user is not supposed to have, but for now that will not be the case.
+user is not supposed to have, but for now that will not be the case. 
 
-One could argue that it is pointless to have that user at this point since it cannot do anything special, but the primary argument is that IT minds, and a lot of others have this structure in delegation of responsibility, and if in the future we decide that there is some information that the executives should have access to but the normal users should not, the setup is already in place, and the super user will not have to reassign all the users who are supposed to be executives.
+One could argue that it is pointless to have that user at this point since it
+cannot do anything special, but the primary argument is that IT minds, and a lot
+of others have this structure in delegation of responsibility, and if in the
+future we decide that there is some information that the executives should have
+access to but the normal users should not, the setup is already in place, and
+the super user will not have to reassign all the users who are supposed to be
+executives. 
 
-This leads to the things the super user can do. This include invitation of users, and assignment of groups and roles. They should also be able to define what groups are available, as well as departments and activity categories. It will also be the super admin who defines states and their percentage value.
+This leads to the things the super user can do, which include invitation of
+users, and assignment of groups and roles. They should also be able to define
+what groups are available, as well as departments and activity categories. It
+will also be the super admin who defines states and their percentage value. In
+general it will be the super users job to customize and configure the system.
 
-A final thing that users should have is production goals, this means that the super user should be able to assign a goal for the user to sell for every month. But because this value may increase it should be in a way so that the assignment is associated with a month and year, and it will run until the next assigned value, which then takes over from that month.
+An other thing that users should have is production goals, this means that the
+super user should be able to assign a goal for the user to sell for every month.
+But because this value may increase it should be in a way so that the assignment
+is associated with a month and year, and it will run until the next assigned
+value, which then takes over from that month. 
 
 This is a requirement because it gives the users something to aim fore, and allows for a visualization of earnings versus goals, which will be discussed in section~\ref{sub:Visualization}.
 
@@ -47,36 +76,60 @@ be customizable is categories, departments, stages and the like. Generally
 things that tag something, and that may carry a value with it, such as stage,
 which is supposed to have a percentage of certainty for an opportunity. Letting
 the super user make the stages them selves also allows them to set what the
-stage actually means, allowing a system that suites the individual company's way
-of working better. 
+stage actually means, better allowing a system that suites the individual company's way
+of working. 
 
 The customization should only be something that the super user can create, as to avoid too many things that essentially mean the same to show up. In the case of an opportunity the tag that a stage shows may be fitting while the value is not, therefore it is also desired that the creator of the opportunity can overrule the suggested value that the stage carries to fit better with each individual opportunity.
 
 The system should keep track of opportunities which are possible deals, and
 deals that are won. An opportunity needs to contain some information such as who
 is responsible for it, and who the deal is with, as well as how much it will
-earn. A full list of what an opportunity should contain can be seen in
-figure~\ref{fig:domain_model}.
+earn. The information of what an opportunity should contain can be seen in
+figure~\ref{fig:domain_model} as a domain model.
 
 The primary reason for IT minds to want a new CRM is that most other CRM's
-front-load the earning from an opportunity, resulting in a task that that will
+front-load the earning from an opportunity, resulting in a task that will
 earn a lot of money, but also takes up a lot of resources looking like it has no
 impact on any of the months after the first. This is not how it works in
 reality, as the company who hires eg. IT minds to work for a couple of months
-pay a little bit every month instead of everything all at once. The solution to
+pay a little bit every month instead of everything all at once, and IT minds
+allocates resources based on this and not only the first month. The solution to
 this is mostly in regards to data visualization, where we need to keep track of
 the span of an opportunity, and what it will earn over that period, this should
 then be divided out over the span of the opportunity, also meaning that the
 earnings of a user is based on the same, since it needs to be possible to set
 goals for the user on a per month basis. 
 
-Since an opportunity is a bigger thing, and there will be a lot of work related to a single one, I also need a way to keep track of smaller tasks, such as making a call, or going to a meeting. This is where an activity comes in to the picture. An activity should be able to be several things defined by the super admin, but the primary thing that it does is define a task for a user to do. The task could be to send an email, or make a call, or go to a conference. Because these things don't take the same amount of time a category for them can have a value, so it can be visualized what the users are using their time on. This is useful as right now IT minds ports the number of activity for all the users to a spread sheet, and graphs from there, but if the system could do that for them some inconvenience would be saved.
+Since an opportunity is a bigger thing, and there will be a lot of work related
+to a single one, I also need a way to keep track of smaller tasks, such as
+making a call, or going to a meeting. This is where an activity comes in to the
+picture. An activity should be able to be several things defined by the super
+admin, but the primary thing that it does is define a task for a user to do. The
+task could be to send an email, or make a call, or go to a conference. The
+number of activities of a certain category can be visualized to give an idea of
+what the users are using their time on. 
+
+The way IT minds handles this information right now is by extracting the
+information from the system and porting the number of activities for all the users
+to a spread sheet, and graphing from there. If the system could do that for
+them some inconvenience would be saved, and the users would not have to use
+external tools to deal with tasks related to their existing tool, possibly
+breaking the workflow.
 
 \subsection{Visualization}
 \label{sub:Visualization}
-For the visualization the primary goal if that a user should be able to see the different types of data illustrated in graphs. This means that a thing such as the data of what a user have earned in a period, versus their goal in that given period. Ideally the graph should be made in such a way that some view based settings can be given, and an executive would be able to get an overview over the sum of all the goals versus the sum of all the sales that the users have done. It should be possible to filter it both on a per department, and user bases.
+For the visualization the primary goal is that a user should be able to see the
+different types of data illustrated in graphs. This means that a thing such as
+the data of what a user have earned in a period, versus their goal in that given
+period should be visible for that user and any other. Ideally the graph should
+be made in such a way that some view based settings can be given, and an
+executive would be able to get an overview over the sum of all the goals versus
+the sum of all the sales that the users have done. It should be possible to
+filter it both on a per department, and user bases. 
 
-The view settings that a user chooses should be saved to the database, so that they do not have to reset it every tine they visit that same page, as in the long run that would take up a lot of their time.
+The view settings that a user chooses should be saved to the database, so that
+they do not have to reset it every time they visit that same page, as in the
+long run that would take up a lot of their time. 
 
 A feature that has been requested is that instead of having a sale of eg. 1.500.000 kr. in one month be set as that user having sold for that amount in that month, but instead have the value spaced out over the period that the project will run, as this will illustrate in a more clear way how the sales personal is able to generate work, and allocate the resources of the company.
 
@@ -133,13 +186,17 @@ Because of the number of use cases in the system only a few of them have been wr
 \textbf{Primary actor}: User \\
 \textbf{Stakeholders \& interests}:
 \begin{itemize}
-  \item User: Wants to be able to track the likelihood of an opportunity, and assign tasks to is, as well as keep track of opportunities in companies
+  \item User: Wants to be able to track the likelihood of an opportunity, and
+    assign tasks to it, as well as keep track of opportunities in companies 
 \end{itemize}
-\textbf{Preconditions}: User is logged in \\
-\textbf{Postconditions}: Opportunity is saved. User is associated. Company associated. Person associated. Stage associated. User groups copied\\
+\textbf{Preconditions}: User is logged in. Opportunity stage is created.
+Opportunity category is created \\
+\textbf{Postconditions}: Opportunity is saved. User is associated. Company
+associated. Person associated. Stage associated. User groups copied\\ 
 \textbf{Main Success Scenario}:
 \begin{enumerate}
-  \item User fills out the Name, Description, Price, Start and End dates, Category, Hourly price, and expected close date
+  \item User fills out the Name, Description, Price, Start and End dates,
+    Category, Hourly price, and expected close date 
   \item User picks a company from a list
   \item User picks a department for the opportunity
   \item User Chooses a stage
@@ -155,6 +212,7 @@ Because of the number of use cases in the system only a few of them have been wr
     \item User selects the appropriate contact
     \begin{itemize}
       \item [3a.] User sees that the desired contact is not on the list
+        \todo{Not actually implemented here...}
       \begin{enumerate}
         \item [1.] User selects create new
       \end{enumerate}
@@ -175,12 +233,15 @@ Because of the number of use cases in the system only a few of them have been wr
 \textbf{Primary actor}: Super User \\
 \textbf{Stakeholders \& interests}:
 \begin{itemize}
-  \item User: Wants to be able to decide on which of the created stages an opportunity should be
-  \item User: Wants to get a guideline of percentage likelihood of a given stage of the sale
+  \item User: Wants to be able to decide on which of the created stages an
+    opportunity should be 
+  \item User: Wants to get a guideline of percentage likelihood of a given stage
+    of the sale 
   \item System: Wants to be able to filter with stages
 \end{itemize}
 \textbf{Preconditions}: Super User is logged in \\
-\textbf{Postconditions}: New stage is available. When stage is chosen the appropriate percentage is applied to opportunity.\\
+\textbf{Postconditions}: New stage is available. When stage is chosen the
+appropriate percentage is applied to opportunity.\\ 
 \textbf{Main Success Scenario}:
 \begin{enumerate}
   \item Super User clicks create new stage
@@ -198,7 +259,8 @@ Because of the number of use cases in the system only a few of them have been wr
     \item [] Super User repeats step 4
   \end{enumerate}
 \end{itemize}
-\textbf{Frequency of Occurrence}: Multiple times on system setup, and adjustments
+\textbf{Frequency of Occurrence}: Multiple times on system setup, and
+adjustments 
 
 \subsection{Use case 21: Set production goals for user}
 \textbf{Scope}: CRM \\
@@ -207,10 +269,12 @@ Because of the number of use cases in the system only a few of them have been wr
 \textbf{Stakeholders \& interests}:
 \begin{itemize}
   \item User: Wants a goal to strive for
-  \item Executive and Super User: Wants to be able to get an overview of how the company is doing compared to the goals
+  \item Executive and Super User: Wants to be able to get an overview of how the
+    company is doing compared to the goals 
 \end{itemize}
-\textbf{Preconditions}: Super User is logged in \\
-\textbf{Postconditions}: The given user goals are updated from the given months and forth going. The overview compares earnings against the new goals.\\
+\textbf{Preconditions}: Super User is logged in. User is created \\
+\textbf{Postconditions}: The given user goals are updated from the given months
+and forth going. The overview compares earnings against the new goals.\\ 
 \textbf{Main Success Scenario}:
 \begin{enumerate}
   \item Super User enters edit user
@@ -221,13 +285,7 @@ Because of the number of use cases in the system only a few of them have been wr
 \end{enumerate}
 \textbf{Extensions}:
 \begin{itemize}
-  \item [2a.] Super User chooses existing goal
-  \begin{enumerate}
-    \item Super User clicks edit
-    \item [] Super User continues at step 3
-  \end{enumerate}
-  \item [5a.] Super User clicks update
-  \item [5b.] System detects that the goal collides with another
+  \item [5a.] System detects that the goal collides with another
   \begin{enumerate}
     \item Month and Year fields are marked
     \item A text shows up saying the start time for the goal is taken
@@ -281,6 +339,8 @@ Based on the use cases and the requirements I have created a matrix in table~\re
 
 \section{Domain Model}
 \label{sec:Domain Model}
+\todo{Update domain model}
+
 From the requirements and the use cases I can now make a domain model. The goal of this domain model is to illustrate the relations between entities in the domain\cite{larman}. This is not to say that the domain model necessarily will illustrate the actual relation between objects in the system, but rather the conceptual relation of the domain. On figure~\ref{fig:domain_model} the domain model of  the system can be seen, on the model the attributes are there because the requirements, and the use cases have shown that those are needed.
 
 \begin{figure}[!htb]
