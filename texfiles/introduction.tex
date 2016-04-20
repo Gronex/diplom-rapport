@@ -17,9 +17,9 @@ money can be saved, while the students gain experience with different technologi
 
 It started in Aarhus, and later an office was opened in Copenhagen, this means
 that systems used internally cannot be based on a local network without a setup
-like a VPN, and as the company does not host anything themselves there are no
-servers to host a system with a VPN. This means that most systems are based on
-internet solutions with separate user login. 
+like a VPN\footnote{Virtual Private Network}, and as the company does not host
+anything themselves there are no servers to host a system with a VPN. This means
+that most systems are based on internet solutions with separate user login. 
 
 Many of the customers of IT minds wants things made in C\# as that allows then
 to take over the code afterwards, and it means that they can use their existing
@@ -35,8 +35,8 @@ in the future. IT minds is an example of such a company. They do have a system
 that keeps track of customer relations already, but it does not support all the
 use cases that they want, and cannot give the information they are interested
 in. Because of this they have asked me to make a new system to handle these
-cases, since they do know that the time available is limited, the system will
-not be a fully fetched one, but focus on the irritations they have with the
+cases, since they know that the time available is limited the system will
+not be a fully fleshed one, but focus on the irritations they have with the
 current systems, as well as the basic requirements for the system to work. 
 
 A CRM\footnote{Customer Relation Management} system aims to allow a user to keep
@@ -56,8 +56,8 @@ on, or have access to a VPN.
 
 It is not uncommon for a sales department to want to look up the contact
 information of a client when they are not in the office, and for a company such
-as IT minds with more than one department the need for a distributed system is
-needed, this would generally be on a web server accessed via the internet. 
+as IT minds with more than one department a distributed system is needed, this 
+would generally be on a web server accessed via the internet. 
 
 Even after we have figured out that we want the system to be run on a web server
 we still have different ways to go, each with their own advantages and
@@ -67,7 +67,7 @@ for communication with the database, via technologies such as php, JSP, or ASP.
 Another way could be to write a web-api, serving the information only in raw
 format on designated paths. A third option could be to make a
 SOAP\footnote{Simple Object Access Protocol} web service, and access the
-information via that. All this topic is discussed in further detail in
+information via that. This topic is discussed in further detail in
 chapter~\ref{chap:Technology}. 
 
 In figure~\ref{fig:sys_example} an example of how a system capable of showing
@@ -89,10 +89,13 @@ extraction. By making it a web service the accessibility will be improved, and
 usage may be increased. The system will consist of only a subset of the full
 feature set of other CRMs in addition to the other focuses. 
 
+The system should be made in such a way that it is easy to extend in the future,
+and develop the missing features for it to be usable as a full CRM.
+
 \section{Problem definition}
 \label{sec:Problem definition}
-A CRMs purpose is to allow the user to keep track of companies and people, and
-who users on the CRM interact with the companies and people. This means that
+A CRMs purpose is to allow the user to keep track of companies, people, and
+how users on the CRM interact with the companies and people. This means that
 there is a lot of room for specialization. The problem with this specialization
 is that not any of the existing CRMs, at least that IT minds have tried cover
 all the features they need. 
@@ -114,12 +117,12 @@ reevaluation of methods.
 First I will do an analysis of the project, making the idea of the system
 concrete, I will also in this phase determine the technologies that will be used
 to build the system. These choices will be made based on communication with IT
-minds as to make sure the system that is produces lives up to their
+minds as to make sure the system that is created lives up to their
 expectations, as well as allowing the common developer in IT minds to extend the
 feature set, and maintain the system in the future if needed. This means the
-language the system will be written is is going to be C\#, as most of the
-software IT minds makes is written in C\#, an therefore most will be familiar
-with it. 
+language the system will be written in is going to be C\#, as most of the
+software IT minds makes is written in C\#, which means most developers in IT
+minds will be familiar with it. 
 
 In the design phase the design of the database, and the system will be made, so
 that it is ready for the next phase, which is the implementation. It is in the
@@ -140,7 +143,7 @@ to serve, but the primary focus will be on the collection, and manipulation of
 the data as well as the ability to get it out again in a useful way. 
 
 The primary product of the project will be a system that has the most essential
-features of a CRM, but it will still be missing a lot of the features that makes
+features of a CRM, but it will still be missing a lot of the features that make
 a full product convenient to use. This is because of the limitation in hours
 that can be put into creating the system, which can be seen in that there are
 companies who's primary product is a CRM, such as PipelineDeals. 
@@ -194,11 +197,11 @@ those.
 
 I will try to keep the development in iterations of two week intervals, which
 means that every other week I will look at what I have done the past weeks, and define
-what should be done the coming week. This process will involve Kristian Larsen
+what should be done in the following weeks. This process will involve Kristian Larsen
 who is the Product owner in this context, representing IT minds and their
 interests. The reason for the iterations is to keep the agile workflow, allowing
 for changes put forth by Kristian when he sees the different stages of the
-product. 
+product, leading to a hopefully more fitting product in the eyes of IT minds. 
 
 For the development of the features them selves, I will be following a
 test-driven development procedure, meaning I will start by creating unit tests
@@ -229,7 +232,7 @@ regards to the report and the implementation of the product.
   \item Test the system using unit tests and integration tests
   \item Discuss the advantages and disadvantages of the testing
   \item Reflect on the resulting product, and what is missing compared to a full CRM
-  \item Figure out future work for the product
+  \item Discuss possible future work for the product
 \end{enumerate}
 
 \section{Thesis structure}
@@ -249,14 +252,14 @@ final product.
 \textbf{Chapter~\ref{chap:Technology} - \nameref{chap:Technology}} will look at
 some of the technologies that are available for developing the system, and make
 a decision from the findings of this on what technologies will be used to
-implement the system it self. 
+implement the system itself. 
 
 \textbf{Covers goals: 6-7}\\
 
 \textbf{Chapter~\ref{chap:Design} - \nameref{chap:Design}} will focus on the
 design of the system itself, including the database design, and the architecture
-of the system. It will also decide what design patterns will be used under the
-development. 
+of the system. It will also decide some of the design patterns that will be used
+under the development. 
 
 \textbf{Covers goals: 8-10}\\
 
@@ -271,9 +274,11 @@ tests, and integration tests.
 \textbf{Covers goals: 11-15}\\
 
 
-\textbf{Chapter~\ref{chap:Conclusion} - \nameref{chap:Conclusion}} will hold the
-final product up against the requirements, and a conclusion will be drawn from
-the project. Future development of the product will also be discussed in this
-chapter. It will end with a statement from IT minds.
+\textbf{Chapter~\ref{chap:Conclusion} - \nameref{chap:Conclusion}} will
+summarize some key points from the rapport. It will hold the final product up
+against the requirements, and a conclusion will be drawn from the project.
+
+Future development of the product will also be discussed in this chapter, ending
+with a statement from IT minds. 
 
 \textbf{Covers goal: 16-17}
