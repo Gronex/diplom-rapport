@@ -24,8 +24,10 @@ The Idea is that it should be possible to get an overview of how it is going in
 the system, both in regard to how much is being sold, and how much is supposed
 to be sold. This should be filterable, so that one can decide only to see for
 one office instead on the entirety of IT minds, even though that should also be
-possible. Another important feature is the ability to define categories, and
-values in the system as an admin, since this allows the for setting the system
+possible. 
+
+Another important feature is the ability to define categories, and
+values in the system as an admin, since this allows for setting the system
 up exactly as is desired, instead of having to force some predetermined setup by
 the developer on the sales team.
 
@@ -45,8 +47,9 @@ chapter~\ref{chap:Technology}. Since IT minds had limited requirements to the
 technologies I was fairly free to go with what I felt was fitting, which is why
 I have compared a couple different ones in that chapter. A thing that I did keep
 in mind is the use of C\# in IT minds projects, which leads to most IT minds
-developers knowing, this is a concern since it would probably be them who would
-end up extending my solution in the future.
+developers knowing that language. This is a concern since it would probably be
+a developer from IT minds who would end up extending and supporting my solution
+in the future.
 
 I looked at both web services and static serving as possible technologies,
 concluding a web service would be better, as it does not limit the front-end,
@@ -56,11 +59,11 @@ After I settled for a web service, I had to decide which type. The two I
 compared was REST, and SOAP. Where I ended up with REST, as it is potentially
 easier to interpret the result in JavaScript, which is what I have made the
 front-end part in. For the data I send  I went with JSON, for that exact reason,
-and because it is easy to read, and therefore validate when building it.
+and because it is easy to read, and therefore validate when building the service.
 
-For the database I compared a few types, and settled for a relational one, with
-the entity framework for access, mostly because it has good support in the .NET
-environment.
+For the database I compared a few types, and settled for a relational one named
+MsSQL, with the entity framework for access, mostly because it has good support
+in the .NET environment.
 
 The front-end was not discussed as in depth, as it is more a suggested
 implementation of how one might look, and as I don't have any proper knowledge
@@ -68,7 +71,7 @@ of building a user friendly interface I cannot claim that what I have build
 follows the rules that is required for that. 
 
 The reason I still build a front-end was two fold however, as it allowed me to
-thing in a more user near way when developing the resource paths, and it allowed
+think in a more user near way when developing the resource paths, and it allowed
 me to integration test a bit easier. It is also easier to show others what I
 have made if it has a user interface, instead of just being data dumped out by a server.
 
@@ -86,10 +89,10 @@ For the structure of the system I have followed the onion model separating the
 system out in layers, always only referencing deeper, and never up.
 
 In this chapter I also created some sequence diagrams describing two use cases
-all the way from client to database and back. I also have a sort description of
-some code maps, which can be seen in more detail in appendix~\ref{app:codemaps}.
+all the way from client to database and back. I also have a short description of
+some class diagrams of the system.
 
-At the end of the chapter I describe some of the patterns I use in the
+Near the end of the chapter I describe some of the patterns I use in the
 development, such as dependency injection, and the repository pattern.
 
 In the end the implementation has been described in
@@ -109,10 +112,11 @@ I also discuss how I get the data from the database and format it in a way so
 that it can be plotted in a graph, with a few code examples.
 
 The last part of the chapter~\ref{chap:Implementation} is about how I have
-tested the system. Here I describe the idea behind the testing, including how
-the unit testing has been done, and what frameworks I used. I also explain how
-it is easier to test isolated parts of the code in the unit tests because of the
-dependency injection. Another thing I go over in this part is the integration
+tested the system, and some of the advantages the different testing methods
+have. Here I describe the idea behind the testing, including how the unit
+testing has been done, and what frameworks I used. I also explain how it is
+easier to test isolated parts of the code in the unit tests because of the
+dependency injection. Another thing I go over in this part is the integration 
 testing, even though I have not made too many automated integration tests, but
 rather taken advantage of the web application to test the flow of the data.
 
@@ -128,7 +132,7 @@ application without changing the back-end.
 
 For future development such as the features suggested in
 section~\ref{sec:future_work}, and other features required for the service to
-work competitively compared to other CRMs, The server is created in such a way
+work competitively compared to other CRMs, the server is created in such a way
 that it is not necessarily required to deal with the existing code, depending on
 what is to be implemented.
 
@@ -136,11 +140,11 @@ The front-end that has been developed will require at least someone with
 experience in user experience design to take a look, as it has only been
 developed with the intention of giving an idea of how the system could look.
 
-The cooperation with IT minds has given a good guideline what the system should
-be able to do, and the meetings with Kristian has been really helpful in keeping
-me from running out on a tangent in the development, and to give ideas on what
-should be developed next for the system to be usable by him and the rest of the
-sales team.
+The cooperation with IT minds has given a good guideline in regards to what the
+system should be able to do, and the meetings with Kristian has been really
+helpful in keeping me from running out on a tangent in the development, and to
+give ideas on what should be developed next for the system to be usable by him
+and the rest of the sales team.
 
 Overall the service and web application IT minds have received works well, and
 fulfills the requirements. It supports extension without too much trouble, and
@@ -158,7 +162,7 @@ some time looking at workflows and from that develop a proper interface that
 suites the work flows of such a system.
 
 In IT minds we use Google as our email host, and as such have our Google
-accounts associated with a lot of web applications, so it would make sense to
+accounts associated with a lot of web applications, therefore it would make sense to
 allow us to use Google for the CRM as well. The way I have developed the user
 authentication it would be possible to include Google accounts and single
 \textbf{sign-on}. It would also be possible to use Facebook, twitter, or Microsoft accounts if that
@@ -169,9 +173,9 @@ with the possibility of alternatives.
 Another feature that could be useful in the future would be the integration of
 calendars, so that a user can go in and see in a \textbf{calendar view} the assignments
 they have. This would allow the users to get a better overview of what they have
-to do when, and is mostly supported in the back-end currently. The only real
-change in the back-end would be the ability to filter an activity based on the
-date and possibly time it is happening.
+to do and when. The feature is mostly supported in the back-end currently, so
+the only real change in the back-end would be the ability to filter an activity
+based on the date and possibly time it is happening.
 
 An extension to the calendar view could be the full integration of \textbf{external
 calendars}. An example of such an integration could be Google calendar, which is
@@ -190,7 +194,7 @@ meeting room, to book it so others can see that it is not available at the given
 time. In a similar fashion he could then add the system as a participant, and
 when it receives an invitation it would create an activity for Kristian and me.
 In the case no person in the system has my email it would have to add a new
-person and probably inform kristian that he should update the information on
+person and probably inform Kristian that he should update the information on
 that person. For the company it could be left blank, or the system could try to
 interpret it based on the host name of the email address.
 
@@ -206,7 +210,7 @@ A thing that would require some improvements for it to work satisfyingly is the
 \textbf{searching feature}. Right now this feature only matches for almost exact words,
 meaning misspellings are not accepted, and the only acceptable differences in
 the words are spaces and dashes, as i remove those from the search term and the
-target term. I also make sure that there are any issues with upper or lower case
+target word. I also make sure that there are no issues with upper or lower case
 letters, but it still means that the term would have to be consisting of only
 letters in the desired word, in the correct order.
 
