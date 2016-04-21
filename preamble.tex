@@ -143,3 +143,20 @@
 \usepackage{epstopdf}					    					% Pakke der konverterer EPS til PDF
 \graphicspath{ {figures/} }
 \DeclareGraphicsExtensions{.png,.pdf,.jpg,.bmp}
+
+
+
+\newcommand{\doublepagepdf}[3]{
+\clearpage
+{\pdfpagewidth=2\pdfpagewidth
+    \vspace*{-2cm}
+    \noindent\kern.5\pdfpagewidth\rlap{\parbox{\textwidth}{%
+    \noindent\kern.25\pdfpagewidth
+        \llap{\includegraphics[width=308mm,height=229mm,page=1]{#1}}\endgraf
+    \vspace{2ex}%
+    \captionof{figure}{#2}\label{#3}}}\kern-.5\pdfpagewidth 
+     \par
+     \vspace*{-5cm}
+\clearpage
+}
+}

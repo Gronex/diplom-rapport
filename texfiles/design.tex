@@ -74,19 +74,9 @@ This forces me to still think about if I should allow a value to be null or not,
 without forcing me out of the possibility which is why I have chosen that
 solution. 
 
-\clearpage
-{\pdfpagewidth=2\pdfpagewidth
-    \vspace*{-2cm}
-    \noindent\kern.5\pdfpagewidth\rlap{\parbox{\textwidth}{%
-    \noindent\kern.25\pdfpagewidth
-        \llap{\includegraphics[width=308mm,height=229mm,page=1]{Schema_diagram}}\endgraf
-    \vspace{2ex}%
-    \captionof{figure}{Database diagram generated with SQL
-      Server}\label{fig:database_diagram}}}\kern-.5\pdfpagewidth 
-     \par
-     \vspace*{-5cm}
-\clearpage
-}
+\doublepagepdf{Schema_diagram}{Database diagram generated with SQL
+      Server}{fig:database_diagram} 
+
 \section{System structure}
 \label{sec:System structure}
 The structure of the system follows the onion
@@ -225,7 +215,7 @@ filter catch the error.
 \label{sec:Patterns}
 
 \subsection{Dependency injection}
-\label{sub:Dependency injection}
+\label{sub:dependency_injection}
 In order to reduce coupling in the code I use dependency injection.
 Dependency injection is the idea of letting the caller instantiate all of our
 dependencies instead of creating them in the class where I need it. 
@@ -242,7 +232,7 @@ specific set of methods of the class, and then the developer can decide what
 implementation they find best suited. 
 
 \subsection{Repository pattern}
-\label{sub:Repository pattern}
+\label{sub:repository_pattern}
 The objective with the repository pattern is to separate the business logic away
 from the data access logic, resulting in the business logic not caring about
 where the data comes from, as it will just call a repository, and expect some
@@ -257,9 +247,9 @@ else\cite{repository_pattern}. It also allows for easier swapping of storage
 service, since the business logic would not have to be updated at all. 
 
 \subsection{Unit of work pattern}
-\label{sub:Unit of work pattern}
+\label{sub:unit_of_work_pattern}
 A pattern that works well with the repository pattern, that is described in
-section~\ref{sub:Repository pattern}, is the unit of work pattern. The goal of
+section~\ref{sub:repository_pattern}, is the unit of work pattern. The goal of
 this pattern is to group up execution of operations that has an impact on the
 data store. In cases where I just read out from the database I may not need it,
 but in cases where I change data it makes sense to be in a state where I either
@@ -273,28 +263,24 @@ model\cite{uow}.
 
 \section{Class diagram}
 \label{sec:class_diagram}
-\todo{Replace with class diagrams}
-\begin{figure}[h]
-  \centering
-  \includegraphics[scale=0.60]{Maps/OverviewMap}
-  \caption{Overview of structure}
-  \label{fig:overviewMap}
-\end{figure}
 
-I have generated a few code maps, to illustrate how the connections between
-classes work in the project. The most general one can be seen in
-figure~\ref{fig:overviewMap}, where it can be seen that we follow the structure
-of the onion model, where all knowledge is towards the center, and never
-outwards. In the case of the figure the center is the in the bottom, and the
-outermost layer is in the top.
+I have created class diagrams to help get an overview of how the different
+classes are connected, one for each project. In
+figure~\ref{fig:main_class_diagram} a diagram for the project containing the
+controllers is represented, and in appendix~\ref{app:class_diagrams} the rest
+are illustrated.
 
-For versions where the layers are folded out look in
-appendix~\ref{app:codemaps}, where there is one figure for each of the layers.
+In figure~\ref{fig:main_class_diagram} it can be seen that the references to
+repositories are done via interfaces, and are injected to lower the coupling
+as described in section~\ref{sub:dependency_injection}.
 
-The maps are not true class diagrams, as some of the syntax does not follow the
-actual UML syntax for a class diagram. The reason I have them still is that they
-give an idea of how the system is set up, but I have folded the classes, as to
-make it easier to get an overview of the relations.
+It can also be seen that I use the repository pattern since the most common
+dependency is a repository, along with a unit of work class, which allows me to
+only know the repository, and how to save, as described in sections
+\ref{sub:repository_pattern} and \ref{sub:unit_of_work_pattern}.
+
+\doublepagepdf{class_diagrams/main_class_diagram}{Class diagram of
+  customer\_relation\_manager}{fig:main_class_diagram} 
 
 \section{Chapter summary}
 The structure of the system is following the onion model, working around the
@@ -328,4 +314,8 @@ Another pattern I use is the Unit of Work pattern which makes sure that my data
 never ends up in an unknown state because something failed half way through an
 operation, but only if I make it all the way through the changes are saved.
 
-\todo{Mention class diagrams}
+To illustrate some of the pattern uses, and to give a better idea of the
+structure of the system I have created some class diagrams. The the primary one,
+which illustrates the controllers, and their relations, and types is illustrated
+in figure~\ref{fig:main_class_diagram}, while the rest are in
+appendix~\ref{app:class_diagrams}.
