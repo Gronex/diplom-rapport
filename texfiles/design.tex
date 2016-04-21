@@ -60,7 +60,7 @@ value is not meant to be there. So I will not interpret null as anything but the
 absence of data.
 
 As an example if we look at the table Company, the website field is nullable, as
-can be seen in the full database diagram in appendix~\ref{app:database diagram}.
+can be seen in the generated database diagram in figure~\ref{fig:database_diagram}.
 Here if I have a value of an empty string, it would mean that the website of
 the company is known to be non existent. If the field is not set, I know that
 the company may have a website, it is just not known in the system.
@@ -69,6 +69,19 @@ This forces me to still think about if I should allow a value to be null or not,
 without forcing me out of the possibility which is why I have chosen that
 solution. 
 
+\clearpage
+{\pdfpagewidth=2\pdfpagewidth
+    \vspace*{-2cm}
+    \noindent\kern.5\pdfpagewidth\rlap{\parbox{\textwidth}{%
+    \noindent\kern.25\pdfpagewidth
+        \llap{\includegraphics[width=308mm,height=229mm,page=1]{Schema_diagram}}\endgraf
+    \vspace{2ex}%
+    \captionof{figure}{Database diagram generated with SQL
+      Server}\label{fig:database_diagram}}}\kern-.5\pdfpagewidth 
+     \par
+     \vspace*{-5cm}
+\clearpage
+}
 \section{System structure}
 \label{sec:System structure}
 The structure of the system follows the onion
@@ -199,30 +212,6 @@ as that would make the diagram harder to read. but for the required fields if we
 turn out not to be able to find the element in the database we return a NotFound
 to the client, which has the error code of 404.
 
-\section{Class diagram}
-\label{sec:class_diagram, remove namespace limitation}
-\begin{figure}[h]
-  \centering
-  \includegraphics[scale=0.60]{Maps/OverviewMap}
-  \caption{Overview of structure}
-  \label{fig:overviewMap}
-\end{figure}
-
-I have generated a few code maps, to illustrate how the connections between
-classes work in the project. The most general one can be seen in
-figure~\ref{fig:overviewMap}, where it can be seen that we follow the structure
-of the onion model, where all knowledge is towards the center, and never
-outwards. In the case of the figure the center is the in the bottom, and the
-outermost layer is in the top.
-
-For versions where the layers are folded out look in
-appendix~\ref{app:codemaps}, where there is one figure for each of the layers.
-
-The maps are not true class diagrams, as some of the syntax does not follow the
-actual UML syntax for a class diagram. The reason I have them still is that they
-give an idea of how the system is set up, but I have folded the classes, as to
-make it easier to get an overview of the relations.
-
 \section{Patterns}
 \label{sec:Patterns}
 
@@ -272,7 +261,33 @@ something fails later on after I have done the delete, so that the creation was
 not done, the delete operation is abandoned, and I have not damaged my data
 model\cite{uow}. 
 
+\section{Class diagram}
+\label{sec:class_diagram}
+\todo{Replace with class diagrams}
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.60]{Maps/OverviewMap}
+  \caption{Overview of structure}
+  \label{fig:overviewMap}
+\end{figure}
+
+I have generated a few code maps, to illustrate how the connections between
+classes work in the project. The most general one can be seen in
+figure~\ref{fig:overviewMap}, where it can be seen that we follow the structure
+of the onion model, where all knowledge is towards the center, and never
+outwards. In the case of the figure the center is the in the bottom, and the
+outermost layer is in the top.
+
+For versions where the layers are folded out look in
+appendix~\ref{app:codemaps}, where there is one figure for each of the layers.
+
+The maps are not true class diagrams, as some of the syntax does not follow the
+actual UML syntax for a class diagram. The reason I have them still is that they
+give an idea of how the system is set up, but I have folded the classes, as to
+make it easier to get an overview of the relations.
+
 \section{Chapter summary}
+\todo{Update to handle new class diagram text}
 The structure of the system is following the onion model, working around the
 idea of layers, with the domain model as the inner core, which is the database
 containing the data. The next layer is the domain services, describing how to
