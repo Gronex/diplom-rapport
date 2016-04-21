@@ -5,16 +5,18 @@ database should look in order for it to be able to store the data in a way that
 allows me to easily access it again, while reducing redundant data stored. 
 
 After the database I will get into how the system will be structured, which
-includes explaining the model that I will be following. Finally I will give a
+includes explaining the model that I will be following. After this I will give a
 short explanation of some of the patterns I will be following, and why they are
-useful for a system such as this one. 
+useful for a system such as this one. In the end I will talk about the class
+diagrams describing the system.
 
 \section{Database}
 \label{sec:Database}
-The design of the database will look on many points similar to the domain model
-in figure~\ref{fig:domain_model}. This is because on a lot of the points in this
-system the domain model can be saved directly to the database. I have of course
-had to make some adjustments, as can be seen in figure~\ref{fig:er_diagram}. 
+The design of the database will look similar to the domain model
+in figure~\ref{fig:domain_model} on many points. This is because on a lot of the
+points in this system the domain model can be saved directly to the database. I
+have of course had to make some adjustments, as can be seen in
+figure~\ref{fig:er_diagram}.
 
 \begin{figure}
   \includegraphics[width=\textwidth]{ER_diagram}
@@ -43,12 +45,15 @@ postal code, as well as the country. The reason for not pursuing this is that I
 have deemed the gain not worth it, since it would bind all locations in the same
 area together, and the users may not be interested in this, since if they then
 change the postal code or city name of one company, the rest that is located in
-the same place will follow. 
+the same place will follow. Usually this would be desirable, but since the input
+could have been wrong, or a temporary placeholder value depending on how the
+users use the system it could cause problems. 
 
 Some people argue that nulls should be allowed and others that there should be
 no nulls in a database\cite{stackexchange:db:nullfields}, I do see the reasoning
-of both arguments, generally that you cannot know what null represents, it could
-mean the absence of data, purposefully or something else. 
+of both arguments. The argument against null is that generally you cannot know
+what null represents, it could mean the absence of data purposefully, or
+something else.
 
 One argument is if there is a null value in eg. an integer could mean both zero
 and unknown. A solution to avoiding null values in a database could be to split
@@ -86,7 +91,7 @@ solution.
 \label{sec:System structure}
 The structure of the system follows the onion
 architecture\cite{onion_architecture}, which means that it is build up of layers
-like it can be seen on figure~\ref{fig:Onion architecture}. 
+as shown in figure~\ref{fig:Onion architecture}. 
 
 \begin{figure}[h]
   \centering
@@ -101,7 +106,7 @@ illustrated. As can be seen I have three core projects, one for each of the core
 layers of the model, and outside this I have an infrastructure layer, which is
 responsible for talking to the database. The way the outer most layers then work
 is by using the interfaces that is defined in \textit{Core.DomainServices}.
-These interfaces describe how the application can access the data however it is
+These interfaces describe how the application can access the data no matter how it is
 stored. 
 
 \begin{figure}[h]
@@ -112,20 +117,22 @@ stored.
 \end{figure}
 
 I use injection to allow for easier testing, and lower dependency between the
-classes. This means that in the project \textit{customer\_relations\_manager}
-which is where the controllers the users will be calling is implemented, take
-interfaces for the repositories defined in \textit{Core.DomainServices}. The
-injection system then is set up to inject the classes from
-\textit{Infrastructure.DataAccess} that implement the interfaces. 
+classes. In the project \textit{customer\_relations\_manager}
+which is where the controllers are implemented that clients will be calling, the
+controllers take interfaces for the repositories defined in
+\textit{Core.DomainServices}. The injection system then is set up to inject the
+classes from \textit{Infrastructure.DataAccess} that implement the interfaces. 
 
 The \textit{Core.ApplicationServices} project is there in the case that I need a
 service that is not related to accessing data from the data store, but instead
-doing something else. 
+doing something else, such as manipulate data so that it is ready to be plotted
+in a graph.
 
 Finally the inner most layer is the classes describing the data that is stored
-in my case in a database the name of this project is \textit{Core.DomainModels}.
-Their job is to describe how the data looks in the database, and they are used
-for making the database first migrations. 
+somewhere, in my case in a database. The name of this project is
+\textit{Core.DomainModels}. Their job is to describe how the data looks in the
+database, and they are used for making the database first migrations, as well as
+make it easy to work with the data in the data store without caring where it is.
 
 The \textit{UnitTests} project is on the same level as
 \textit{customer\_relations\_manager}, which means that it is allowed to see
@@ -133,11 +140,10 @@ everything in the project, allowing it to test it all.
 
 The goal with all this separation is to both make it easier to swap out parts of
 the project without too much hassle, and to be able to reuse parts, in case I
-want to do something similar in the future. It does however also force us to not
-have an uncontrollable mess of dependencies, since the domain models are never
-allowed to know anything other than them selves, and the data access layer
-cannot say anything about how the data will look in the end, only find and
-filter on it. 
+want to do something similar in the future. It does however also enforce some
+order with dependencies, since the domain models are never allowed to know
+anything other than them selves, and the data access layer cannot say anything
+about how the data will look in the end, only find and filter on it. 
 
 \subsection{Sequences}
 \label{subsec:sequences}
@@ -188,7 +194,8 @@ the server, this post call contains the data that the client wants to create an
 opportunity of. Because we cannot assume that the client sends valid data we have
 to verify, and if the data is not valid we return BadRequest, which is an HTTP
 return type with the code 400, we also tell the client why the request was not
-acceptable, as that can help the user fill out missing fields.
+acceptable, as that can help the user fill out missing fields, or correct the
+request. 
 
 If the data is okay we ask the repository to create the opportunity. In order
 for the repository to verify that all the fields exist, and to link them up it
@@ -208,16 +215,18 @@ of Work pattern as described in section~\ref{sub:Unit of work pattern}.
 \end{figure}
 
 I have not described the error possibilities in the creation of the opportunity,
-as that would make the diagram harder to read. but for the required fields if we
+as that would make the diagram harder to read, but for the required fields if we
 turn out not to be able to find the element in the database we return a NotFound
-to the client, which has the error code of 404.
+to the client, which has the error code of 404. The return will be done by
+throwing an exception in the place where we were supposed to find it, and let a
+filter catch the error.
 
 \section{Patterns}
 \label{sec:Patterns}
 
 \subsection{Dependency injection}
 \label{sub:Dependency injection}
-In order for us to reduce coupling in the code I can use dependency injection.
+In order to reduce coupling in the code I use dependency injection.
 Dependency injection is the idea of letting the caller instantiate all of our
 dependencies instead of creating them in the class where I need it. 
 
@@ -229,8 +238,8 @@ code\cite{dependency_injection}.
 
 A way to reduce coupling even further is to instead of depending on a specific
 class. I can depend on an interface, which will allow me to only rely on a
-specific set of methods of the class, and then the user can decide what
-implementation they finds best suited. 
+specific set of methods of the class, and then the developer can decide what
+implementation they find best suited. 
 
 \subsection{Repository pattern}
 \label{sub:Repository pattern}
@@ -244,7 +253,8 @@ logic can have a mocked implementation of the repository, that just uses some
 form of local storage. It allows the developers to delay the decision of where
 to store the data, as the repository does not have to be implemented to access a
 database, but it could read from a file, request a web service, or something
-else\cite{repository_pattern}. 
+else\cite{repository_pattern}. It also allows for easier swapping of storage
+service, since the business logic would not have to be updated at all. 
 
 \subsection{Unit of work pattern}
 \label{sub:Unit of work pattern}
@@ -287,7 +297,6 @@ give an idea of how the system is set up, but I have folded the classes, as to
 make it easier to get an overview of the relations.
 
 \section{Chapter summary}
-\todo{Update to handle new class diagram text}
 The structure of the system is following the onion model, working around the
 idea of layers, with the domain model as the inner core, which is the database
 containing the data. The next layer is the domain services, describing how to
@@ -317,4 +326,6 @@ tasks are done.
 
 Another pattern I use is the Unit of Work pattern which makes sure that my data
 never ends up in an unknown state because something failed half way through an
-operation. 
+operation, but only if I make it all the way through the changes are saved.
+
+\todo{Mention class diagrams}
