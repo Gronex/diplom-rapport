@@ -194,6 +194,25 @@ constructor, and each test is marked either with Fact or Theory, where in theory
 the test functions take arguments, and you give it multiple different
 combinations of arguments, to run the same test with each.
 
+The reason I do have tests is that it allows me to have an automated way of
+knowing if a change I make changes the way my program works. When I look at a
+test that fails I then have to see if it means I will have to update the things
+that depend in the unit the test is testing, or the unit is in fact broken and
+does not work as intended any more. 
+
+The advantage of writing unit tests ahead of time is that it forces the
+developer to consider what we want from the methods instead of having to adjust
+everything else to the result. If the testing is done well it will also tell
+when the code is done, as that would be the point where all the tests succeed.
+
+For integration testing, instead of a single unit the test aims to verify that
+all the components work together the way they are supposed to. It would as an
+example make sure that when we make a call that we know need to somehow get some
+data out of storage we can verify that it does indeed do that, without bothering
+with what it did in order for the correct result to be returned in the end, just
+knowing that given the components we gave the code will somehow return the data
+we expect.
+
 \subsection{Unit tests}
 \label{sec:unit_tests}
 Under the development I have created a lot of unit tests, to test that my
