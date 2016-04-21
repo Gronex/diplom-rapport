@@ -225,7 +225,7 @@ or does it let it go through, and let the filters handle it. In the failing
 cases the most interesting tests are the ones where we save to the database, as
 we want to make sure that we never make it ca call Save() if something went
 wrong, as that puts the database in an unknown state, as mentioned in
-section~\ref{sub:Unit of work pattern}.
+section~\ref{sub:unit_of_work_pattern}.
 
 I have tried to keep follow the ideas of test driven development, by writing my
 tests first, and making the implementation afterwards, so that the tests work as

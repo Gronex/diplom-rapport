@@ -148,7 +148,6 @@ can easily support another front-end when that is deemed necessary.
 
 \section{Future work}
 \label{sec:future_work}
-\todo{earnings spread over months, base on days(percentage in month)}
 Since the product I have created only is a prototype, it is not currently in a
 state where IT minds would be able to take it into use, but requires some
 adjustments and a few features before that would be possible.
@@ -210,6 +209,16 @@ the words are spaces and dashes, as i remove those from the search term and the
 target term. I also make sure that there are any issues with upper or lower case
 letters, but it still means that the term would have to be consisting of only
 letters in the desired word, in the correct order.
+
+When I make the production graph data setup I figure out how to split the
+earnings based on months, which for a better effect should be based on number of
+days in a month, ideally \textbf{workdays per month}. The result of this would be that if
+1.000.000 kr. was set from 2016-02-09 to 2016-03-11 the amount for February
+would be 640.000 kr. and 360.000 kr. for March as there are 16 work days from
+the 9th of February to the end of the month and 9 from the start of March to the
+16th. This would also help with calculating the money the person who made the
+sale should get for each month, and give an even better idea of how the
+developer resources are allocated.
 
 \section{IT minds statement}
 \todo[inline]{a statement from IT-minds}
