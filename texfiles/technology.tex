@@ -314,7 +314,9 @@ queries, and the structure enforces a valid model. Since the application is
 developed as a web API in C\# using ASP.NET it makes sense to use MsSQL for the
 specific engine, as this is a native supported database in the entity
 framework, which is the recommended data-access framework when using C\#
-according to Microsoft\cite{entity:microsoft}. One thing to be aware of when
+according to Microsoft\cite{entity:microsoft}. The entity framework is an
+ORM\footnote{Object Relational Mapping} framework, which means it maps the
+results from the database to C\# objects. One thing to be aware of when
 using the entity framework is that if using code first I still risk falling into
 the same design patterns of the Object database, to avoid this I will design the
 database like I would if I were to design a database and then create it
