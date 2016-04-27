@@ -5,9 +5,53 @@
 The goal of this thesis is to develop a web service for managing relations with
 customers. The service should allow for a company to have multiple users
 managing opportunities, companies, people and activities. The data should then
-be presentable to the user in a way so that it easili can be plottet on a graph.
+be presentable to the user in a way so that it easily can be plotted on a graph.
 The service is developed in cooperation with IT minds a software consultant
 company, as a proof of concept.
 
+The system is build from the ground up, and did not contain any elements when I
+started the development. One focus point when developing the service has been to
+make sure multiple different types of front-ends are supported, even though I
+have only developed a web application other types are still possible.
+
+A domain analysis of the system has been performed, which lead to a couple
+different use cases and mock ups. Based on the analysis suited technologies has
+been analyzed, and the ones fitting the best has been chosen for both the
+server, and the database as well as the suggested front-end. The service is
+developed using web api 2 running on ASP.NET with a backing MsSQL database,
+while the front end is made as an AngularJS application. Then the design of the
+database was done, and the system architecture was determined. Some development
+patterns were chosen. The implementation started, and running tests was
+developed side by side with the application.
+
+The outcome of the project is a working proof of concept implementation that
+works as intended. The system is easily extendable to move it on from a prof of
+concept to a fully usable system.
+
+\clearpage
 \section*{Dansk}
-\todo{write abstract}
+Målet med denne afhandling er at udvikle en web service til håndtering af
+relationer med kunder. Services skulle tillade en firma at have flere brugere
+som kan håndterer, salgs muligheder, firmaer, ansatte og aktiviteter. Dataen
+skal så kunne præsenteres til brugeren på en sådan måde at det nemt kan
+plottes som en graf. Servicen er udviklet i samarbejde med IT minds som er et
+software konsulent hus, selve servicen er udviklet til dem som en proof of concept.
+
+Systemet er bygget fra bunden op, hvilket vil sige at der ikke var lavet noget
+før jeg startede udviklingen. En ting jeg fokuserede på under udviklingen har
+været at understøtte flere forskellige typer af frontends, selvom jeg kun har
+udviklet en web applikation, andre typer er stadig understøttet af systemet.
+
+Der er lavet en domæne analyse af systemet, som er blevet brugt til at udarbejde
+nogle mockups. Analysen er også blevet brugt til at finde ud af hvilke
+teknologier der passede bedst til opgaven, og dem som passede bedst er blevet
+valgt. Dette er både blevet gjort for web servicen, databasen og frontenden.
+Servicen er udviklet med web api 2 kørende på ASP.NET, med en MsSQL database
+til at opbevarer dataen. Frontenden er lavet som en web applikation ved hjælp
+af AngularJs. Efter database designet var færdigt, og jeg havde valgt hvilken
+arkitektur systemet skulle følge, valgte besluttede jeg mig for nogle
+udviklings mønstre, hvorefter udviklingen begyndte, med test implementation
+kørende sideløbende.
+
+Resultatet af projektet er en fungerende proof of concept implementation, som er
+nem at udvide med nye features, så den kan bruges som et fuldt system.
