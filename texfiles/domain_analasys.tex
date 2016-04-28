@@ -40,7 +40,7 @@ of the previous, as well as some rights of their own.
 
 The executive does not have any special rights compared to the standard user
 initially, but they my have pre-designed overviews, because their role in the
-system is to gain an overview of the all the users in a department or user
+system is to gain an overview of all the users in a department or user
 group. They can of course also do the same as a standard user, such as create
 people and companies. In the future they may gain privileges that the standard
 user is not supposed to have, but for now that will not be the case. 
@@ -65,7 +65,9 @@ But because this value may increase it should be in a way so that the assignment
 is associated with a month and year, and it will run until the next assigned
 value, which then takes over from that month. 
 
-This is a requirement because it gives the users something to aim fore, and allows for a visualization of earnings versus goals, which will be discussed in section~\ref{sub:Visualization}.
+This is a requirement because it gives the users something to aim fore, and
+allows for a visualization of earnings versus goals, which will be discussed in
+Section~\ref{sub:Visualization}.
 
 \subsection{Resources}
 \label{sub:Resources}
@@ -76,10 +78,15 @@ be customizable is categories, departments, stages and the like. Generally
 things that tag something, and that may carry a value with it, such as stage,
 which is supposed to have a percentage of certainty for an opportunity. Letting
 the super user make the stages them selves also allows them to set what the
-stage actually means, better allowing a system that suites the individual company's way
-of working. 
+stage actually means, better allowing a system that suites the individual
+company's way of working. 
 
-The customization should only be something that the super user can create, as to avoid too many things that essentially mean the same to show up. In the case of an opportunity the tag that a stage shows may be fitting while the value is not, therefore it is also desired that the creator of the opportunity can overrule the suggested value that the stage carries to fit better with each individual opportunity.
+The customization should only be something that the super user can create, to
+avoid too many things that essentially mean the same to show up. In the case of
+an opportunity the tag that a stage shows may be fitting while the value is not,
+therefore it is also desired that the creator of the opportunity can overrule
+the suggested value that the stage carries to fit better with each individual
+opportunity. 
 
 The system should keep track of opportunities which are possible deals, and
 deals that are won. An opportunity needs to contain some information such as who
@@ -93,7 +100,7 @@ earn a lot of money, but also takes up a lot of resources looking like it has no
 impact on any of the months after the first. This is not how it works in
 reality, as the company who hires eg. IT minds to work for a couple of months
 pay a little bit every month instead of everything all at once, and IT minds
-allocates resources based on this and not only the first month. The solution to
+allocate resources based on this and not only the first month. The solution to
 this is mostly in regards to data visualization, where we need to keep track of
 the span of an opportunity, and what it will earn over that period, this should
 then be divided out over the span of the opportunity, also meaning that the
@@ -131,7 +138,11 @@ The view settings that a user chooses should be saved to the database, so that
 they do not have to reset it every time they visit that same page, as in the
 long run that would take up a lot of their time. 
 
-A feature that has been requested is that instead of having a sale of eg. 1.500.000 kr. in one month be set as that user having sold for that amount in that month, but instead have the value spaced out over the period that the project will run, as this will illustrate in a more clear way how the sales personal is able to generate work, and allocate the resources of the company.
+A feature that has been requested is that instead of having a sale of eg.
+1.500.000 kr.\ in one month be set as that user having sold for that amount in
+that month, but instead have the value spaced out over the period that the
+project will run, as this will illustrate in a more clear way how the sales
+personal is able to generate work, and allocate the resources of the company. 
 
 \subsection{Functional and nonfunctional requirements}
 \label{sub:Functional and nonfunctional requirements}
@@ -169,16 +180,21 @@ A feature that has been requested is that instead of having a sale of eg. 1.500.
 
 \section{Use cases}
 \label{sec:Use cases}
-From the requirements of section~\ref{sec:Requirements} I have created a use case diagram, to help identify the use cases that is in the project, as can be seen in Figure~\ref{fig:usecase_diagram}. To help create the diagram I used an Actor - Goal list, that can be seen in Appendix~\ref{app:actor-goal}.
+From the requirements of Section~\ref{sec:Requirements} I have created a use
+case diagram, to help identify the use cases that is in the project, as can be
+seen in figure~\ref{fig:usecase_diagram}. To help create the diagram I used an
+Actor-Goal list, that can be seen in Appendix~\ref{app:actor-goal}. 
 
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=\textwidth]{use_cases}
   \caption{Use case diagram}
-  \label{fig:usecase_diagram}
+\label{fig:usecase_diagram}
 \end{figure}
 
-Because of the number of use cases in the system only a few of them have been written out fully as can be seen in the next couple of sections, the rest have a short description in appendix~\ref{app:Use cases}.
+Because of the number of use cases in the system only a few of them have been
+written out fully as can be seen in the next couple of sections, the rest have a
+short description in Appendix~\ref{app:Use cases}. 
 
 \subsection{Use case 10: Create opportunity}
 \textbf{Scope}: CRM \\
@@ -302,7 +318,7 @@ Based on the use cases and the requirements I have created a matrix in table~\re
 \resizebox{\linewidth}{!}{%
     \begin{tabular}{ l | *{16}{c} }
       & F1 & F2 & F3 & F4 & F5 & F6 & F7 & F8 & F9 & F10 & F11 & F12 & F13 & F14 & F15 & F16 \\
-      \hline
+      \midrule
       UC1 & X \\
       UC2 & & & X\\
       UC3 & & & X\\
@@ -344,14 +360,14 @@ of this domain model is to illustrate the relations between entities in the
 domain\cite{larman}. This is not to say that the domain model necessarily will
 illustrate the actual relation between objects in the system, but rather the
 conceptual relation of the domain. On figure~\ref{fig:domain_model} the domain
-model of  the system can be seen, on the model the attributes are there because
+model of  the system can be seen. On the model the attributes are there because
 the requirements, and the use cases have shown that those are needed. 
 
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=\textwidth]{domain_model}
   \caption{Domain model}
-  \label{fig:domain_model}
+\label{fig:domain_model}
 \end{figure}
 
 The ranges on some of the attributes indicate if the attribute is required, so a
@@ -366,20 +382,20 @@ As can be seen in figure~\ref{fig:domain_model} the center of the system is for
 the most part an opportunity, with a lot of different things connected to it.
 Some of the connections are optional however, and can be added later, as
 described in the use cases. The user is also reasonably often connected to
-things in the model. The reason for that is given in that a user is the one who
-interacts with everything, both in the planning world, which is what the system
-partially models, and in the real world. 
+things in the model. The reason a user is the one who interacts with everything,
+both in the planning world, which is what the system partially models, and in
+the real world.
 
 \section{Mockups}
 \label{sec:Mockups}
-Based on the use cases I have created a few mockups of some of the key parts of
-the system. The goal with these mockups is not necessarily to illustrate how a
+Based on the use cases I have created a few mockups of some key parts of
+the system. The goal with these mockups is not necessarily to illustrate how
 the final system would look, but more a help to imagine how a view could look,
 and what information would be available in that view for it to work.
 
 As this is a prove of concept the mockups are made from screenshots of the
 system in the development phase. They started out as mockups on paper, but the
-screenshot versions are better, as they still only shows suggestions of how the
+screenshot versions are better, as they still only show suggestions of how the
 system could look, and are easier to keep up to date on the new features
 discussed with Kristian during the development.
 
@@ -395,14 +411,14 @@ imagine the way the system could look.
   \centering
   \includegraphics[width=\textwidth]{Mockups/screen_shots/filter}
   \caption{Visualization filter mockup}
-  \label{fig:VisualizationFilter}
+\label{fig:VisualizationFilter}
 \end{figure}
 
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=\textwidth]{Mockups/screen_shots/graph}
   \caption{Visualization graph mockup}
-  \label{fig:VisualizationView}
+\label{fig:VisualizationView}
 \end{figure}
 
 In figure~\ref{fig:VisualizationFilter} I only show parts  of the actual view,
@@ -412,9 +428,9 @@ figure~\ref{fig:VisualizationFilter} is to show the filter options that a user
 can apply in order for them to gain access to exactly the information they need
 from this graph. This mockup is an illustration of
 \nameref{app:usecase:viewsettings} as can be seen in
-appendix~\ref{app:usecase:viewsettings}, and
+Appendix~\ref{app:usecase:viewsettings}, and
 \nameref{app:usecase:visualizegoalsproduction} from
-appendix~\ref{app:usecase:visualizegoalsproduction} is represented in figure~\ref{fig:VisualizationView}
+Appendix~\ref{app:usecase:visualizegoalsproduction} is represented in figure~\ref{fig:VisualizationView}
 
 It can be seen that there are save buttons and a drop-down with names, this is to
 allow the user to save a filter that they use a lot, as well as allow the admins
@@ -424,14 +440,14 @@ to set up some defaults for the users to use if they want.
   \centering
   \includegraphics[width=\textwidth]{Mockups/screen_shots/edit_opportunity}
   \caption{Edit opportunity mockup}
-  \label{fig:OpportunityView}
+\label{fig:OpportunityView}
 \end{figure}
 
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=\textwidth]{Mockups/screen_shots/edit_activity}
   \caption{Edit activity mockup}
-  \label{fig:ActivityView}
+\label{fig:ActivityView}
 \end{figure}
 
 The two other mockups in figure~\ref{fig:OpportunityView} and
@@ -439,13 +455,13 @@ The two other mockups in figure~\ref{fig:OpportunityView} and
 the management of an opportunity which is what the users will use to keep track
 of tasks they may or may not win for the company. The use case where the view is
 used is explained in \nameref{app:usecase:editopportunity} in
-appendix~\ref{app:usecase:editopportunity} and
-\nameref{app:usecase:editactivity} in appendix~\ref{app:usecase:editactivity}.
+Appendix~\ref{app:usecase:editopportunity} and
+\nameref{app:usecase:editactivity} in Appendix~\ref{app:usecase:editactivity}.
 
 
-For both the contact field is
-not required, but it can be used for the users to keep track of who they need to
-talk to in relation to the thing they are looking at.
+For both the contact field is not required, but it can be used for the users to
+keep track of who they need to talk to in relation to the thing they are looking
+at. 
 
 The mockup in figure~\ref{fig:ActivityView} has a comment section in the bottom
 which is meant to be used as a way for the users to put recaps of the activity,
@@ -470,7 +486,7 @@ is available for someone with higher access rights.
   \centering
   \includegraphics[width=\textwidth]{navigation_diagram}
   \caption{Navigation diagram}
-  \label{fig:navigation_diagram}
+\label{fig:navigation_diagram}
 \end{figure}
 
 \section{Chapter summary}
@@ -481,10 +497,10 @@ administrating the system, creating options for drop-downs, inviting new users
 and the like.
 
 One of the things the super user is meant to do is to customize the system by
-setting categories, goals, and groups. Another thing that is important for the system,
-is the ability to get an overview so that a user can know how they are doing, or
-how the company is doing. This should be made in a way so that it can easily be
-graphed.
+setting categories, goals, and groups. Another thing that is important for the
+system, is the ability to get an overview so that a user can know how they are
+doing, or how the company is doing. This should be made in a way so that it can
+easily be graphed.
 
 I have created some use cases, and mockups to describe the way the system should
 work, as well as a domain model, to help me understand the domain of the system,
