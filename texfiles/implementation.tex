@@ -13,9 +13,9 @@ development process, both in regards to unit testing and integration testing.
 
 \section{Entity framework}
 \label{sec:Entity framework}
-One of the things the entity framework brings is the "repository pattern", as
-well as the "Unit of Work pattern". The idea behind those are described in
-section~\ref{sec:Patterns}. I however have chosen to wrap them again, so that I
+One of the things the entity framework brings is the `repository pattern', as
+well as the `Unit of Work pattern'. The idea behind those are described in
+Section~\ref{sec:Patterns}. I however have chosen to wrap them again, so that I
 can reduce the dependency to a database implementation and ORM implementation,
 in the outer most layer. 
 
@@ -127,7 +127,7 @@ solution.
 \begin{figure}
   \includegraphics[width=\textwidth]{code/NotFoundExceptionFilterAttribute}
   \caption{NotFoundException filter}
-  \label{fig:notfoundfilter}
+\label{fig:notfoundfilter}
 \end{figure}
 
 \section{Graph data calls}
@@ -149,7 +149,7 @@ long as it is within the range on the period.
 \begin{figure}
   \includegraphics[width=\textwidth]{code/SpreadOutEarnings}
   \caption{SpreadOutEarnings implementation}
-  \label{fig:spreadoutearnings}
+\label{fig:spreadoutearnings}
 \end{figure}
 
 In figure~\ref{fig:spreadoutearnings} the implementation of the evening out of
@@ -176,7 +176,7 @@ therefore run the tests as required.
   \centering
   \includegraphics{testResults}
   \caption{Test results}
-  \label{fig:testResults}
+\label{fig:testResults}
 \end{figure}
 
 The results for all the automated tests can be seen in
@@ -244,7 +244,7 @@ or does it let it go through, and let the filters handle it. In the failing
 cases the most interesting tests are the ones where we save to the database, as
 we want to make sure that we never make it ca call Save() if something went
 wrong, as that puts the database in an unknown state, as mentioned in
-section~\ref{sub:unit_of_work_pattern}.
+Section~\ref{sub:unit_of_work_pattern}.
 
 I have tried to keep follow the ideas of test driven development, by writing my
 tests first, and making the implementation afterwards, so that the tests work as
@@ -287,7 +287,7 @@ only thing it can do is call save. This way I can also ignore what kind of ORM I
 am using for communicating with the data storage entirely in the controllers, as
 it is not important here.
 
-In the case a user asks for something that does not exist, eg. an opportunity
+In the case a user asks for something that does not exist, eg.\ an opportunity
 with an id that is not in the database, the repository will throw a
 NotFoundException, which will propagate all the way outside the controller. The
 reason the caller will not get an InternalServerError, is because I use filters,

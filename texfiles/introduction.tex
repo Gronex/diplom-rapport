@@ -17,11 +17,11 @@ money can be saved, while the students gain experience with different technologi
 
 It started in Aarhus, and later an office was opened in Copenhagen, this means
 that systems used internally cannot be based on a local network without a setup
-like a VPN\footnote{Virtual Private Network}, and as the company does not host
-anything themselves there are no servers to host a system with a VPN. This means
+like a VPN\footnote{Virtual Private Network}, and as IT minds does not host
+anything themselves there are no servers to host a system with a VPN.\ This means
 that most systems are based on internet solutions with separate user login. 
 
-Many of the customers of IT minds wants things made in C\# as that allows then
+Many of the customers of IT minds want things made in C\# as that allows them
 to take over the code afterwards, and it means that they can use their existing
 ecosystems. This results in a lot of the developers in IT minds knowing C\#,
 or quickly pick it op. For this reason I have chosen to develop in the same
@@ -52,7 +52,7 @@ as a web server, either on the local network of the company, or on the internet
 so that it can be accessed from anywhere, which can be useful if the company has
 multiple departments, or if the user wants to access it from a phone, or some
 other device that may not be connected directly to the network the CRM is hosted
-on, or have access to a VPN. 
+on, or have access to a VPN.\
 
 It is not uncommon for a sales department to want to look up the contact
 information of a client when they are not in the office, and for a company such
@@ -63,12 +63,12 @@ Even after we have figured out that we want the system to be run on a web server
 we still have different ways to go, each with their own advantages and
 disadvantages. Some of them could be writing a static website that is closely
 connected to the server, so the server generates the appropriate HTML allowing
-for communication with the database, via technologies such as php, JSP, or ASP.
+for communication with the database, via technologies such as php, JSP, or ASP.\
 Another way could be to write a web-api, serving the information only in raw
 format on designated paths. A third option could be to make a
 SOAP\footnote{Simple Object Access Protocol} web service, and access the
 information via that. This topic is discussed in further detail in
-chapter~\ref{chap:Technology}. 
+Chapter~\ref{chap:Technology}. 
 
 In figure~\ref{fig:sys_example} an example of how a system capable of showing
 graphs could look. This is a screenshot taken at the end of the development
@@ -90,7 +90,7 @@ usage may be increased. The system will consist of only a subset of the full
 feature set of other CRMs in addition to the other focuses. 
 
 The system should be made in such a way that it is easy to extend in the future,
-and develop the missing features for it to be usable as a full CRM.
+and develop the missing features for it to be usable as a full CRM.\
 
 \section{Problem definition}
 \label{sec:Problem definition}
@@ -110,7 +110,7 @@ IT minds. What they really want, is to be able to make a per month goal, and
 then have the ability to change that goal in the future. This goal feature
 should be a per user thing, but one thing that is more important for the people
 who manages the system than an individual user overview is a department, or
-company overview, allowing them to see that the company is eg. 200.000 kr. away
+company overview, allowing them to see that the company is eg. 200.000 kr.\ away
 from their goal next month, which if that trend keeps up may warrant a
 reevaluation of methods. 
 
@@ -121,7 +121,7 @@ minds as to make sure the system that is created lives up to their
 expectations, as well as allowing the common developer in IT minds to extend the
 feature set, and maintain the system in the future if needed. This means the
 language the system will be written in is going to be C\#, as most of the
-software IT minds makes is written in C\#, which means most developers in IT
+software IT minds make is written in C\#, which means most developers in IT
 minds will be familiar with it. 
 
 In the design phase the design of the database, and the system will be made, so
@@ -168,7 +168,7 @@ the process.
 
 The focus of Kanban is to make deliveries in a just-in-time fashion, where the
 developers take the tasks from a queue of defined tasks. The tasks are usually
-set up on a Kanban board, with has three primary columns, one for each state a
+set up on a Kanban board which has three primary columns, one for each state a
 task can be in: 
 
 \begin{center}
@@ -184,7 +184,7 @@ PivotalTracker\footnote{Read more about PivotalTracker at:
   https://www.pivotaltracker.com}, which allows me to write user stories that
 will describe what a user should be able to do, and by that describes the
 functionality of the program, when I start work on a stories I will then move
-the state as to indicate what I am working on. This state change represents the
+the state to indicate what I am working on. This state change represents the
 moving from todo to doing, and finally to done. The values used in
 PivotalTracker are: 
 
@@ -205,13 +205,13 @@ product, leading to a hopefully more fitting product in the eyes of IT minds.
 
 For the development of the features them selves, I will be following a
 test-driven development procedure, meaning I will start by creating unit tests
-for the feature I am to implement, which will fail until I the feature is done,
+for the feature I am to implement, which will fail until the feature is done,
 and supports the requirements. This will ensure quality code, as well as make
 sure that the requirements are met throughout the product. 
 
 \section{Goals}
 \label{sec:Goals}
-Based on the problem definition in section~\ref{sec:Problem definition} I will
+Based on the problem definition in Section~\ref{sec:Problem definition} I will
 now list the goals that will be carried out throughout the project, both in
 regards to the report and the implementation of the product. 
 
@@ -238,32 +238,31 @@ regards to the report and the implementation of the product.
 \section{Thesis structure}
 \label{sec:Thesis structure}
 Here I will go over the general structure of the report, and what each of the
-chapters will focus on, as well as what goal they will complete.\\ 
+chapters will focus on, as well as what goals they will complete.\\ 
 
-\textbf{Chapter~\ref{chap:Domain analysis} - \nameref{chap:Domain analysis}}
+\textbf{Chapter~\ref{chap:Domain analysis} --- \nameref{chap:Domain analysis}}
 will describe the domain the solution is under, including requirements from IT
-minds to the solution, and a prioritized order of features that may be
-implemented into the system. The chapter will also set up some use cases that
+minds to the solution. The chapter will also set up some use cases that
 describe what a user might do in the system, and what should be supported by the
 final product. 
 
-\textbf{Covers goals: 2-5}\\
+\textbf{Covers goals: 2--5}\\
 
-\textbf{Chapter~\ref{chap:Technology} - \nameref{chap:Technology}} will look at
+\textbf{Chapter~\ref{chap:Technology} --- \nameref{chap:Technology}} will look at
 some of the technologies that are available for developing the system, and make
 a decision from the findings of this on what technologies will be used to
 implement the system itself. 
 
-\textbf{Covers goals: 6-7}\\
+\textbf{Covers goals: 6--7}\\
 
-\textbf{Chapter~\ref{chap:Design} - \nameref{chap:Design}} will focus on the
+\textbf{Chapter~\ref{chap:Design} --- \nameref{chap:Design}} will focus on the
 design of the system itself, including the database design, and the architecture
 of the system. It will also decide some of the design patterns that will be used
 under the development. 
 
-\textbf{Covers goals: 8-10}\\
+\textbf{Covers goals: 8--10}\\
 
-\textbf{Chapter~\ref{chap:Implementation} - \nameref{chap:Implementation}} will
+\textbf{Chapter~\ref{chap:Implementation} --- \nameref{chap:Implementation}} will
 discuss the implementation itself, including some of the design decisions made
 while developing and the technologies that was chosen based on the previous
 chapter. 
@@ -271,14 +270,14 @@ chapter.
 It will also go over how testing of the system has been done, including unit
 tests, and integration tests. 
 
-\textbf{Covers goals: 11-15}\\
+\textbf{Covers goals: 11--15}\\
 
 
-\textbf{Chapter~\ref{chap:Conclusion} - \nameref{chap:Conclusion}} will
+\textbf{Chapter~\ref{chap:Conclusion} --- \nameref{chap:Conclusion}} will
 summarize some key points from the rapport. It will hold the final product up
 against the requirements, and a conclusion will be drawn from the project.
 
 Future development of the product will also be discussed in this chapter, ending
 with a statement from IT minds. 
 
-\textbf{Covers goal: 16-17}
+\textbf{Covers goal: 16--17}
