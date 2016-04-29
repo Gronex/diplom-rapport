@@ -35,24 +35,24 @@ and delete one.
 One thing that I use is the idea of telling the repository how I want it to
 update the existing model via an action, which it takes as an argument. The
 reason for that is it allows me to not update all the properties, but only the
-ones that is relevant. Because I only update the relevant ones, if the User of
+ones that are relevant. Because I only update the relevant ones, if the User of
 the program sends in changed data for a property they are not supposed to be
 able to change, it will not be changed. 
 
 The generic interface also allows me to implement a standardized way of dealing
 with pagination, which is the idea of instead of pulling everything out of a
-table, we order the entries, and return a subset of the data. 
+table, I order the entries, and return a subset of the data. 
 
 This allows the user to ask for ex 10 entries in the table Users, and only get
 the 10 entries they asked for. Because they are now not getting all the data
-they need to be told how much data there is, and therefore we return the total
+they need to be told how much data there is. Therefore I return the total
 number of entries in the search, as well as the page size they got, and the page
 they are looking at. The page number is used to set the first entry to the one
 with $index = page number \cdot page size$. 
 
 In the simple cases I let the controllers depend on the generic repository, as
 there is no need to implement a special handling of cases where no special
-update or create logic is needed. But for the cases where we need to link tables
+update or create logic is needed. But for the cases where I need to link tables
 together I have decided to make specific implementations, which themselves
 depend on the generic repository, as the logic to save get and update can be
 reused, there just needs to be added some more logic on to it. 
@@ -62,13 +62,13 @@ able to make multiple repository calls in one go, and if any of them fails the
 idea of unit of work should step in and make sure that none of the changes take
 place. 
 
-Because of this I have implemented a interface to handle the unit of work, with
+Because of this I have implemented an interface to handle the unit of work, with
 the ability to call save changes, which all the controllers implement, and use
 in the cases where data changes. 
 
 The only place where I don't follow these setups is in the user controller, as
 it uses the Identity framework for authentication and authorization, and it
-brings its own user manager, which I need to use if I want the feature they
+brings its own user manager, which I need to use if I want the features they
 bring. The problem with this user manager is that it does not follow the unit of
 work pattern, which means it saves every time I make a call that would update
 the database. 
@@ -82,9 +82,10 @@ tables.
 Usually you would use the foreign keys as a composite key so there cannot be any
 duplicate connection.
 
-Because this can easily create multiple cascade paths on delete, I have decided
-to set the entity framework up in such a way that it will not create cascade
-deletes on many-to-many relations. 
+Because this can easily create multiple cascade paths on delete and MsSQL has a
+hard time determining if that is the case. I have decided to set the entity
+framework up in such a way that it will not create cascade deletes on
+many-to-many relations.  
 
 Because of this I need to manually clear up the relations when I want to delete
 an entity that has one, but the manual delete gives more control, and will
@@ -93,7 +94,7 @@ multiple cascade paths result in.
 
 Another thing to notice when looking at the domain models is that I don't
 always manually create the many-to-many relation. This is because entity
-framework can figure that out itself, assuming i give it the information it
+framework can figure that out by itself, assuming i give it the information it
 needs. But in some cases namely UserGroups I do make it manually, this is
 because it does give me more control over what relations are where, and the
 creation of them, even though it makes the code a bit more complex.
@@ -116,8 +117,8 @@ approaches. The most basic way of dealing with this would be to catch the
 exceptions, and return the right message to the client.
 
 Another way to deal with this is to use filters, this is the way I have decided
-to go with. For filters there are still multiple ways to do this, I could have
-set the filter on a per method, per controller, or for the entire server.
+to go with. For filters there are still multiple ways to do it. I can set the
+filter per method, per controller, or for the entire server. 
 
 The implementation of the filter would look like the one of
 figure~\ref{fig:notfoundfilter} for all of the types, and since I need the
@@ -144,7 +145,7 @@ for the goal data. The call for production data is the most interesting, in that
 it needs to deal with spacing the earned money out over the period it spans in.
 
 This also means that i had to make a filter that includes the opportunity as
-long as it is within the range on the period.
+long as it is within the range of the period.
 
 \begin{figure}
   \includegraphics[width=\textwidth]{code/SpreadOutEarnings}
@@ -153,14 +154,18 @@ long as it is within the range on the period.
 \end{figure}
 
 In figure~\ref{fig:spreadoutearnings} the implementation of the evening out of
-the earnings is illustrated, as can be seen the implementation the result us a
+the earnings is illustrated, as can be seen in the implementation the result is a
 list of tuples. The reason i use tuples here is that it allows me to associate
 the earned value with the month it was earned.
 
-When the list is returned I filter away the months that i don't need, based on
+Curently the implementation does not care how many days in the month the
+opportunity spans over, for even better data this could be improved, as sugested
+in Section~\ref{sec:future_work}.
+
+When the list is returned I filter away the months that i don't need based on
 the filter, and match it up with a user.
 
-In the end I map the result to a dictionary, with the users email as the key.
+In the end I map the result to a dictionary with the users email as the key.
 The reason I can do that is that the email is unique, and I have grouped them
 together ahead of time, to allow me to only have one dictionary entry per user,
 containing a list of earnings per month.
@@ -197,7 +202,7 @@ combinations of arguments, to run the same test with each.
 The reason I do have tests is that it allows me to have an automated way of
 knowing if a change I make changes the way my program works. When I look at a
 test that fails I then have to see if it means I will have to update the things
-that depend in the unit the test is testing, or the unit is in fact broken and
+that depend on the unit the test is testing, or the unit is in fact broken and
 does not work as intended any more. 
 
 The advantage of writing unit tests ahead of time is that it forces the
@@ -207,11 +212,11 @@ when the code is done, as that would be the point where all the tests succeed.
 
 For integration testing, instead of a single unit the test aims to verify that
 all the components work together the way they are supposed to. It would as an
-example make sure that when we make a call that we know need to somehow get some
-data out of storage we can verify that it does indeed do that, without bothering
+example make sure that when I make a call that I know need to somehow get some
+data out of storage I can verify that it does indeed do that, without bothering
 with what it did in order for the correct result to be returned in the end, just
-knowing that given the components we gave the code will somehow return the data
-we expect.
+knowing that given the components I gave the code will somehow return the data
+I expect.
 
 \subsection{Unit tests}
 \label{sec:unit_tests}
@@ -219,7 +224,7 @@ Under the development I have created a lot of unit tests, to test that my
 functions actually do what i want them to do, and return the correct data.
 
 In figure~\ref{fig:testResults} every test except the ones in the
-IntegrationTests folder are unit tests, meaning the test only test a single unit
+IntegrationTests folder are unit tests, meaning the tests only test a single unit
 at a time.
 
 In practise this means that I replace all the dependencies with mocked versions.
@@ -234,7 +239,7 @@ An example of substitution of a method could be PersonsControllerTest where I
 substitute the IPersonRepository argument to the controller, and later when I
 know the controller is going to call a function in that one, such as when I want
 to get a single object from the database I can tell the function that it should
-return a specific object in that case, as I am not interested in testing the
+return a specific object in that case. I am not interested in testing the
 controllers ability to fetch data, but rather test that it does not mess up the
 data, and it actually tries to get it. 
 
@@ -242,13 +247,13 @@ For the case where it fails, the test is more a case of does the controller
 catch the exception and act like nothing happened, which is the wrong behaviour
 or does it let it go through, and let the filters handle it. In the failing
 cases the most interesting tests are the ones where we save to the database, as
-we want to make sure that we never make it ca call Save() if something went
+we want to make sure that we never make it to call Save() if something went
 wrong, as that puts the database in an unknown state, as mentioned in
 Section~\ref{sub:unit_of_work_pattern}.
 
-I have tried to keep follow the ideas of test driven development, by writing my
+I have tried to follow the ideas of test driven development, by writing my
 tests first, and making the implementation afterwards, so that the tests work as
-a description of what i expect the function to return given specific arguments.
+a description of what I expect the function to return given specific arguments.
 
 \subsection{Integration tests}
 \label{sec:integration_tests}
@@ -274,7 +279,7 @@ is a powerful list comprehension library in C\#.
 
 Even though entity framework implements the repository pattern, I have wrapped
 it in my own implementation, in order to gain more control, and reduce repeated
-code for tasks such as deleting, and and updating. It also allows med to make
+code for tasks such as deleting, and updating. It also allows me to make
 better use of injection, in that I can inject a repository interface into a
 class, and replace it for testing, so that i can know exactly what information I
 am working with.
@@ -292,9 +297,9 @@ with an id that is not in the database, the repository will throw a
 NotFoundException, which will propagate all the way outside the controller. The
 reason the caller will not get an InternalServerError, is because I use filters,
 that catch the exception, and translates it into a not found response. This
-filter is applied globally for all the controllers, together with a few others.
+filter is applied globally for all the controllers, together with a few other filters.
 
-The system also works with extracting data so that is can be graphed. This means
+The system also works with extracting data so that it can be graphed. This means
 that the system pulls out the data based on a filter, and then formats it so
 that it is easy to illustrate in a graph or table, and compare each point.
 
@@ -308,6 +313,6 @@ Because there are more smaller units in the application than there are use cases
 there are a lot more unit tests than integration tests. This is also because
 most of the integration testing has been done via the JavaScript application I
 have developed next to the server, which results in the tests not being
-automatic, but in order for the JavaScript application to work I the server
-still had to work, and the unit tests are there to help identify where the
-issues may have shown up.
+automatic, but in order for the JavaScript application to work the server
+still had to respond with the correct data, and the unit tests are there to help
+identify where the issues may have shown up.
