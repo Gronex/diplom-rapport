@@ -1,11 +1,11 @@
 \chapter{Conclusion}
 \label{chap:Conclusion}
-In this chapter I will sum up what have been made. I will compare the resulting
-product with the requirements of Chapter~\ref{chap:Domain analysis}. After this
-I will conclude on the product, looking at advantages and disadvantages in the
-way I have decided to make it.
+In this chapter I will sum up what have been made in this thesis. I will compare
+the resulting product with the requirements of
+Chapter~\ref{chap:domain_analysis}. After this I will conclude on the product,
+looking at advantages and disadvantages in the way I have decided to make it.
 In the end I will have a discussion of what future work should and could be made
-for the system to be ready to be set into production. Ending with a statement
+for the system to be ready to be put into production. Ending with a statement
 from IT minds about the project.
 
 \section{Summery}
@@ -31,7 +31,7 @@ values in the system as an admin, since this allows for setting the system
 up exactly as is desired, instead of having to force some predetermined setup by
 the developer on the sales team.
 
-In Chapter~\ref{chap:Domain analysis} I discuss what exactly the system is
+In Chapter~\ref{chap:domain_analysis} I discuss what exactly the system is
 supposed to be capable of, such as the number of user levels, and the
 visualization.
 
@@ -63,9 +63,9 @@ and because it is easy to read, and therefore validate when building the service
 
 For the database I compared a few types, and settled for a relational one named
 MsSQL, with the entity framework for access, mostly because it has good support
-in the .NET environment.
+in the .NET environment, and supports LINQ.\
 
-The front-end was not discussed as in depth, as it is more a suggested
+The front-end was not discussed in as much depth, as it is more a suggested
 implementation of how one might look, and as I don't have any proper knowledge
 of building a user friendly interface I cannot claim that what I have build
 follows the rules that is required for that. 
@@ -153,7 +153,7 @@ can easily support another front-end when that is deemed necessary.
 \section{Future work}
 \label{sec:future_work}
 Since the product I have created only is a prototype, it is not currently in a
-state where IT minds would be able to take it into use, but requires some
+state where IT minds would be able to take it into use. It requires some
 adjustments and a few features before that would be possible.
 
 One thing that should be looked at would be the \textbf{user experience}, as for a system
@@ -164,11 +164,11 @@ suites the work flows of such a system.
 In IT minds we use Google as our email host, and as such have our Google
 accounts associated with a lot of web applications, therefore it would make sense to
 allow us to use Google for the CRM as well. The way I have developed the user
-authentication it would be possible to include Google accounts and single
-\textbf{sign-on}. It would also be possible to use Facebook, twitter, or Microsoft accounts if that
-is something that makes sense. The extension would not require too much work,
-and it would not necessarily break the current login flow, but rather extend it
-with the possibility of alternatives.
+authentication it would be possible to include Google accounts and
+\textbf{single sign-on}. It would also be possible to use Facebook, twitter, or
+Microsoft accounts if that is something that makes sense. The extension would
+not require too much work, and it would not necessarily break the current login
+flow, but rather extend it with the possibility of alternatives. 
 
 Another feature that could be useful in the future would be the integration of
 calendars, so that a user can go in and see in a \textbf{calendar view} the assignments
