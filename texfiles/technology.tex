@@ -7,23 +7,23 @@ settled on makes sense for the task I am doing.
 The technologies I will be looking into revolves around how the data will be
 served to the user, and how I will be persisting the data the system is going to
 handle. In the end of the chapter I will explain the technology I have decided
-to go with for the front-end, but at it is only meant as an example of how a
+to go with for the front-end, but because it is only meant as an example of how a
 front-end can be made on top of the back-end and as such there will not be too
-much comparison.
+many comparisons.
 
 \section{Serving}
 \label{sec:Serving}
 I can choose to serve the data in multiple ways, even after I have decided that
 the the user will be visiting a website to get the data. I can go with static
-serving which is what section~\ref{sub:Static_serving} will focus on, or I
+serving which is what Section~\ref{sub:Static_serving} will focus on, or I
 could go with a web service, and then go with a single page application or
-similar technology to present the data, which is what sub
-section~\ref{sub:web_service} will discuss.
+similar technology to present the data, which is what
+Section~\ref{sub:web_service} will discuss. 
 
 \subsection{Static serving}
 \label{sub:Static_serving}
 
-One way to implement the website could be purely via static serving. This means
+One way to implement the website could be via purely static serving. This means
 that the server will receive a request from the client to which the server then
 finds the appropriate HTML, CSS and potentially JavaScript files to give back,
 while first inserting values for representing the data in the database, and the
@@ -39,18 +39,18 @@ Sprint is based on the JVM\cite{spring-framework}, which means that you would ne
 
 If I were to create the service with Java I could support different operating systems to host the server out of the box, which can be convenient when trying to find cheap hosting.
 
-For the most part the universal support for hosting is also true for php. php is
+For the most part the universal support for hosting is also true for php.\ php is
 a server scripting language\cite{php-home}, designed to support web development
-well. It can be integrated into ones HTML pages, and from there insert new HTML.
+well. It can be integrated into ones HTML pages, and from there insert new HTML.\
 The user will never see the logic of php, like they would never see it for
 Spring, as when the request is made to the server the code is evaluated, and the
 template is pre-rendered, which means the results of the template values are
-inserted, and what the client gets is only the pure HTML. This can be an
-advantage since I don't show any internal logic because of this. 
+inserted, and what the client gets is only the pure HTML.\ This can be an
+advantage since I then don't show any internal logic to the user. 
 
 ASP.NET work much in the same way that Spring does except it runs on the .NET
 virtual machine made by Microsoft, A few different languages run on the .NET
-virtual machine, similar to different languages runs on the JVM, one of these
+virtual machine, similar to different languages running on the JVM.\ One of these
 languages is C\# which is very popular language in IT minds, and among their
 customers. 
 
@@ -62,30 +62,30 @@ In previous versions of .NET the user was mostly locked on to the windows
 platform, with a few exceptions like mono\footnote{Read more about the mono
   project at: http://www.mono-project.com/}. But recently Microsoft has decided
 to start supporting other platforms, as part of their open sourcing of parts of
-the .NET platform\cite{.net-core}, in a push to make ASP.NET Core 1 more modular and
-open. 
+the .NET platform\cite{.net-core}, in a push to make ASP.NET Core 1 more modular
+and open. 
 
 \subsection{Web service}
 \label{sub:web_service}
-Another option could be to create a web service, that will then expose the data
+Another option could be to create a web service, that will expose the data
 in a way for clients to call to, allowing for multiple different front-ends to be
 implemented, with the web service as the way of getting hold of the data. 
 
 The advantage of using a service for a setup such as this one, would be that if
-for some reason the website needs to be updated with a new look, that can be
+for some reason the website needs to be updated with a new look, it can be
 done without ever touching the back-end. Another advantage is that I can make
 multiple different clients communicating with the same service, meaning I can
 decide later on that I also want to support a mobile application. This can be
 done entirely from an exposed interface, without the mobile developer ever
 having to look at the backing code, only the documentation of the interface. 
 
-There are a couple of different web service types, two of which I will discuss
-in this section. 
+For webservices there are a couple of different types, two of which I will discuss
+in the following sections. 
 
 \subsubsection{SOAP}
 \label{subs:SOAP}
 SOAP\footnote{Simple Object Access Protocol} is a type of web service which
-relies on sending data in XML. 
+relies on sending data in XML.\ 
 
 The goals of SOAP is to be extensible and simple at the same
 time\cite{soap:messaging}. This means that a lot of features that is often used
@@ -96,18 +96,18 @@ not bound to a specific protocol for sending the data, and can therefore be
 implemented to use whatever is best suited for the situation. 
 
 In soap you send all the data in an XML envelope, containing an optional header
-section and a body section, the header section is for data that extends the
+section and a body section. The header section is for data that extends the
 basic SOAP protocol, such as information of priority or correlation between
 messages\cite{soap:messaging}. This section is there to make the entire protocol
 modular, and extensible. Where the body is for the message itself. 
 
-The body of a SOAP message is where the data is contained, in a successful
+The body of a SOAP message is where the data is contained. In a successful
 scenario the body contains whatever was expected for the client to get. But it
 can contain a fault as well, meaning something went wrong in the transaction.
 The fault holds information on what type of error happened, so that it can be
 handled. The faults are identified with fault codes, which can hold sub codes to
 specify deeper what the problem in this particular instance was. These fault
-codes are part of the application domain, so a code could be "NoCompany" and a
+codes are part of the application domain, so a code could be ``NoCompany'' and a
 client receiving that code would then know exactly what went wrong, which in
 this case would be that there is no company available. 
 
@@ -116,14 +116,14 @@ website, which means that I will have to either combine one of the static
 serving ways with the SOAP service, or have to have JavaScript call the service.
 If I go with a setup where I have JavaScript call the service the JavaScript has
 to use some extra energy on translating the XML into the data structures of
-JavaScript, which is JSON. 
+JavaScript, which is JSON.\
 
 \subsubsection{REST}
 \label{subs:REST}
 An alternate type of web services is a REST API, which stands for
 Representational state transfer. A REST API generally communicate via the HTTP
 protocol. This limits a little compared to SOAP which can work with any protocol
-as described in section~\ref{subs:SOAP}. 
+as described in Section~\ref{subs:SOAP}. 
 
 The appeal of a web API is the simplicity, as the HTTP protocol is so well
 established, with error codes for most situations, and the added ability to give
@@ -146,20 +146,20 @@ everything anyways.
 
 As with SOAP in REST you can have headers carry extra data, such as what format you
 would like the response to be in, and the token for authenticating the user.
-This is a feature supported and used by standard web servers and browsers when
+This is a feature supported and used by standard HTTP web servers and browsers when
 we surf the internet, so REST just decided to keep using this as well. 
 
-There are some rules for a web API to be called RESTful\cite{rest:msdn}, for
-this to be true the paths have to follow some fairly simple rules. If I want to
-get a list of eg. activities I would call a path that ends with "/activities"
-with the verb "GET". If the RESP API has a resource type on the path activities
-it will return a list of all of them with the status code 200 which stands for
-OK. When I then want a specific one I call "/activities/:id" with the verb "GET"
-where :id is the id of the activity I want. 
+There are some rules for a web API to be called RESTful\cite{rest:msdn} needs to
+fulfill. One of these rules is that the paths have to follow some fairly simple
+rules. If I want to get a list of eg.\ activities I would call a path that ends
+with ``/activities'' with the verb ``GET''. If the RESP API has a resource type on
+the path activities it will return a list of all of them with the status code 200
+which stands for OK.\ When I then want a specific one I call ``/activities/:id''
+with the verb ``GET'' where :id is the id of the activity I want. 
 
 This is only the read part of CRUD, but the other parts are also supported. They
-just use different verbs, the most common are "POST" for create, "PUT" for
-updating, although "PATCH" could also be used for that, and "DELETE" for
+just use different verbs, the most common are ``POST'' for create, ``PUT'' for
+updating, although ``PATCH'' could also be used for that, and ``DELETE'' for
 deleting an element. If it is an existing resource you are operating on, the
 address should end in the id of the resource to be worked on, and otherwise just
 in the resource type, such as the first get. 
@@ -198,7 +198,7 @@ enforces some organizational bounds, and keeps the service structure clean.
 Based on the arguments for and against the different technologies, and the
 requirement that IT minds needs to be able to continue development after this
 project is done. And a little bit of my own interest, I have come to the
-conclusion that the best way of serving the data is via a RESTful API. There are
+conclusion that the best way of serving the data is via a RESTful API.\ There are
 a couple of reasons for this conclusion. First of which is the possibility for
 me to use the language I see best fit. Another reason is also that a CRM could
 be useful as a mobile app at a later time, and that would need some API to talk
@@ -221,15 +221,15 @@ now have been set up in table~\ref{tab:serving-pro-con}.
   \resizebox{\linewidth}{!}{%
     \begin{tabular}{l|l l}
       & Pros & Cons\\
-      \hline
+      \midrule
       \textbf{Static serving} & Dynamic content & Single front-end \\
       & Hidden code & Mixing of front and back-end code\\
-      \hline
+      \midrule
       \textbf{SOAP} & Possible multiple front-ends & XML\\
       & Extendable & Not many consuming libraries for web\\
       & Custom error types & \\
       & Dynamic content\\
-      \hline
+      \midrule
       \textbf{REST} & Possible multiple front-ends & Easy to break standards\\
       & Not locked to singe data format   & \\
       & Well known protocol               & \\
@@ -238,7 +238,7 @@ now have been set up in table~\ref{tab:serving-pro-con}.
     \end{tabular}
   }
   \caption{Pros and cons of different ways of serving the data}
-  \label{tab:serving-pro-con}
+\label{tab:serving-pro-con}
 \end{table}
 
 The implementation of the RESTful service will be made using ASP.NET since I
@@ -247,14 +247,14 @@ limit the systems it can run on, as I will not be using ASP.NET Core 1 which can
 run on systems with Linux on them\cite{asp5:intro}. 
 
 The reason I have chosen not to go with Core 1, but Webapi 2, which still runs
-on ASP.NET, is because it is still only in release
+on ASP.NET is because Core 1 is still only in release
 candidate\cite{asp_core_1:roadmap}, and to my experience it is still missing
 some of the features related to authentication on a web API setup, which will be
 required in this project. 
 
 \section{Database }
 \label{sec:Database_engine}
-When I comes to which database to use, there are a lot to take into account.
+When it comes to which database to use, there are a lot to take into account.
 First off I need to look at what type of database I want. When I have decided
 this, I need to figure out which engine for the database I am going to go with.
 
@@ -320,31 +320,32 @@ results from the database to C\# objects. One thing to be aware of when
 using the entity framework is that if using code first I still risk falling into
 the same design patterns of the Object database, to avoid this I will design the
 database like I would if I were to design a database and then create it
-using SQL. This way I should avoid some of the worst pit falls of using code
-first.
+using SQL.\ The creation of the database will still be done using code first but
+the classes will map from my ER diagram to the code classes. This way I should
+avoid some of the worst pit falls of using code first.
 
 MsSQL also makes sense as it is proven to work for others in a lot of scenarios,
-based on its usage\cite{obdms:gartner}. 
+based on its usage statistics\cite{obdms:gartner}. 
 
 \begin{table}[h]
   \resizebox{\linewidth}{!}{%
     \begin{tabular}{l|l l}
       & Pros & Cons\\
-      \hline
+      \midrule
       \textbf{Relational database}
       & Data normalization & Harder to update data structure when live\\
       & Low to no redundant data & \\
-      \hline
+      \midrule
       \textbf{Object database}
-      & Easy relation to OOP\protect\footnotemark & Can lead to bad data designs\\
-      \hline
+      & Easy relation to OOP\protect\footnotemark{} & Can lead to bad data designs\\
+      \midrule
       \textbf{Document database}
       & Good for often changing data structure & Use more space\\
       & & Often slower than other database types
     \end{tabular}
   }
   \caption{Pros and cons of different types of databases}
-  \label{tab:sedatabse-pro-con}
+\label{tab:sedatabse-pro-con}
 \end{table}
 \footnotetext{Object Oriented Programming}
 
@@ -361,7 +362,7 @@ for frameworks as well. Which allow me to develop with different structures,
 such as MVVM\footnote{Model View ViewModel} and MVC\footnote{Model View
   Control}, and some others. 
 
-Some of the options that follow the MVC model is AngularJS and EmberJS. Angular
+Some of the options that follow the MVC model is AngularJS and EmberJS.\ Angular
 is made by Google\cite{angularjs}, and allow me to separate the application out
 into separate parts, having a controller per view. I can also separate functions
 into services, and create directives and components, which are view elements,
@@ -391,22 +392,21 @@ I have chosen to go with C\# because it is one of the most used languages in IT
 minds, and since the project is for IT minds it will be them who will continue
 work on it at a later date.
 
-C\# does have some frameworks that are good at web serving, which is what I will
-be going with, and the one I have decided to go with is ASP.NET, with Webapi 2,
-serving JSON. This allows me to not worry about the front-end when developing the
-back-end, as a JSON API running over the HTTP protocol can be used both by a web
-application, as well as an application for a phone, and a native desktop
-application as well.
+I have decided to go with a webservice running in C\#. More specifikally
+ASP.NET with Webapi 2 serving JSON.\ This allows me to not worry about the
+front-end when developing the back-end, as a JSON API running over the HTTP
+protocol can be used both by a web application, as well as an application for a
+phone, or a native desktop application, without any of them knowing the other exists.
 
 For data storage I have gone with MsSQL as it is a relational database, which is
 the type I have concluded fits best for my project. It also have good support in
-the .net environment, as both are developed by Microsoft. For accessing the
+the .NET environment, as both are developed by Microsoft. For accessing the
 database I will be using an ORM by the name of Entity framework, also developed
 by Microsoft. This will allow me to not worry about SQL injection, and treat the
 database entities more or less like C\# objects.
 
 I will also be developing a front-end as an example of how that part of the
 system could look, as well as to make sure that my decisions on the back-end
-actually makes sense in an actual user interactive way. For this i have decided
+actually makes sense in a user interactive way. For this i have decided
 to go with AngularJS in a JavaScript single-page-application, mostly because it is
 a mature framework that I have experience using.

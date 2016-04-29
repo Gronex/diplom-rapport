@@ -21,7 +21,7 @@ figure~\ref{fig:er_diagram}.
 \begin{figure}
   \includegraphics[width=\textwidth]{ER_diagram}
   \caption{ER diagram}
-  \label{fig:er_diagram}
+\label{fig:er_diagram}
 \end{figure}
 
 The design is in NF1\footnote{First Normal Form} because I do not have any rows
@@ -142,7 +142,7 @@ that go over some standard things the system will do. Namely viewing the goals
 of users, in the system, and creation of an opportunity.
 
 The sequences are also tested as integration tests, which will be explained
-further in section~\ref{sec:integration_tests}.
+further in Section~\ref{sec:integration_tests}.
 
 For the first sequence diagram i have described how the system works when a user
 wants to get the graph data of goals. This can be seen in
@@ -150,14 +150,14 @@ figure~\ref{fig:goal_sequence}.
 
 The initial call is a get, which means that the client expects to get some data
 back from the server, as that is the primary objective of the call. In the get
-the client sends a filter, in this case that could be the time span it is
+the client sends a filter. In this case the filter could be a time span the client is
 interested in, and maybe also which users or groups of users they want data for.
 
 The first thing that happens on the server side is that we correct the dates,
 since I have decided that if no date is given it means that we return a span of
 one year, starting in January of the current year. This also makes sure that if
 the user swapped to and from I can still figure out what they meant, as I just
-swap them in that case. 
+swap them so the from is the lower value and to is the higher. 
 
 The next step revolves around getting the data from the database, here we apply
 the filters, and ask our repository to give all the goals it can find with that
@@ -179,8 +179,8 @@ return via the HTTP connection, with a status code of 200.
 \end{figure}
 
 For the sequence diagram describing the creation of an opportunity, as can be
-seen in figure~\ref{fig:opportunity_sequence} we have start with a Post call the
-the server, this post call contains the data that the client wants to create an
+seen in figure~\ref{fig:opportunity_sequence} we start with a Post call the
+the server, this Post call contains the data that the client wants to create an
 opportunity of. Because we cannot assume that the client sends valid data we have
 to verify, and if the data is not valid we return BadRequest, which is an HTTP
 return type with the code 400, we also tell the client why the request was not
@@ -195,13 +195,13 @@ about them.
 
 In the end we create the new opportunity in our database layer, and return the
 created entity to the interface, that persists the data with save using the Unit
-of Work pattern as described in section~\ref{sub:unit_of_work_pattern}.
+of Work pattern as described in Section~\ref{sub:unit_of_work_pattern}.
 
 \begin{figure}[!htb]
   \centering
   \includegraphics[width=\textwidth]{create_opportunity_sequence}
   \caption{Sequence diagram for creating a new opportunity}
-  \label{fig:opportunity_sequence}
+\label{fig:opportunity_sequence}
 \end{figure}
 
 I have not described the error possibilities in the creation of the opportunity,
@@ -213,6 +213,8 @@ filter catch the error.
 
 \section{Patterns}
 \label{sec:Patterns}
+In the project I will be using a couple of different development patterns, som
+of which will be explained in the following sections.
 
 \subsection{Dependency injection}
 \label{sub:dependency_injection}
@@ -244,12 +246,12 @@ form of local storage. It allows the developers to delay the decision of where
 to store the data, as the repository does not have to be implemented to access a
 database, but it could read from a file, request a web service, or something
 else\cite{repository_pattern}. It also allows for easier swapping of storage
-service, since the business logic would not have to be updated at all. 
+service, since the business logic would not have to be updated at all in such a case. 
 
 \subsection{Unit of work pattern}
 \label{sub:unit_of_work_pattern}
-A pattern that works well with the repository pattern, that is described in
-section~\ref{sub:repository_pattern}, is the unit of work pattern. The goal of
+A pattern that works well with the repository pattern  described in
+Section~\ref{sub:repository_pattern}, is the unit of work pattern. The goal of
 this pattern is to group up execution of operations that has an impact on the
 data store. In cases where I just read out from the database I may not need it,
 but in cases where I change data it makes sense to be in a state where I either
@@ -259,7 +261,9 @@ The problem that the unit of work pattern solves is that if I am updating some
 object, which includes the deletion of some data, I want to make sure that if
 something fails later on after I have done the delete, so that the creation was
 not done, the delete operation is abandoned, and I have not damaged my data
-model\cite{uow}. 
+model\cite{uow}. It does of course not have to be  delete that is stopped, but
+any of the ``dangerous'' operations update, create, or delete should be persisted
+with the unit of work.
 
 \section{Class diagram}
 \label{sec:class_diagram}
@@ -267,24 +271,24 @@ model\cite{uow}.
 I have created class diagrams to help get an overview of how the different
 classes are connected, one for each project. In
 figure~\ref{fig:main_class_diagram} a diagram for the project containing the
-controllers is represented, and in appendix~\ref{app:class_diagrams} the rest
+controllers is represented, and in Appendix~\ref{app:class_diagrams} the rest
 are illustrated.
 
 In figure~\ref{fig:main_class_diagram} it can be seen that the references to
 repositories are done via interfaces, and are injected to lower the coupling
-as described in section~\ref{sub:dependency_injection}.
+as described in Section~\ref{sub:dependency_injection}.
 
 It can also be seen that I use the repository pattern since the most common
 dependency is a repository, along with a unit of work class, which allows me to
-only know the repository, and how to save, as described in sections
-\ref{sub:repository_pattern} and \ref{sub:unit_of_work_pattern}.
+only know the repository, and how to save, as described in
+Sections~\ref{sub:repository_pattern} and~\ref{sub:unit_of_work_pattern}.
 
 \doublepagepdf{class_diagrams/main_class_diagram}{Class diagram of
   customer\_relation\_manager}{fig:main_class_diagram} 
 
 \section{Chapter summary}
 The structure of the system is following the onion model, working around the
-idea of layers, with the domain model as the inner core, which is the database
+idea of layers with the domain model as the inner core, describing the database
 containing the data. The next layer is the domain services, describing how to
 get the data from the database, followed by the application services, which is
 in charge of doing data manipulation, and tasks that is essential to the system,
@@ -315,7 +319,7 @@ never ends up in an unknown state because something failed half way through an
 operation, but only if I make it all the way through the changes are saved.
 
 To illustrate some of the pattern uses, and to give a better idea of the
-structure of the system I have created some class diagrams. The the primary one,
-which illustrates the controllers, and their relations, and types is illustrated
+structure of the system I have created some class diagrams. The primary one
+illustrating the controllers, their relations, and types is illustrated
 in figure~\ref{fig:main_class_diagram}, while the rest are in
-appendix~\ref{app:class_diagrams}.
+Appendix~\ref{app:class_diagrams}.

@@ -1,7 +1,7 @@
 \chapter{Conclusion}
 \label{chap:Conclusion}
 In this chapter I will sum up what have been made. I will compare the resulting
-product with the requirements of chapter~\ref{chap:Domain analysis}. After this
+product with the requirements of Chapter~\ref{chap:Domain analysis}. After this
 I will conclude on the product, looking at advantages and disadvantages in the
 way I have decided to make it.
 In the end I will have a discussion of what future work should and could be made
@@ -18,7 +18,7 @@ for short.
 
 The current CRMs are not capable of doing what IT minds require entirely, and
 therefore I have gotten the job of making a prototype of an alternative. An
-introduction to the system in presented in chapter~\ref{chap:Introduction}.
+introduction to the system in presented in Chapter~\ref{chap:Introduction}.
 
 The Idea is that it should be possible to get an overview of how it is going in
 the system, both in regard to how much is being sold, and how much is supposed
@@ -31,7 +31,7 @@ values in the system as an admin, since this allows for setting the system
 up exactly as is desired, instead of having to force some predetermined setup by
 the developer on the sales team.
 
-In chapter~\ref{chap:Domain analysis} I discuss what exactly the system is
+In Chapter~\ref{chap:Domain analysis} I discuss what exactly the system is
 supposed to be capable of, such as the number of user levels, and the
 visualization.
 
@@ -43,7 +43,7 @@ the ER diagram for the database. At the end of the chapter I present a suggestio
 to how some of the views that is described by use cases could look.
 
 Based on the requirements I discussed the possible technologies in
-chapter~\ref{chap:Technology}. Since IT minds had limited requirements to the
+Chapter~\ref{chap:Technology}. Since IT minds had limited requirements to the
 technologies I was fairly free to go with what I felt was fitting, which is why
 I have compared a couple different ones in that chapter. A thing that I did keep
 in mind is the use of C\# in IT minds projects, which leads to most IT minds
@@ -75,9 +75,9 @@ think in a more user near way when developing the resource paths, and it allowed
 me to integration test a bit easier. It is also easier to show others what I
 have made if it has a user interface, instead of just being data dumped out by a server.
 
-In chapter~\ref{chap:Design} I discuss the design of the system. First I create
+In Chapter~\ref{chap:Design} I discuss the design of the system. First I create
 the design of the database, described with an ER diagram. The database is only
-in 2NF. The reason I have not made it 3NF is that this would make it hard to
+in 2NF.\ The reason I have not made it 3NF is that this would make it hard to
 work with the entities, where it has any influence. The actual issue is that a
 company has an address, which could be separated out into a separate table, but
 this is also true for the country, and an address should have a country
@@ -96,7 +96,7 @@ Near the end of the chapter I describe some of the patterns I use in the
 development, such as dependency injection, and the repository pattern.
 
 In the end the implementation has been described in
-chapter~\ref{chap:Implementation}. Here I discuss my use of the entity
+Chapter~\ref{chap:Implementation}. Here I discuss my use of the entity
 framework, and how I even though it is already using the repository pattern, and
 unit of work pattern, I wrap it in order for me not to be as dependent on the
 ORM itself in the controllers.
@@ -111,7 +111,7 @@ and converted into the proper HTTP response.
 I also discuss how I get the data from the database and format it in a way so
 that it can be plotted in a graph, with a few code examples.
 
-The last part of the chapter~\ref{chap:Implementation} is about how I have
+The last part of the Chapter~\ref{chap:Implementation} is about how I have
 tested the system, and some of the advantages the different testing methods
 have. Here I describe the idea behind the testing, including how the unit
 testing has been done, and what frameworks I used. I also explain how it is
@@ -131,7 +131,7 @@ to front-ends, so it will be possible to create a web service, phone or desktop
 application without changing the back-end.
 
 For future development such as the features suggested in
-section~\ref{sec:future_work}, and other features required for the service to
+Section~\ref{sec:future_work}, and other features required for the service to
 work competitively compared to other CRMs, the server is created in such a way
 that it is not necessarily required to deal with the existing code, depending on
 what is to be implemented.
@@ -217,8 +217,8 @@ letters in the desired word, in the correct order.
 When I make the production graph data setup I figure out how to split the
 earnings based on months, which for a better effect should be based on number of
 days in a month, ideally \textbf{workdays per month}. The result of this would be that if
-1.000.000 kr. was set from 2016-02-09 to 2016-03-11 the amount for February
-would be 640.000 kr. and 360.000 kr. for March as there are 16 work days from
+1.000.000 kr.\ was set from 2016--02--09 to 2016--03--11 the amount for February
+would be 640.000 kr.\ and 360.000 kr.\ for March as there are 16 work days from
 the 9th of February to the end of the month and 9 from the start of March to the
 16th. This would also help with calculating the money the person who made the
 sale should get for each month, and give an even better idea of how the
