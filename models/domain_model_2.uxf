@@ -109,8 +109,8 @@ Assosiated with</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>280</x>
-      <y>660</y>
+      <x>270</x>
+      <y>750</y>
       <w>150</w>
       <h>70</h>
     </coordinates>
@@ -122,16 +122,16 @@ Name</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>380</x>
-      <y>670</y>
-      <w>120</w>
-      <h>50</h>
+      <x>410</x>
+      <y>680</y>
+      <w>130</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1
 m2=*
 Categorized by</panel_attributes>
-    <additional_attributes>50.0;20.0;60.0;20.0</additional_attributes>
+    <additional_attributes>10.0;110.0;20.0;110.0;20.0;10.0;30.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -585,16 +585,16 @@ Limits to</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>380</x>
+      <x>370</x>
       <y>60</y>
-      <w>190</w>
-      <h>620</h>
+      <w>200</w>
+      <h>710</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
 m2=*
 Limits to</panel_attributes>
-    <additional_attributes>10.0;600.0;10.0;10.0;170.0;10.0</additional_attributes>
+    <additional_attributes>10.0;690.0;10.0;10.0;180.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -613,12 +613,12 @@ Managed by</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>230</x>
-      <y>770</y>
-      <w>170</w>
+      <x>200</x>
+      <y>680</y>
+      <w>150</w>
       <h>60</h>
     </coordinates>
-    <panel_attributes>ProductionViewSettings
+    <panel_attributes>ActivityViewSettings
 --
 Name
 </panel_attributes>
@@ -627,16 +627,16 @@ Name
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>260</x>
+      <x>330</x>
       <y>280</y>
-      <w>180</w>
-      <h>510</h>
+      <w>110</w>
+      <h>420</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
 m2=1
 Managed by</panel_attributes>
-    <additional_attributes>10.0;490.0;10.0;340.0;80.0;340.0;80.0;10.0;160.0;10.0</additional_attributes>
+    <additional_attributes>10.0;400.0;10.0;10.0;90.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -644,13 +644,13 @@ Managed by</panel_attributes>
       <x>260</x>
       <y>260</y>
       <w>180</w>
-      <h>530</h>
+      <h>440</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
 m2=*
 Limit to</panel_attributes>
-    <additional_attributes>10.0;510.0;10.0;320.0;60.0;320.0;60.0;10.0;160.0;10.0</additional_attributes>
+    <additional_attributes>10.0;420.0;10.0;320.0;60.0;320.0;60.0;10.0;160.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -658,12 +658,12 @@ Limit to</panel_attributes>
       <x>260</x>
       <y>380</y>
       <w>330</w>
-      <h>410</h>
+      <h>320</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
 m2=*
 Limit to</panel_attributes>
-    <additional_attributes>10.0;390.0;10.0;200.0;60.0;200.0;60.0;10.0;310.0;10.0</additional_attributes>
+    <additional_attributes>10.0;300.0;10.0;200.0;60.0;200.0;60.0;10.0;310.0;10.0</additional_attributes>
   </element>
 </diagram>
